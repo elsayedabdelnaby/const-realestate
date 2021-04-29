@@ -1,5 +1,16 @@
 @extends('layouts.front.app')
 
+@include('front.partials.meta', [
+    'title' => $site_settings->title,
+    'keywords' => $site_settings->meta_keyword,
+    'description' => $site_settings->meta_description,
+    'image' => $site_settings->logo_path,
+    ])
+
+@section('title')
+{{ $site_settings->title }}
+@endsection
+
 @section('style')
     <!-- LEAFLET MAP -->
     <link rel="stylesheet" href="{{ asset('front') }}/css/leaflet.css">

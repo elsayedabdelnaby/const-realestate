@@ -4,9 +4,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="netabout">
-                        <a href="index.html" class="logo">
-                            <img src="{{ asset('front/images/logo-footer.svg') }}" alt="footer Logo">
+                <div class="netabout">
+                        <a href="{{ route('home') }}" class="logo">
+                            <img src="{{ asset($footer_logo_path) }}" alt="footer Logo">
                         </a>
                         <p>@lang('front.footer_paragraph')</p>
                     </div>

@@ -15,12 +15,19 @@ class SiteSetting extends Model implements TranslatableContract
 
     protected $appends = [
         'logo_path',
+        'footer_logo_path'
     ];
 
-    protected $fillable = ['logo'];
+    protected $fillable = ['logo', 'footer_logo'];
 
     public function getLogoPathAttribute()
     {
         return asset('front/images/' . $this -> logo);
     }
+
+    public function getFooterLogoPathAttribute()
+    {
+        return asset('front/images/' . $this -> footer_logo);
+    }
+
 }

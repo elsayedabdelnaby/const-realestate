@@ -90,13 +90,25 @@
                         @endforeach
 
                         <div class="form-group col-sm-12 col-lg-12">
-                            <label>Image</label>
+                            <label>Logo</label>
                             @error('logo')
                                 <span class="text-danger mx-1">{{ $message }}</span>
                             @enderror
                             <input type="file" name="logo" class="form-control input-sm image" accept="jpg, png, jpeg, svg">
 
                             <img src="{{ $site_settings->logo_path }}" width="100px"
+                                class="img-thumbnail image-preview mt-1" alt="">
+                        </div> {{-- end of form group image --}}
+
+
+                        <div class="form-group col-sm-12 col-lg-12">
+                            <label>Footer Logo</label>
+                            @error('footer_logo')
+                                <span class="text-danger mx-1">{{ $message }}</span>
+                            @enderror
+                            <input type="file" name="footer_logo" class="form-control input-sm image" accept="jpg, png, jpeg, svg">
+
+                            <img src="{{ $site_settings->footer_logo_path }}" width="100px"
                                 class="img-thumbnail image-preview mt-1" alt="">
                         </div> {{-- end of form group image --}}
 

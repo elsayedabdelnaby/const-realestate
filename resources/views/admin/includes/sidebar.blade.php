@@ -119,7 +119,7 @@
 
                 @if (auth()->user()->hasPermission('read_blogs'))
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.blogs.index') }}" class="nav-link">
                             <i class="nav-icon fa fa-book"></i>
                             <p>Blogs</p>
                         </a>

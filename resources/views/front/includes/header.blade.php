@@ -77,7 +77,7 @@
             <div class="left-side">
                 <!-- Logo -->
                 <div id="logo">
-                    <a href="{{ route('front.index') }}"><img src="{{ asset('front/images/logo.svg') }}"
+                    <a href="{{ route('front.index') }}"><img src="{{ asset($logo_path) }}"
                             alt="Real Estate Logo"></a>
                 </div>
                 <!-- Mobile Navigation -->
