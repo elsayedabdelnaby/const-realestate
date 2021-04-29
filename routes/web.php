@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\FrontEnd;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'FrontEnd', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ FrontEnd::class, 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
 
     Route::get('/', 'Front\HomeController@index')->name('front.index'); // end of welcome
 
