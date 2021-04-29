@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('contact_us_info', ContactUsInfo::firstOrFail());
+
     }
 }
