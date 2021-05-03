@@ -161,6 +161,13 @@
                     </a>
                 </li><!-- /properties-sidebar -->
 
+                <li class="nav-item">
+                    <a href="{{ route('admin.whychooseus.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-bullseye"></i>
+                        <p>Why Choose Us</p>
+                    </a>
+                </li><!-- /whychooseus-sidebar -->
+
             </ul> <!-- /.nav-sidebar -->
         </nav>
         <!-- /.sidebar-menu -->

@@ -37,5 +37,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         Route::get('site_settings/{id}', 'SiteSettingController@edit')->name('sitesettings.edit');
         Route::put('site_settings/{id}', 'SiteSettingController@update')->name('sitesettings.update');
 
+        /**Why Choose Us Routes */
+        Route::resource('/whychooseus', 'WhyChooseUsController')->except('show');
     });
 });
