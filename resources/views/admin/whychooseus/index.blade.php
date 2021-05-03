@@ -65,7 +65,6 @@
                         <td>{{ $item-> title }}</td>
                         <td>{{ $item-> description }}</td>
                         <td>
-                            <a href="{{ route('admin.whychooseus.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                             @if (auth()->user()->hasPermission('update_why_choose_us'))
                                 <a href="{{ route('admin.whychooseus.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                 {{-- @else

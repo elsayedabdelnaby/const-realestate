@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Storage;
 
 class WhyChooseUsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:read_why_choose_us'])->only('index');
+        $this->middleware(['permission:create_why_choose_us'])->only(['create', 'store']);
+        $this->middleware(['permission:update_why_choose_us'])->only(['edit', 'update']);
+        $this->middleware(['permission:delete_why_choose_us'])->only(['destroy']);
+    } // end of construct
     /**
      * Display a listing of the resource.
      *
