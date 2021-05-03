@@ -8,6 +8,7 @@ use App\Models\Admin\Property;
 use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
 use App\Models\SiteSetting;
+use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,7 +20,8 @@ class HomeController extends Controller
         $agencies = Agency::all();
         $properties = Property::all();
         $site_settings = SiteSetting::firstOrFail();
+        $whychooseus = WhyChooseUs::where('is_active', 1)->get();
 
-        return view('front.index', compact('property_types', 'property_statuses', 'agencies', 'properties', 'site_settings'));
+        return view('front.index', compact('property_types', 'property_statuses', 'agencies', 'properties', 'site_settings', 'whychooseus'));
     }
 }
