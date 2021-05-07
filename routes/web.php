@@ -24,7 +24,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ Fro
     Route::get('/property/{id}', 'Front\PropertyController@show')->name('front.properties.show');
 
     Route::get('/blogs', 'Front\BlogController@index')->name('front.blogs.index');
-    Route::get('/blog/{slug}', 'Front\BlogController@show')->name('front.blogs.show');
+    Route::get('/blogs/{slug}', 'Front\BlogController@show')->name('front.blogs.show');
 
 });
 

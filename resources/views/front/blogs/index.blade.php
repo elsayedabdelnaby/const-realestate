@@ -31,21 +31,22 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12 col-xs-12">
                     <div class="row">
-                        @foreach($blogs as $blog)
+                        @foreach ($blogs as $blog)
                             <div class="col-md-12 col-xs-12 space no-pb2">
-                            <div class="news-item news-item-sm">
-                                <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-img-link">
-                                    <div class="news-item-img">
-                                        <img class="resp-img" src="{{ $blog -> image_path }}" alt="{{ $blog -> title }}">
-                                    </div>
-                                </a>
-                                <div class="news-item-text">
-                                    <a href="{{ route('front.blogs.show', $blog->meta_slug) }}">
-                                        <h3>{{ $blog -> title }}</h3>
+                                <div class="news-item news-item-sm">
+                                    <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-img-link">
+                                        <div class="news-item-img">
+                                            <img class="resp-img" src="{{ $blog->image_path }}"
+                                                alt="{{ $blog->title }}">
+                                        </div>
                                     </a>
-                                    <div class="dates">
-                                        <span class="date">{{ $blog->created_at }} </span>
-                                        {{-- <ul class="action-list pl-0">
+                                    <div class="news-item-text">
+                                        <a href="{{ route('front.blogs.show', $blog->meta_slug) }}">
+                                            <h3>{{ $blog->title }}</h3>
+                                        </a>
+                                        <div class="dates">
+                                            <span class="date">{{ $blog->created_at }} </span>
+                                            {{-- <ul class="action-list pl-0">
                                             <li class="action-item pl-2"><i class="fa fa-heart"></i>
                                                 <span>306</span></li>
                                             <li class="action-item"><i class="fa fa-comment"></i> <span>34</span>
@@ -53,19 +54,20 @@
                                             <li class="action-item"><i class="fa fa-share-alt"></i> <span>122</span>
                                             </li>
                                         </ul> --}}
-                                    </div>
-                                    <div class="news-item-descr">
-                                        <p>{!! html_entity_decode( $blog -> description ) !!}</p>
-                                    </div>
-                                    <div class="news-item-bottom">
-                                        <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-link">Read more...</a>
-                                        <div class="admin">
-                                            <p>Created By: {{ $blog -> creator }}</p>
+                                        </div>
+                                        <div class="news-item-descr">
+                                            <p>{!! html_entity_decode($blog->description) !!}</p>
+                                        </div>
+                                        <div class="news-item-bottom">
+                                            <a href="{{ route('front.blogs.show', $blog->meta_slug) }}"
+                                                class="news-link">Read more...</a>
+                                            <div class="admin">
+                                                <p>Created By: {{ $blog->creator }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
 
                     </div>
@@ -76,13 +78,13 @@
                         <form action="" action="GET">
                             @csrf
                             @method('GET')
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-search"
-                                                                                     aria-hidden="true"></i></button>
+                                            aria-hidden="true"></i></button>
                                 </span>
-                        </div>
+                            </div>
                         </form>
                         <div class="recent-post py-5">
                             <h5 class="font-weight-bold">Category</h5>
@@ -98,27 +100,7 @@
                             </ul>
                         </div>
                         <div class="recent-post">
-                            <h5 class="font-weight-bold mb-4">Popolar Tags</h5>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Houses</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Real Home</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Baths</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Beds</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Garages</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Family</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Real Estates</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Properties</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary mb-0">Location</a></span>
-                                <span><a href="#" class="btn btn-outline-primary mb-0">Price</a></span>
-                            </div>
+                            @include('front.includes.popolar_tags')
                         </div>
                         <div class="recent-post pt-5">
                             @include('front.blogs.recent_posts', ['recent_blogs'])
