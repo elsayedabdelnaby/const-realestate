@@ -20,7 +20,12 @@
     <link rel="stylesheet" href="{{ asset('/front/') }}/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="{{ asset('/front/') }}/css/custom.css">
-
+    <link rel="stylesheet" href="{{ asset('front') }}/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/lightcase.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/menu.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/styles.css">
+    <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
     @yield('style')
 
     <link rel="canonical" href="{{Request::url()}}" />

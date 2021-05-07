@@ -15,4 +15,8 @@ class BlogController extends Controller
 
     } // end of index
 
+    public function show($id){
+
+    }
+
 } // end of controller

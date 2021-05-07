@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Blog extends Model
 {
@@ -29,4 +30,8 @@ class Blog extends Model
     {
         return asset('uploads/blogs/' . $this->image);
     } // end of image path
+
+    public function getCreatedAtAttribute($value){
+        return Carbon::parse($value)->format('F d,Y');
+    }
 }
