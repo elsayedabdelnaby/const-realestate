@@ -92,8 +92,8 @@ class BlogController extends Controller
         try {
             $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
             $request->has('show_in_homepage') ? $request->request->add(['show_in_homepage' => 1]) : $request->request->add(['show_in_homepage' => 0]);
-            $blog = Blog::find($id);
 
+            $blog = Blog::find($id);
             if(!$blog){
                 session()->flash('error', "Blog Doesn't Exist or has been deleted");
                 return redirect()->route('admin.blogs.index');
@@ -110,8 +110,7 @@ class BlogController extends Controller
 
                 Image::make($request->image)->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
-                })->save(public_path('public/uploads/blogs/'. $request ->image->hashName()));
-
+                })->save(public_path('uploads/blogs/'. $request ->image->hashName()));
                 $request_data['image'] = $request->image->hashName();
             } // end of outer if
 
