@@ -1,11 +1,15 @@
 @extends('layouts.front.app')
 
+@section('meta_tags')
+
 @include('front.partials.meta', [
     'title' => $site_settings->title,
     'keywords' => $site_settings->meta_keyword,
     'description' => $site_settings->meta_description,
     'image' => $site_settings->logo_path,
     ])
+
+@endsection
 
 @section('title')
 {{ $site_settings->title }}
@@ -688,13 +692,13 @@
                     @foreach($blogs as $blog)
                     <div class="col-xl-4 col-md-6 col-xs-12">
                         <div class="news-item">
-                            <a href="{{ route('front.blogs.show', $blog->id) }}" class="news-img-link">
+                            <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-img-link">
                                 <div class="news-item-img">
                                     <img class="img-responsive" src="{{ asset($blog->getImagePathAttribute()) }}" alt="blog image">
                                 </div>
                             </a>
                             <div class="news-item-text">
-                                <a href="{{ route('front.blogs.show', $blog->id) }}">
+                                <a href="{{ route('front.blogs.show', $blog->meta_slug) }}">
                                     <h3>{{ $blog->title }}</h3>
                                 </a>
                                 <div class="dates">
@@ -711,7 +715,7 @@
                                     <p>{{ $blog->description }}</p>
                                 </div>
                                 <div class="news-item-bottom">
-                                    <a href="{{ route('front.blogs.show', $blog->id) }}" class="news-link">Read more...</a>
+                                    <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-link">Read more...</a>
                                     <div class="admin">
                                         <p>{{ $blog->creator }}</p>
                                     </div>
@@ -794,14 +798,9 @@
 
 @section('script')
     <!-- ARCHIVES JS -->
-    <script src="{{ asset('front') }}/js/jquery.min.js"></script>
     <script src="{{ asset('front') }}/js/jquery-ui.js"></script>
-    <script src="{{ asset('front') }}/js/tether.min.js"></script>
     <script src="{{ asset('front') }}/js/moment.js"></script>
     <script src="{{ asset('front') }}/js/transition.min.js"></script>
-    <script src="{{ asset('front') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('front') }}/js/mmenu.min.js"></script>
-    <script src="{{ asset('front') }}/js/mmenu.js"></script>
     <script src="{{ asset('front') }}/js/slick.min.js"></script>
     <script src="{{ asset('front') }}/js/slick3.js"></script>
     <script src="{{ asset('front') }}/js/fitvids.js"></script>
@@ -809,12 +808,9 @@
     <script src="{{ asset('front') }}/js/jquery.counterup.min.js"></script>
     <script src="{{ asset('front') }}/js/imagesloaded.pkgd.min.js"></script>
     <script src="{{ asset('front') }}/js/isotope.pkgd.min.js"></script>
-    <script src="{{ asset('front') }}/js/smooth-scroll.min.js"></script>
     <script src="{{ asset('front') }}/js/lightcase.js"></script>
     <script src="{{ asset('front') }}/js/owl.carousel.js"></script>
     <script src="{{ asset('front') }}/js/jquery.magnific-popup.min.js"></script>
-    <script src="{{ asset('front') }}/js/ajaxchimp.min.js"></script>
-    <script src="{{ asset('front') }}/js/newsletter.js"></script>
     <script src="{{ asset('front') }}/js/jquery.form.js"></script>
     <script src="{{ asset('front') }}/js/jquery.validate.min.js"></script>
     <script src="{{ asset('front') }}/js/forms-2.js"></script>
@@ -823,7 +819,6 @@
     <script src="{{ asset('front') }}/js/leaflet-providers.js"></script>
     <script src="{{ asset('front') }}/js/leaflet.markercluster.js"></script>
     <script src="{{ asset('front') }}/js/map4.js"></script>
-    <script src="{{ asset('front') }}/js/color-switcher.js"></script>
 
     <!-- Slider Revolution scripts -->
     <script src="{{ asset('front') }}/revolution/js/jquery.themepunch.tools.min.js"></script>

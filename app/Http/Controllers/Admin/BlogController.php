@@ -40,7 +40,7 @@ class BlogController extends Controller
             $request_data = $request -> all();
 
             if ($request -> image) {
-                Image::make($request->image)->resize(300, null, function ($constraint) {
+                Image::make($request->image)->resize(1000, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save(public_path('/uploads/blogs/'. $request ->image->hashName()));
 
@@ -108,7 +108,7 @@ class BlogController extends Controller
 
                 } // end of inner if
 
-                Image::make($request->image)->resize(300, null, function ($constraint) {
+                Image::make($request->image)->resize(1000, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save(public_path('uploads/blogs/'. $request ->image->hashName()));
                 $request_data['image'] = $request->image->hashName();

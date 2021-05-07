@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ LaravelLocalization::getCurrentLocale() }}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+<html lang="{{ LaravelLocalization::getCurrentLocale() }}"
+    dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="html 5 template">
-    <meta name="author" content="">
+    <meta name="description" content="Real-Esate Website">
+    <meta name="author" content="Elsayed-Elaraby">
+    @yield('meta_tags')
     <title>@yield('title')</title>
 
     <!-- FAVICON -->
@@ -28,23 +30,34 @@
     <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
     @yield('style')
 
-    <link rel="canonical" href="{{Request::url()}}" />
+    <link rel="canonical" href="{{ Request::url() }}" />
 </head>
 
 <body class="inner-pages  {{ Route::is('front.agencies.*') ? 'agents homepage-4 det ag-de' : '' }}">
 
-<div id="wrapper">
+    <div id="wrapper">
 
-    <!-- START SECTION HEADINGS -->
-    @include('front.includes.header')
+        <!-- START SECTION HEADINGS -->
+        @include('front.includes.header')
 
-    @yield('content')
+        @yield('content')
 
-   @include('front.includes.footer')
+        @include('front.includes.footer')
 
-    @yield('script')
+        <script src="{{ asset('front/') }}/js/jquery.min.js"></script>
+        <script src="{{ asset('front/') }}/js/tether.min.js"></script>
+        <script src="{{ asset('front/') }}/js/bootstrap.min.js"></script>
+        <script src="{{ asset('front/') }}/js/mmenu.min.js"></script>
+        <script src="{{ asset('front/') }}/js/mmenu.js"></script>
+        <script src="{{ asset('front/') }}/js/smooth-scroll.min.js"></script>
+        <script src="{{ asset('front/') }}/js/ajaxchimp.min.js"></script>
+        <script src="{{ asset('front/') }}/js/newsletter.js"></script>
+        <script src="{{ asset('front/') }}/js/color-switcher.js"></script>
+        <script src="{{ asset('front/') }}/js/inner.js"></script>
 
-</div>
+        @yield('script')
+
+    </div>
 </body>
 
 </html>
