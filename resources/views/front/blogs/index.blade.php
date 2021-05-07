@@ -19,7 +19,7 @@
         <div class="text-heading text-center">
             <div class="container">
                 <h1>Blog</h1>
-                <h2><a href="index.html">Home </a> &nbsp;/&nbsp; Blog</h2>
+                <h2><a href="{{ route('front.index') }}">Home </a> &nbsp;/&nbsp; Blog</h2>
             </div>
         </div>
     </section>
@@ -34,31 +34,31 @@
                         @foreach($blogs as $blog)
                             <div class="col-md-12 col-xs-12 space no-pb2">
                             <div class="news-item news-item-sm">
-                                <a href="#" class="news-img-link">
+                                <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-img-link">
                                     <div class="news-item-img">
                                         <img class="resp-img" src="{{ $blog -> image_path }}" alt="{{ $blog -> title }}">
                                     </div>
                                 </a>
                                 <div class="news-item-text">
-                                    <a href="blog-details.html">
+                                    <a href="{{ route('front.blogs.show', $blog->meta_slug) }}">
                                         <h3>{{ $blog -> title }}</h3>
                                     </a>
                                     <div class="dates">
-                                        <span class="date">{{ $blog->created_at->isoFormat('D MMMM Y') }} / </span>
-                                        <ul class="action-list pl-0">
+                                        <span class="date">{{ $blog->created_at }} </span>
+                                        {{-- <ul class="action-list pl-0">
                                             <li class="action-item pl-2"><i class="fa fa-heart"></i>
                                                 <span>306</span></li>
                                             <li class="action-item"><i class="fa fa-comment"></i> <span>34</span>
                                             </li>
                                             <li class="action-item"><i class="fa fa-share-alt"></i> <span>122</span>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     <div class="news-item-descr">
                                         <p>{!! html_entity_decode( $blog -> description ) !!}</p>
                                     </div>
                                     <div class="news-item-bottom">
-                                        <a href="#" class="news-link">Read more...</a>
+                                        <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-link">Read more...</a>
                                         <div class="admin">
                                             <p>Created By: {{ $blog -> creator }}</p>
                                         </div>
@@ -73,13 +73,17 @@
                 <aside class="col-lg-3 col-md-12">
                     <div class="widget">
                         <h5 class="font-weight-bold mb-4">Search</h5>
+                        <form action="" action="GET">
+                            @csrf
+                            @method('GET')
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search for...">
                             <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button"><i class="fa fa-search"
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"
                                                                                      aria-hidden="true"></i></button>
                                 </span>
                         </div>
+                        </form>
                         <div class="recent-post py-5">
                             <h5 class="font-weight-bold">Category</h5>
                             <ul>
@@ -117,40 +121,7 @@
                             </div>
                         </div>
                         <div class="recent-post pt-5">
-                            <h5 class="font-weight-bold mb-4">Recent Posts</h5>
-                            <div class="recent-main">
-                                <div class="recent-img">
-                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/blog/b-1.jpg" alt=""></a>
-                                </div>
-                                <div class="info-img">
-                                    <a href="blog-details.html">
-                                        <h6>Real Estate</h6>
-                                    </a>
-                                    <p>May 10, 2020</p>
-                                </div>
-                            </div>
-                            <div class="recent-main my-4">
-                                <div class="recent-img">
-                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/blog/b-2.jpg" alt=""></a>
-                                </div>
-                                <div class="info-img">
-                                    <a href="blog-details.html">
-                                        <h6>Real Estate</h6>
-                                    </a>
-                                    <p>May 10, 2020</p>
-                                </div>
-                            </div>
-                            <div class="recent-main">
-                                <div class="recent-img">
-                                    <a href="blog-details.html"><img src="{{ asset('front') }}/images/blog/b-3.jpg" alt=""></a>
-                                </div>
-                                <div class="info-img">
-                                    <a href="blog-details.html">
-                                        <h6>Real Estate</h6>
-                                    </a>
-                                    <p>May 10, 2020</p>
-                                </div>
-                            </div>
+                            @include('front.blogs.recent_posts', ['recent_blogs'])
                         </div>
                     </div>
                 </aside>

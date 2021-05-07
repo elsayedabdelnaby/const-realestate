@@ -26,7 +26,7 @@
         <div class="text-heading text-center">
             <div class="container">
                 <h1>{{ $blog->title }}</h1>
-                <h2><a href="{{ route('front.index') }}">Home </a> &nbsp;/&nbsp; {{ $blog->title }}</h2>
+                <h2><a href="{{ route('front.index') }}">Home </a> &nbsp;/<a href="{{ route('front.blogs.index') }}">Blog</a>&nbsp; /{{ $blog->title }}</h2>
             </div>
         </div>
     </section>
@@ -182,18 +182,7 @@
                                 </div>
                             </div>
                             <div class="recent-post pt-5">
-                                <h5 class="font-weight-bold mb-4">Recent Posts</h5>
-                                @foreach($recent_blogs as $blog)
-                                <div class="recent-main">
-                                    <div class="recent-img">
-                                        <a href="{{ route('front.blogs.show', $blog->meta_slug) }}"><img src="{{ asset($blog->getImagePathAttribute()) }}" alt="{{ $blog->title }}"></a>
-                                    </div>
-                                    <div class="info-img">
-                                        <a href="blog-details.html"><h6>{{ $blog->title }}</h6></a>
-                                        <p>{{ $blog->created_at }}</p>
-                                    </div>
-                                </div>
-                                @endforeach
+                                @include('front.blogs.recent_posts', ['recent_blogs'])
                             </div>
                         </div>
                     </aside>
