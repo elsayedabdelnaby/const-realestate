@@ -53,6 +53,8 @@
                     <th>title</th>
                     <th>Image</th>
                     <th>creator</th>
+                    <th>Is Active ?</th>
+                    <th>Show in Homepage ?</th>
                     @if (auth()->user()->hasPermission('update_blogs','delete_blogs'))
                         <th>Action</th>
                     @endif
@@ -66,7 +68,9 @@
                         <td>{{ $blog -> title }}</td>
                         <td><img src="{{ $blog -> image_path }}" alt="{{ $blog -> name }}" width="50"/></td>
                         <td>{{ $blog -> creator }}</td>
-
+                        <td>@if($blog -> is_active)<i class="fa fa-check" aria-hidden="true"></i> @endif </td>
+                        <td>@if($blog -> show_in_homepage)<i class="fa fa-check" aria-hidden="true"></i> @endif </td>
+                        <td>{{ $blog -> creator }}</td>
                        <td>
                             @if (auth()->user()->hasPermission('update_blogs'))
                                 <a href="{{ route('admin.blogs.edit', $blog->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>

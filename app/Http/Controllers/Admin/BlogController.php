@@ -35,6 +35,8 @@ class BlogController extends Controller
     public function store(BlogCreateRequest $request)
     {
         try {
+            $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
+            $request->has('show_in_homepage') ? $request->request->add(['show_in_homepage' => 1]) : $request->request->add(['show_in_homepage' => 0]);
             $request_data = $request -> all();
 
             if ($request -> image) {
@@ -88,6 +90,8 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
+            $request->has('show_in_homepage') ? $request->request->add(['show_in_homepage' => 1]) : $request->request->add(['show_in_homepage' => 0]);
             $blog = Blog::find($id);
 
             if(!$blog){

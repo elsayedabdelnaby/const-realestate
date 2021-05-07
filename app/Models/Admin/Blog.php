@@ -11,12 +11,14 @@ class Blog extends Model
     use Translatable;
     use SoftDeletes;
 
-    public $translatedAttributes = ['title', 'description', 'creator'];
+    public $translatedAttributes = ['title', 'description', 'creator', 'meta_title', 'meta_keywords', 'meta_description', 'meta_slug'];
     protected $guarded = [];
 
     protected $appends = [
         'image_path',
     ];
+
+    protected $fillable = ['image', 'is_active', 'show_in_homepage'];
 
     public function getTitleAttribute($value)
     {
@@ -25,6 +27,6 @@ class Blog extends Model
 
     public function getImagePathAttribute()
     {
-        return asset('public/uploads/blogs/' . $this->image);
+        return asset('uploads/blogs/' . $this->image);
     } // end of image path
 }
