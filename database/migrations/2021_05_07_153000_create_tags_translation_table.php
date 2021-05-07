@@ -15,7 +15,7 @@ class CreateTagsTranslationTable extends Migration
     {
         Schema::create('tags_translation', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('tag_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
             $table->string('locale')->index();
             $table->string('name');
             $table->softDeletes();
