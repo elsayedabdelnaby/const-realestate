@@ -31,7 +31,4 @@ class Blog extends Model
         return asset('uploads/blogs/' . $this->image);
     } // end of image path
 
-    public function getCreatedAtAttribute($value){
-        return Carbon::parse($value)->format('F d,Y');
-    }
 }

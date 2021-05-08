@@ -14,6 +14,7 @@ return [
             'properties' => 'c,r,u,d',
             'blogs' => 'c,r,u,d',
             'why_choose_us' => 'c,r,u,d',
+            'tags' => 'c,r,u,d',
         ],
         'admin' => [
 

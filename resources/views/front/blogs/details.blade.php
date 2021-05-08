@@ -48,7 +48,7 @@
                                     <div class="news-item-text details pb-0">
                                         <a href="{{ route('front.blogs.show', $blog->meta_slug) }}"><h3>Real Estate News</h3></a>
                                         <div class="dates">
-                                            <span class="date">{{ $blog->created_at }} &nbsp;</span>
+                                            <span class="date">{{ $blog->created_at->format('M d, Y') }} &nbsp;</span>
                                             {{-- <ul class="action-list pl-0">
                                                 <li class="action-item pl-2"><i class="fa fa-heart"></i> <span>306</span></li>
                                                 <li class="action-item"><i class="fa fa-comment"></i> <span>34</span></li>

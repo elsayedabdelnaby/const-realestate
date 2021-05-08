@@ -29,6 +29,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         /* blogs routes */
         Route::resource('/blogs', 'BlogController')->except('show');
 
+        /* tags routes */
+        Route::resource('/tags', 'TagController')->except('show');
+
         /* Concat Us Info Routes */
         Route::get('contact_us_info/{id}', 'ContactUsInfoController@edit')->name('contactusinfo.edit');
         Route::put('contact_us_info/{id}', 'ContactUsInfoController@update')->name('contactusinfo.update');

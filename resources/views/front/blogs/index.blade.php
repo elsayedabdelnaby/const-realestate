@@ -45,7 +45,7 @@
                                             <h3>{{ $blog->title }}</h3>
                                         </a>
                                         <div class="dates">
-                                            <span class="date">{{ $blog->created_at }} </span>
+                                            <span class="date">{{ $blog->created_at->format('M d, Y') }} </span>
                                             {{-- <ul class="action-list pl-0">
                                             <li class="action-item pl-2"><i class="fa fa-heart"></i>
                                                 <span>306</span></li>

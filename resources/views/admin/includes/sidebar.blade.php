@@ -146,6 +146,15 @@
                     </li><!-- /blogs-sidebar -->
                 @endif
 
+                @if (auth()->user()->hasPermission('read_tags'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.tags.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-book"></i>
+                            <p>Tags</p>
+                        </a>
+                    </li><!-- /blogs-sidebar -->
+                @endif
+
                 <li class="nav-item">
                     <a href="{{ route('admin.contactusinfo.edit', 1) }}" class="nav-link">
                         <i class="nav-icon fa fa-bullseye"></i>
