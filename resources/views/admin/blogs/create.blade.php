@@ -124,6 +124,17 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="form-group col-sm-12 col-lg-6">
+                            <label>Tags</label>
+                            <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                @foreach ($tags as $tag)
+                                    <option value={{ $tag->id }}>{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="row pt-3">
 
                         <div class="form-group col-sm-12 col-lg-12">
@@ -151,4 +162,16 @@
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+
+            $('.js-example-basic-multiple').select2({
+                placeholder: 'Select Tags'
+            });
+        });
+
+    </script>
 @endsection

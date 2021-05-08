@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Blog\BlogCreateRequest;
 use App\Http\Requests\Admin\Blog\BlogUpdateRequest;
 use App\Models\Admin\Blog;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -29,7 +30,8 @@ class BlogController extends Controller
 
     public function create()
     {
-        return view('admin.blogs.create');
+        $tags = Tag::all();
+        return view('admin.blogs.create', compact('tags'));
     } // end of create
 
     public function store(BlogCreateRequest $request)
