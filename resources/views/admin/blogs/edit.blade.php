@@ -112,6 +112,7 @@
                             </div>
                         @endforeach
                     </div>
+
                     <div class="row">
                         <div class="form-group col-sm-6 col-lg-6">
                             <label>Active ?</label>
@@ -122,6 +123,18 @@
                             <input type="checkbox" name="show_in_homepage" class="form-control" @if($blog->show_in_homepage) checked @endif>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-12 col-lg-6">
+                            <label>Tags</label>
+                            <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}" @if(in_array($tag->id, $blog_tags)) selected @endif>{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="row pt-3">
 
                         <div class="form-group col-sm-12 col-lg-12">
@@ -149,4 +162,16 @@
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+
+            $('.js-example-basic-multiple').select2({
+                placeholder: 'Select Tags'
+            });
+        });
+
+    </script>
 @endsection

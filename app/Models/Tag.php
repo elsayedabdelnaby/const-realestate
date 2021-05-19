@@ -13,4 +13,12 @@ class Tag extends Model implements TranslatableContract
     use SoftDeletes;
 
     public $translatedAttributes = ['name'];
+
+    /**
+     * Get all of the blogs that are assigned this tag.
+     */
+    public function blogs()
+    {
+        return $this->belongsToMany(Blog::class, 'tags_blogs');
+    }
 }

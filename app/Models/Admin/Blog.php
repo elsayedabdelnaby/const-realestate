@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Tag;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,11 +25,18 @@ class Blog extends Model
     public function getTitleAttribute($value)
     {
         return ucfirst($value);
-    } // end of get title attribute
+    }
 
     public function getImagePathAttribute()
     {
         return asset('uploads/blogs/' . $this->image);
-    } // end of image path
+    }
 
+    /**
+     * Get all of the tags that are assigned this tag.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'tags_blogs');
+    }
 }
