@@ -37,7 +37,7 @@
                                         <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <input class="form-control input-thick" type="text" name="{{ $locale }}[title]"
-                                        value="{{ $blog->title }}">
+                                        value="{{ $blog -> translate($locale)-> title }}">
                                 </div>
 
                                 <div class="form-group">
@@ -48,7 +48,7 @@
                                     @enderror
                                     <textarea class="form-control input-thick ckeditor" type="text"
                                         name="{{ $locale }}[description]"
-                                        value="">{{ $blog->description }}</textarea>
+                                        value="">{{ $blog-> translate($locale)-> description }}</textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -59,7 +59,7 @@
                                         <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <input class="form-control input-thick" type="text" name="{{ $locale }}[creator]"
-                                        value="{{ $blog->creator }}">
+                                        value="{{ $blog-> translate($locale)-> creator }}">
                                 </div>
 
                                 <div class="form-group">
@@ -70,7 +70,7 @@
                                         <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <input class="form-control input-thick" type="text"
-                                        name="{{ $locale }}[meta_title]" value="{{ $blog->meta_title }}">
+                                        name="{{ $locale }}[meta_title]" value="{{ $blog-> translate($locale)-> meta_title }}">
                                 </div>
 
                                 <div class="form-group">
@@ -82,7 +82,7 @@
                                         <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <input class="form-control input-thick" type="text"
-                                        name="{{ $locale }}[meta_keywords]" value="{{ $blog->meta_keywords }}">
+                                        name="{{ $locale }}[meta_keywords]" value="{{ $blog-> translate($locale)-> meta_keywords }}">
                                 </div>
 
                                 <div class="form-group">
@@ -95,7 +95,7 @@
                                     @enderror
                                     <input class="form-control input-thick" type="text"
                                         name="{{ $locale }}[meta_description]"
-                                        value="{{ $blog->meta_description }}">
+                                        value="{{ $blog-> translate($locale)-> meta_description }}">
                                 </div>
 
                                 <div class="form-group">
@@ -106,7 +106,7 @@
                                         <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <input class="form-control input-thick" type="text"
-                                        name="{{ $locale }}[meta_slug]" value="{{ $blog->meta_slug }}">
+                                        name="{{ $locale }}[meta_slug]" value="{{ $blog-> translate($locale)-> meta_slug }}">
                                 </div>
 
                             </div>
