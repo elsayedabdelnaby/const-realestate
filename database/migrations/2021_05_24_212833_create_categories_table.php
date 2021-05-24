@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFooterLogoToSitesettingsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddFooterLogoToSitesettingsTable extends Migration
      */
     public function up()
     {
-        Schema::table('site_settings', function (Blueprint $table) {
-            $table->string('footer_logo')->default('logo.svg');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +27,6 @@ class AddFooterLogoToSitesettingsTable extends Migration
      */
     public function down()
     {
-        Schema::table('site_settings', function (Blueprint $table) {
-            $table->dropColumn('footer_logo');
-        });
+        Schema::dropIfExists('categories');
     }
 }

@@ -18,8 +18,8 @@
     <section class="headings">
         <div class="text-heading text-center">
             <div class="container">
-                <h1>Blog</h1>
-                <h2><a href="{{ route('front.index') }}">Home </a> &nbsp;/&nbsp; Blog</h2>
+                <h1>@lang('front.blog')</h1>
+                <h2><a href="{{ route('front.index') }}">@lang('front.home') </a> &nbsp;/&nbsp; @lang('front.blog')</h2>
             </div>
         </div>
     </section>
@@ -60,9 +60,9 @@
                                         </div>
                                         <div class="news-item-bottom">
                                             <a href="{{ route('front.blogs.show', $blog->meta_slug) }}"
-                                                class="news-link">Read more...</a>
+                                                class="news-link">@lang('front.read_more')...</a>
                                             <div class="admin">
-                                                <p>Created By: {{ $blog->creator }}</p>
+                                                <p>@lang('front.created_by'): {{ $blog->creator }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -74,12 +74,12 @@
                 </div>
                 <aside class="col-lg-3 col-md-12">
                     <div class="widget">
-                        <h5 class="font-weight-bold mb-4">Search</h5>
+                        <h5 class="font-weight-bold mb-4">@lang('front.search')</h5>
                         <form action="" action="GET">
                             @csrf
                             @method('GET')
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
+                                <input type="text" class="form-control" placeholder="@lang('front.search_for')...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-search"
                                             aria-hidden="true"></i></button>
@@ -87,7 +87,14 @@
                             </div>
                         </form>
                         <div class="recent-post py-5">
-                            <h5 class="font-weight-bold">Category</h5>
+                            <h5 class="font-weight-bold">@lang('front.category')</h5>
+                            <ul>
+                                @forelse ($categories as $category)
+                                    <li><a href="{{ route('') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>{{ $category->translate(App::getLocale())->name }}</a></li>
+                                @empty
+
+                                @endforelse
+                            </ul>
                             <ul>
                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>House</a></li>
                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Garages</a></li>
@@ -118,16 +125,16 @@
 @endsection
 
 @section('script')
-    <!-- ARCHIVES JS -->
-    <!-- ARCHIVES JS -->
-    <script src="{{ asset('front/') }}/js/jquery.min.js"></script>
-    <script src="{{ asset('front/') }}/js/tether.min.js"></script>
-    <script src="{{ asset('front/') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('front/') }}/js/mmenu.min.js"></script>
-    <script src="{{ asset('front/') }}/js/mmenu.js"></script>
-    <script src="{{ asset('front/') }}/js/smooth-scroll.min.js"></script>
-    <script src="{{ asset('front/') }}/js/ajaxchimp.min.js"></script>
-    <script src="{{ asset('front/') }}/js/newsletter.js"></script>
-    <script src="{{ asset('front/') }}/js/color-switcher.js"></script>
-    <script src="{{ asset('front/') }}/js/inner.js"></script>
+<!-- ARCHIVES JS -->
+<!-- ARCHIVES JS -->
+<script src="{{ asset('front/') }}/js/jquery.min.js"></script>
+<script src="{{ asset('front/') }}/js/tether.min.js"></script>
+<script src="{{ asset('front/') }}/js/bootstrap.min.js"></script>
+<script src="{{ asset('front/') }}/js/mmenu.min.js"></script>
+<script src="{{ asset('front/') }}/js/mmenu.js"></script>
+<script src="{{ asset('front/') }}/js/smooth-scroll.min.js"></script>
+<script src="{{ asset('front/') }}/js/ajaxchimp.min.js"></script>
+<script src="{{ asset('front/') }}/js/newsletter.js"></script>
+<script src="{{ asset('front/') }}/js/color-switcher.js"></script>
+<script src="{{ asset('front/') }}/js/inner.js"></script>
 @stop

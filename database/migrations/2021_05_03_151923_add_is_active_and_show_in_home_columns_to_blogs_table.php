@@ -27,7 +27,8 @@ class AddIsActiveAndShowInHomeColumnsToBlogsTable extends Migration
     public function down()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            //
+            $table->dropColumn('is_active');
+            $table->dropColumn('show_in_homepage');
         });
     }
 }

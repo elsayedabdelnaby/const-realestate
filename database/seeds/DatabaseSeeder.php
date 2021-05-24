@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ContactUsInfoSeeder::class);
         $this->call(SiteSettingsSeeder::class);
         $this->call(TagSeeder::class);
+        $this->call(CategorySeeder::class);
     }
 }

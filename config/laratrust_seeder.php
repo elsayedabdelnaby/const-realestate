@@ -15,6 +15,7 @@ return [
             'blogs' => 'c,r,u,d',
             'why_choose_us' => 'c,r,u,d',
             'tags' => 'c,r,u,d',
+            'categories' => 'c,r,u,d',
         ],
         'admin' => [
 

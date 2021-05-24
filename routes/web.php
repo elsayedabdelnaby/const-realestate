@@ -26,6 +26,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ Fro
     Route::get('/blogs', 'Front\BlogController@index')->name('front.blogs.index');
     Route::get('/blogs/{slug}', 'Front\BlogController@show')->name('front.blogs.show');
 
+    Route::get('/categories/{slug}', 'Front\CategoryController@show')->name('front.category.show');
+
 });
 
 Auth::routes(['register' => false]);
