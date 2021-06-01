@@ -76,11 +76,15 @@
                 <aside class="col-lg-3 col-md-12">
                     <div class="widget">
                         <h5 class="font-weight-bold mb-4">@lang('front.search')</h5>
-                        <form action="" action="GET">
-                            @csrf
-                            @method('GET')
+                        <form action="{{route('front.blogs.index')}}" method="GET">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="@lang('front.search_for')...">
+                                <input type="text" name="search_keyword" class="form-control" placeholder="@lang('front.search_for')..." value="{{app('request')->search_keyword}}">
+                                @if(app('request')->category)
+                                <input type="hidden" name="category" class="form-control" value="{{app('request')->category}}">
+                                @endif
+                                @if(app('request')->tag)
+                                <input type="hidden" name="tag" class="form-control" value="{{app('request')->tag}}">
+                                @endif
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-search"
                                             aria-hidden="true"></i></button>

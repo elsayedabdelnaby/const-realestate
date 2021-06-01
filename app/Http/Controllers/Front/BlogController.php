@@ -25,15 +25,12 @@ class BlogController extends Controller
 
     public function index(Request $request)
     {
-        $blogs = Blog::paginate(PAGINATION_COUNT);
-
         if ($request->has('category')) {
             $category = Category::whereHas('translations', function ($query) use ($request) {
                 $query->where('meta_slug', $request->get('category'));
             })->first();
             $blogs = Blog::with('category')
-                ->where('category_id', $category->id)
-                ->paginate(PAGINATION_COUNT);
+                ->where('category_id', $category->id);
         }
 
         if ($request->has('tag')) {
@@ -41,17 +38,32 @@ class BlogController extends Controller
                 $query->where('slug', $request->get('tag'));
             })->first();
             $blogs = DB::table('blogs')
-            ->distinct()
-            ->select('blogs.id as id')
-            ->join('tags_blogs', 'tags_blogs.blog_id', '=', 'blogs.id')
-            ->join('tags', 'tags_blogs.tag_id', '=', 'tags.id')
-            ->whereNull(['blogs.deleted_at', 'blogs.deleted_at', 'blogs.deleted_at'])
-            ->where('tags_blogs.tag_id', $tag->id)
-            ->pluck('id')->toArray();
-            $blogs = Blog::whereIn('id', $blogs)
-                ->paginate(PAGINATION_COUNT);
+                ->distinct()
+                ->select('blogs.id as id')
+                ->join('tags_blogs', 'tags_blogs.blog_id', '=', 'blogs.id')
+                ->join('tags', 'tags_blogs.tag_id', '=', 'tags.id')
+                ->whereNull(['blogs.deleted_at', 'blogs.deleted_at', 'blogs.deleted_at'])
+                ->where('tags_blogs.tag_id', $tag->id)
+                ->pluck('id')->toArray();
+            $blogs = Blog::whereIn('id', $blogs);
         }
-
+        if ($request->has('search_keyword')) {
+            $search_keyword = $request->get('search_keyword');
+            if (isset($blogs)) {
+                $blogs->whereHas('translations', function ($query) use ($search_keyword) {
+                    $query->where('title', 'LIKE', '%' . $search_keyword . '%');
+                });
+            } else {
+                $blogs = Blog::whereHas('translations', function ($query) use ($search_keyword) {
+                    $query->where('title', 'LIKE', '%' . $search_keyword . '%');
+                });
+            }
+        }
+        if (!isset($blogs)) {
+            $blogs = Blog::paginate(PAGINATION_COUNT);
+        } else {
+            $blogs = $blogs->paginate(PAGINATION_COUNT);
+        }
         $recent_blogs = Blog::where([
             ['is_active', 1],
         ])->orderBy('created_at', 'ASC')->limit(5)->get();
