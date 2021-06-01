@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Category;
 use App\Models\Tag;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +21,7 @@ class Blog extends Model
         'image_path',
     ];
 
-    protected $fillable = ['image', 'is_active', 'show_in_homepage'];
+    protected $fillable = ['image', 'is_active', 'show_in_homepage', 'category_id'];
 
     public function getTitleAttribute($value)
     {
@@ -38,5 +39,9 @@ class Blog extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'tags_blogs');
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

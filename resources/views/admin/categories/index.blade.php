@@ -50,7 +50,8 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
+                    <th>Name En</th>
+                    <th>Name Ar</th>
                     @if (auth()->user()->hasPermission('update_categories','delete_categories'))
                         <th>Action</th>
                     @endif
@@ -61,7 +62,8 @@
                 @foreach ($categories as $index=>$category)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $category-> name }}</td>
+                        <td>{{ $category->translate('en')->name }}</td>
+                        <td>{{ $category->translate('ar')->name }}</td>
                         <td>
                             @if (auth()->user()->hasPermission('update_categories'))
                                 <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>

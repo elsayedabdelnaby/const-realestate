@@ -32,6 +32,10 @@ class TagController extends Controller
     public function store(CreateTagReqeust $request)
     {
         try {
+
+            $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
+            $request->has('is_popular_tag') ? $request->request->add(['is_popular_tag' => 1]) : $request->request->add(['is_popular_tag' => 0]);
+
             Tag::create($request->except(['_token', '_method']));
             session()->flash('success', 'Tag Added Successfully');
             return redirect()->route('admin.tags.index');
@@ -69,6 +73,9 @@ class TagController extends Controller
                 return redirect()->route('admin.tags.index');
             }
 
+            $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
+            $request->has('is_popular_tag') ? $request->request->add(['is_popular_tag' => 1]) : $request->request->add(['is_popular_tag' => 0]);
+            
             $tag->update($request->except(['_token', '_method']));
 
             session()->flash('success', 'Tag Updated Successfully');

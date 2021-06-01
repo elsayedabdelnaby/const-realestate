@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Blog\BlogCreateRequest;
 use App\Models\Admin\Blog;
 use App\Models\BlogTag;
+use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,8 @@ class BlogController extends Controller
     public function create()
     {
         $tags = Tag::all();
-        return view('admin.blogs.create', compact('tags'));
+        $categories = Category::all();
+        return view('admin.blogs.create', compact('tags', 'categories'));
     } // end of create
 
     public function store(BlogCreateRequest $request)
@@ -76,13 +78,14 @@ class BlogController extends Controller
         try {
             $tags = Tag::all();
             $blog = Blog::find($id);
+            $categories = Category::all();
             $blog_tags = $blog->tags->pluck('id')->toArray();
             if (!$blog) {
                 session()->flash('error', "Blog Doesn't Exist or has been deleted");
                 return redirect()->route('admin.blogs.index');
             }
 
-            return view('admin.blogs.edit', compact('blog', 'tags', 'blog_tags'));
+            return view('admin.blogs.edit', compact('blog', 'tags', 'blog_tags', 'categories'));
         } catch (\Exception $exception) {
 
             session()->flash('error', 'Something Went Wrong, Please Contact Administrator, ' . $exception->getMessage());

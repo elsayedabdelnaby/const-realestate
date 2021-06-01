@@ -25,8 +25,8 @@
 
                     @csrf
                     @method('POST')
-                    @foreach (config('translatable.locales') as $locale)
-                        <div class="row">
+                    <div class="row">
+                        @foreach (config('translatable.locales') as $locale)
                             <div class="form-group col-sm-12 col-lg-6">
                                 <label>Tag Name in @lang('site.' . $locale . '.name')</label>
                                 @error($locale . '.name')
@@ -35,10 +35,31 @@
                                 <input class="form-control input-thick" type="text" name="{{ $locale }}[name]"
                                     value="{{ old($locale . '.name') }}" required>
                             </div>
+                        @endforeach
+                        @foreach (config('translatable.locales') as $locale)
+                            <div class="form-group col-sm-12 col-lg-6">
+                                <label for="{{ $locale }}[slug]">Slug in @lang('site.' . $locale .
+                                    '.slug')</label>
+                                @error($locale . '.slug')
+                                    <br />
+                                    <span class="text-danger mx-5">{{ $message }}</span>
+                                @enderror
+                                <input class="form-control input-thick" type="text" name="{{ $locale }}[slug]"
+                                    value="{{ old($locale . '.slug') }}">
+                            </div>
 
+                        @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6 col-lg-6">
+                            <label>Active ?</label>
+                            <input type="checkbox" name="is_active" class="form-control">
                         </div>
-
-                    @endforeach
+                        <div class="form-group col-sm-6 col-lg-6">
+                            <label>Is Popular Tag ?</label>
+                            <input type="checkbox" name="is_popular_tag" class="form-control">
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>

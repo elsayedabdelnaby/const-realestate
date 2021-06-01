@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12 col-xs-12">
                     <div class="row">
-                        @foreach ($blogs as $blog)
+                        @forelse ($blogs as $blog)
                             <div class="col-md-12 col-xs-12 space no-pb2">
                                 <div class="news-item news-item-sm">
                                     <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-img-link">
@@ -68,7 +68,8 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                        @endforelse
 
                     </div>
                 </div>
@@ -87,27 +88,10 @@
                             </div>
                         </form>
                         <div class="recent-post py-5">
-                            <h5 class="font-weight-bold">@lang('front.category')</h5>
-                            <ul>
-                                @forelse ($categories as $category)
-                                    <li><a href="{{ route('') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>{{ $category->translate(App::getLocale())->name }}</a></li>
-                                @empty
-
-                                @endforelse
-                            </ul>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>House</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Garages</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Real Estate</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Real Home</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Bath</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Beds</a></li>
-                            </ul>
+                            @include('front.includes.categories', ['categories'])
                         </div>
                         <div class="recent-post">
-                            @include('front.includes.popolar_tags')
+                            @include('front.includes.popolar_tags', ['popular_tags'])
                         </div>
                         <div class="recent-post pt-5">
                             @include('front.blogs.recent_posts', ['recent_blogs'])

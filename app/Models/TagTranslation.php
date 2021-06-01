@@ -11,5 +11,5 @@ class TagTranslation extends Model
 
     protected $table = 'tags_translation';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'slug'];
 }

@@ -49,6 +49,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         try {
+            $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
             $request_data = $request->except(['_token', '_method']);
             Category::create($request_data);
             session()->flash('success', 'Tag Added Successfully');
@@ -108,6 +109,7 @@ class CategoryController extends Controller
                 session()->flash('error', "Type Doesn't Exist or has been deleted");
                 return redirect()->route('admin.categories.index');
             }
+            $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
             $category->update($request->except(['_token', '_method']));
 
             session()->flash('success', 'Tag Updated Successfully');

@@ -133,6 +133,14 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group col-sm-12 col-lg-6">
+                            <label>Category</label>
+                            <select class="js-example-basic form-control" name="category_id">
+                                @foreach ($categories as $category)
+                                    <option value={{ $category->id }}>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                     <div class="row pt-3">

@@ -51,6 +51,7 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Slug</th>
                     @if (auth()->user()->hasPermission('update_tags','delete_tags'))
                         <th>Action</th>
                     @endif
@@ -62,6 +63,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $tag-> name }}</td>
+                        <td>{{ $tag -> slug}}</td>
                         <td>
                             @if (auth()->user()->hasPermission('update_tags'))
                                 <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>

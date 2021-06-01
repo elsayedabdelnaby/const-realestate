@@ -40,44 +40,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="{{ $locale }}[meta_title]">Meta Title in @lang('site.' . $locale .
-                                        '.meta_title')</label>
-                                    @error($locale . '.meta_title')
-                                        <br />
-                                        <span class="text-danger mx-5">{{ $message }}</span>
-                                    @enderror
-                                    <input class="form-control input-thick" type="text"
-                                        name="{{ $locale }}[meta_title]"
-                                        value="{{ $category->translate($locale)->meta_title }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="{{ $locale }}[meta_keywords]">Meta Keywords in @lang('site.' .
-                                        $locale .
-                                        '.meta_keywords')</label>
-                                    @error($locale . '.meta_keywords')
-                                        <br />
-                                        <span class="text-danger mx-5">{{ $message }}</span>
-                                    @enderror
-                                    <input class="form-control input-thick" type="text"
-                                        name="{{ $locale }}[meta_keywords]"
-                                        value="{{ $category->translate($locale)->meta_keywords }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="{{ $locale }}[meta_description]">Meta Description in @lang('site.' .
-                                        $locale .
-                                        '.meta_description')</label>
-                                    @error($locale . '.meta_description')
-                                        <br />
-                                        <span class="text-danger mx-5">{{ $message }}</span>
-                                    @enderror
-                                    <input class="form-control input-thick" type="text"
-                                        name="{{ $locale }}[meta_description]"
-                                        value="{{ $category->translate($locale)->meta_description }}">
-                                </div>
-
-                                <div class="form-group">
                                     <label for="{{ $locale }}[meta_slug]">Slug in @lang('site.' . $locale .
                                         '.meta_slug')</label>
                                     @error($locale . '.meta_slug')
@@ -91,6 +53,13 @@
 
                             </div>
                         @endforeach
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6 col-lg-6">
+                            <label>Active ?</label>
+                            <input type="checkbox" name="is_active" class="form-control" @if($category->is_active) checked @endif>
+                        </div>
                     </div>
 
                     <div class="form-group">
