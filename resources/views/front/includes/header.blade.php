@@ -48,7 +48,7 @@
                 <div class="dropdown">
                     <button class="btn-dropdown dropdown-toggle" type="button" id="dropdownlang" data-toggle="dropdown"
                         aria-haspopup="true">
-                        <img src="{{ asset('front/images/' . LaravelLocalization::getCurrentLocale() . '.png') }}"
+                        <img src="{{ asset('public/front/images/' . LaravelLocalization::getCurrentLocale() . '.png') }}"
                             alt="lang" /> {{ LaravelLocalization::getCurrentLocaleNative() }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownlang">
@@ -56,7 +56,7 @@
                             <li>
                                 <a class="" rel="alternate" hreflang="{{ $localeCode }}"
                                     href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                    <img src="{{ asset('front/images/' . $localeCode . '.png') }}"
+                                    <img src="{{ asset('public/front/images/' . $localeCode . '.png') }}"
                                         alt="{{ $properties['native'] }}" />
                                     {{ $properties['native'] }}
                                 </a>

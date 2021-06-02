@@ -2,13 +2,13 @@
 
 @section('style')
     <!-- ARCHIVES CSS -->
-    <link rel="stylesheet" href="{{ asset('front') }}/css/animate.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/lightcase.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/bootstrap.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/menu.css">
-    <link rel="stylesheet" href="{{ asset('front') }}/css/styles.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/lightcase.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/menu.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/styles.css">
 
 @stop
 
@@ -198,7 +198,7 @@
                             <h5 class="font-weight-bold mb-4">Recent Properties</h5>
                             <div class="recent-main">
                                 <div class="recent-img">
-                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-1.jpg" alt=""></a>
+                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-1.jpg" alt=""></a>
                                 </div>
                                 <div class="info-img">
                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -207,7 +207,7 @@
                             </div>
                             <div class="recent-main my-4">
                                 <div class="recent-img">
-                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-2.jpg" alt=""></a>
+                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-2.jpg" alt=""></a>
                                 </div>
                                 <div class="info-img">
                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -216,7 +216,7 @@
                             </div>
                             <div class="recent-main">
                                 <div class="recent-img">
-                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-3.jpg" alt=""></a>
+                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-3.jpg" alt=""></a>
                                 </div>
                                 <div class="info-img">
                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -261,20 +261,20 @@
 
 @section('script')
     <!-- ARCHIVES JS -->
-    <script src="{{ asset('front') }}/js/jquery.min.js"></script>
-    <script src="{{ asset('front') }}/js/tether.min.js"></script>
-    <script src="{{ asset('front') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('front') }}/js/mmenu.min.js"></script>
-    <script src="{{ asset('front') }}/js/mmenu.js"></script>
-    <script src="{{ asset('front') }}/js/slick.min.js"></script>
-    <script src="{{ asset('front') }}/js/slick4.js"></script>
-    <script src="{{ asset('front') }}/js/smooth-scroll.min.js"></script>
-    <script src="{{ asset('front') }}/js/ajaxchimp.min.js"></script>
-    <script src="{{ asset('front') }}/js/newsletter.js"></script>
-    <script src="{{ asset('front') }}/js/color-switcher.js"></script>
-    <script src="{{ asset('front') }}/js/timedropper.js"></script>
-    <script src="{{ asset('front') }}/js/datedropper.js"></script>
-    <script src="{{ asset('front') }}/js/inner.js"></script>
+    <script src="{{ asset('public/front') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/tether.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick4.js"></script>
+    <script src="{{ asset('public/front') }}/js/smooth-scroll.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/ajaxchimp.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/newsletter.js"></script>
+    <script src="{{ asset('public/front') }}/js/color-switcher.js"></script>
+    <script src="{{ asset('public/front') }}/js/timedropper.js"></script>
+    <script src="{{ asset('public/front') }}/js/datedropper.js"></script>
+    <script src="{{ asset('public/front') }}/js/inner.js"></script>
 
     <!-- Date Dropper Script-->
     <script>

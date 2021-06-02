@@ -14,9 +14,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ asset('/admin/css/app_' .LaravelLocalization::getCurrentLocaleDirection(). '.css')}}">
-    <link rel="stylesheet" href="{{ asset('/admin/css/icheck-bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('/admin/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/admin/custom/app_' .LaravelLocalization::getCurrentLocaleDirection(). '.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/icheck-bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/select2.min.css') }}" />
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -58,8 +58,8 @@
 <script src="{{ asset('//admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{{ asset('//admin/js/app.js') }}"></script>
-<script src="{{ asset('admin/js/select2.min.js') }}""></script>
+<script src="{{ asset('public/admin/js/app.js') }}"></script>
+<script src="{{ asset('public/admin/js/select2.min.js') }}"></script>
 
 <script>
     $(document).ready(function () {

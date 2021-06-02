@@ -159,7 +159,7 @@
                                         <div class="recent-post">
                                             <div class="recent-main">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-1.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-1.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -168,7 +168,7 @@
                                             </div>
                                             <div class="recent-main my-4">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-2.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-2.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -177,7 +177,7 @@
                                             </div>
                                             <div class="recent-main">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('front/') }}/images/feature-properties/fp-3.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-3.jpg" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
                                                     <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -209,7 +209,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-1.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-1.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -229,7 +229,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-2.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-2.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -249,7 +249,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-3.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-3.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -269,7 +269,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-4.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-4.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -289,7 +289,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-5.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-5.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -309,7 +309,7 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('front/') }}/images/feature-properties/fp-6.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-6.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>

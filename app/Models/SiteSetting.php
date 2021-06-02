@@ -22,12 +22,12 @@ class SiteSetting extends Model implements TranslatableContract
 
     public function getLogoPathAttribute()
     {
-        return asset('front/images/' . $this -> logo);
+        return asset('public/front/images/' . $this -> logo);
     }
 
     public function getFooterLogoPathAttribute()
     {
-        return asset('front/images/' . $this -> footer_logo);
+        return asset('public/front/images/' . $this -> footer_logo);
     }
 
 }

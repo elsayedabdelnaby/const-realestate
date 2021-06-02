@@ -74,7 +74,7 @@
                                 <ul class="col-12 commented">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="{{ asset('front') }}/images/testimonials/ts-4.jpg" class="img-fluid" alt="">
+                                            <img src="{{ asset('public/front') }}/images/testimonials/ts-4.jpg" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info">
                                             <h5 class="mb-1">Mario Smith</h5>
@@ -88,7 +88,7 @@
                                 <ul class="col-12 commented">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="{{ asset('front') }}/images/testimonials/ts-5.jpg" class="img-fluid" alt="">
+                                            <img src="{{ asset('public/front') }}/images/testimonials/ts-5.jpg" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info">
                                             <h5 class="mb-1">Mary Tyron</h5>
@@ -102,7 +102,7 @@
                                 <ul class="col-12 commented">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="{{ asset('front') }}/images/testimonials/ts-6.jpg" class="img-fluid" alt="">
+                                            <img src="{{ asset('public/front') }}/images/testimonials/ts-6.jpg" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info no-mb">
                                             <h5 class="mb-1">Leo Williams</h5>
@@ -173,14 +173,14 @@
 @section('script')
 <!-- ARCHIVES JS -->
 <!-- ARCHIVES JS -->
-<script src="{{ asset('front/') }}/js/jquery.min.js"></script>
-<script src="{{ asset('front/') }}/js/tether.min.js"></script>
-<script src="{{ asset('front/') }}/js/bootstrap.min.js"></script>
-<script src="{{ asset('front/') }}/js/mmenu.min.js"></script>
-<script src="{{ asset('front/') }}/js/mmenu.js"></script>
-<script src="{{ asset('front/') }}/js/smooth-scroll.min.js"></script>
-<script src="{{ asset('front/') }}/js/ajaxchimp.min.js"></script>
-<script src="{{ asset('front/') }}/js/newsletter.js"></script>
-<script src="{{ asset('front/') }}/js/color-switcher.js"></script>
-<script src="{{ asset('front/') }}/js/inner.js"></script>
+<script src="{{ asset('public/front/') }}/js/jquery.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/tether.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/bootstrap.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/mmenu.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/mmenu.js"></script>
+<script src="{{ asset('public/front/') }}/js/smooth-scroll.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/ajaxchimp.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/newsletter.js"></script>
+<script src="{{ asset('public/front/') }}/js/color-switcher.js"></script>
+<script src="{{ asset('public/front/') }}/js/inner.js"></script>
 @stop
