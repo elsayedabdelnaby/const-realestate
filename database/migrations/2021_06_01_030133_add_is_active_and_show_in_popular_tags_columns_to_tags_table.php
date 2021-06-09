@@ -14,8 +14,8 @@ class AddIsActiveAndShowInPopularTagsColumnsToTagsTable extends Migration
     public function up()
     {
         Schema::table('tags', function (Blueprint $table) {
-            $table->boolean('is_active');
-            $table->boolean('is_popular_tag');
+            $table->boolean('is_active')->nullable();
+            $table->boolean('is_popular_tag')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddIsActiveAndShowInPopularTagsColumnsToTagsTable extends Migration
      */
     public function down()
     {
-        Schema::table('popular_tags_columns_to_tags', function (Blueprint $table) {
+        Schema::table('tags', function (Blueprint $table) {
             $table->dropColumn('is_popular_tag');
             $table->dropColumn('is_active');
         });
