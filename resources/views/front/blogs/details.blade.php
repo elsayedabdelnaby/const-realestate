@@ -11,6 +11,32 @@
 
 @endsection
 
+@section('header-scripts')
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "{{ $blog->title }}",
+        "keywords": "{{ $blog->meta_keywords }}",
+        "description": "{{ $blog->meta_description }}",
+        "mainEntityOfPage": "{{ Request::url() }}",
+        "image": [
+          "{{ $blog->image_path }}"
+         ],
+        "datePublished": "{{ $blog->created_at }}",
+        "dateModified": "{{ $blog->updated_at }}",
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ $title }}"
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "{{ $title }}"
+          }
+      }
+    </script>
+@endsection
+
 @section('title')
     {{ $blog->title }}
 @endsection

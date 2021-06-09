@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/styles.css">
     <link rel="stylesheet" id="color" href="{{ asset('public/front/') }}/css/default.css">
     @yield('style')
-
+    @yield('header-scripts')
     <link rel="canonical" href="{{ Request::url() }}" />
 </head>
 
