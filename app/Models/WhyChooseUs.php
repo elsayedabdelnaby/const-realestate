@@ -22,6 +22,6 @@ class WhyChooseUs extends Model implements TranslatableContract
 
     public function getImagePathAttribute()
     {
-        return asset('uploads/whychooseus/' . $this->image);
+        return asset('public/uploads/whychooseus/' . $this->image);
     }
 }

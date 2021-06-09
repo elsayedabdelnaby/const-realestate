@@ -30,7 +30,7 @@ class Blog extends Model
 
     public function getImagePathAttribute()
     {
-        return asset('uploads/blogs/' . $this->image);
+        return asset('public/uploads/blogs/' . $this->image);
     }
 
     /**
