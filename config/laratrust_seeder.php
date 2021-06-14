@@ -16,6 +16,7 @@ return [
             'why_choose_us' => 'c,r,u,d',
             'tags' => 'c,r,u,d',
             'categories' => 'c,r,u,d',
+            'partners' => 'c,r,u,d',
         ],
         'admin' => [
 

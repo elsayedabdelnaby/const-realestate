@@ -17,11 +17,11 @@ class CreateAgenciesTable extends Migration
             $table->increments('id');
             $table->decimal('latitude', 17 , 15)->nullable();
             $table->decimal('longitude', 17 , 15)->nullable();
-            $table->integer('city_id')->unsigned();
-            $table->integer('country_id')->unsigned();
-            $table->integer('office_number')->nullable();
-            $table->integer('mobile')->nullable();
-            $table->integer('fax')->nullable();
+            $table->integer('city_id')->unsigned()->nullable();
+            $table->integer('country_id')->unsigned()->nullable();
+            $table->string('office_number')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('fax')->nullable();
             $table->string('email')->unique();
             $table->string('image')->default('default.png');
             $table->softDeletes();

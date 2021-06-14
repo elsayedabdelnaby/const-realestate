@@ -36,7 +36,7 @@
                                     <span class="text-danger mx-5">{{ $message }}</span>
                                     @enderror
                                     <input class="form-control input-thick" type="text" name="{{ $locale }}[name]"
-                                           value="{{ old($locale.'.name') }}">
+                                           value="{{ old($locale.'.name') }}" required>
                                 </div>
 
                             <div class="form-group">
@@ -45,13 +45,13 @@
                                 <span class="text-danger mx-5">{{ $message }}</span>
                                 @enderror
                                 <textarea class="form-control input-thick ckeditor" type="text" name="{{ $locale }}[description]"
-                                          value="{{ old($locale.'.description') }}"></textarea>
+                                          value="{{ old($locale.'.description') }}">{{ old($locale.'.description') }}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="{{ $locale }}[address]">Address in @lang('site.' . $locale . '.name')</label>
                                 @error($locale . '.address')
-                                <br />
+                    `            <br />
                                 <span class="text-danger mx-5">{{ $message }}</span>
                                 @enderror
                                 <textarea class="form-control input-thick" type="text" name="{{ $locale }}[address]">
@@ -112,7 +112,7 @@
                                     <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
-                                    <input type="text" name="latitude" class="form-control">
+                                    <input type="text" name="latitude" class="form-control" value="{{ old('latitude') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="longitude">Longitude</label>
@@ -120,7 +120,7 @@
                                     <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
-                                    <input type="text" name="longitude" class="form-control">
+                                    <input type="text" name="longitude" class="form-control" value="{{ old('longitude') }}">
                                 </div>
 
                             </div>
@@ -135,7 +135,7 @@
                                 @error('email')
                                 <span class="text-danger mx-1">{{ $message }}</span>
                                 @enderror
-                                <input type="text" name="email" class="form-control form-control-sm input-sm" value="{{ old('last_name') }}">
+                                <input type="text" name="email" class="form-control form-control-sm input-sm" value="{{ old('email') }}" required>
                             </div>
 
                             <div class="form-group col-sm-12 col-lg-6">

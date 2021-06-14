@@ -29,6 +29,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         /* blogs routes */
         Route::resource('/blogs', 'BlogController')->except('show');
 
+        /** Parnters */
+        Route::resource('partners', 'PartnerController');
+        
         /* tags routes */
         Route::resource('/tags', 'TagController')->except('show');
 
@@ -45,5 +48,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
 
         /**Why Choose Us Routes */
         Route::resource('/whychooseus', 'WhyChooseUsController')->except('show');
+
     });
 });
