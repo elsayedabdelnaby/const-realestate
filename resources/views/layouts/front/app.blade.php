@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/menu.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/styles.css">
     <link rel="stylesheet" id="color" href="{{ asset('public/front/') }}/css/default.css">
+    <link href="{{ asset('public/css/iziToast.css') }}" rel="stylesheet">
     @yield('style')
     @yield('header-scripts')
     <link rel="canonical" href="{{ Request::url() }}" />
@@ -54,7 +55,7 @@
         <script src="{{ asset('public/front/') }}/js/newsletter.js"></script>
         <script src="{{ asset('public/front/') }}/js/color-switcher.js"></script>
         <script src="{{ asset('public/front/') }}/js/inner.js"></script>
-
+        <script src="{{ asset('public/js/iziToast.js') }}"></script>
         @yield('script')
 
     </div>

@@ -17,6 +17,9 @@ return [
             'tags' => 'c,r,u,d',
             'categories' => 'c,r,u,d',
             'partners' => 'c,r,u,d',
+            'whychooseus' => 'c,r,u,d',
+            'contactusinfo' => 'u',
+            'sitesettings' => 'u'
         ],
         'admin' => [
 

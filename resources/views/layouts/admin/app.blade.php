@@ -20,6 +20,7 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="{{ asset('public/css/iziToast.css') }}" rel="stylesheet">
     @yield('style')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -60,7 +61,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{ asset('public/admin/js/app.js') }}"></script>
 <script src="{{ asset('public/admin/js/select2.min.js') }}"></script>
-
+<script src="{{ asset('public/js/iziToast.js') }}"></script>
 <script>
     $(document).ready(function () {
 

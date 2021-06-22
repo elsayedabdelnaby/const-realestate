@@ -163,28 +163,39 @@
                         </a>
                     </li><!-- /blogs-sidebar -->
                 @endif
-
+                @if (auth()->user()->hasPermission('update_contactusinfo'))
                 <li class="nav-item">
                     <a href="{{ route('admin.contactusinfo.edit', 1) }}" class="nav-link">
                         <i class="nav-icon fa fa-bullseye"></i>
                         <p>Contact Us Info</p>
                     </a>
                 </li><!-- /properties-sidebar -->
+                @endif
 
-
+                @if (auth()->user()->hasPermission('update_sitesettings'))
                 <li class="nav-item">
                     <a href="{{ route('admin.sitesettings.edit', 1) }}" class="nav-link">
                         <i class="nav-icon fa fa-bullseye"></i>
                         <p>Site Settings</p>
                     </a>
                 </li><!-- /properties-sidebar -->
-
-                <li class="nav-item">
-                    <a href="{{ route('admin.whychooseus.index') }}" class="nav-link">
-                        <i class="nav-icon fa fa-bullseye"></i>
-                        <p>Why Choose Us</p>
-                    </a>
-                </li><!-- /whychooseus-sidebar -->
+                @endif
+                @if (auth()->user()->hasPermission('read_whychooseus'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.whychooseus.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-bullseye"></i>
+                            <p>Why Choose Us</p>
+                        </a>
+                    </li><!-- /whychooseus-sidebar -->
+                @endif
+                @if (auth()->user()->hasPermission('read_tags'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.partners.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-bullseye"></i>
+                            <p>Partners</p>
+                        </a>
+                    </li>
+                @endif
 
             </ul> <!-- /.nav-sidebar -->
         </nav>
