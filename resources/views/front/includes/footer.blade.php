@@ -49,7 +49,7 @@
                                 <li><a href="#">@lang('front.about_us')</a></li>
                                 <li><a href="#">@lang('front.blog')</a></li>
                                 <li><a href="#">@lang('front.blog')</a></li>
-                                <li class="no-mgb"><a href="#">@lang('front.contact')</a></li>
+                                <li class="no-mgb"><a href="{{ route('front.create.contact-us') }}">@lang('front.contact')</a></li>
                             </ul>
                         </div>
                     </div>

@@ -25,6 +25,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ Fro
 
     Route::get('/blogs', 'Front\BlogController@index')->name('front.blogs.index');
     Route::get('/blogs/{slug}', 'Front\BlogController@show')->name('front.blogs.show');
+    Route::get('/contact-us', 'Front\ContactUsController@create')->name('front.create.contact-us');
+    Route::post('/contact-us', 'Front\ContactUsController@store')->name('front.store.contact-us');
 
 });
 

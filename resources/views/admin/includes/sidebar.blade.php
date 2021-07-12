@@ -172,6 +172,13 @@
                 </li><!-- /properties-sidebar -->
                 @endif
 
+                <li class="nav-item">
+                    <a href="{{ route('admin.contact-us.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-bullseye"></i>
+                        <p>Contact Us Messages</p>
+                    </a>
+                </li><!-- /properties-sidebar -->
+
                 @if (auth()->user()->hasPermission('update_sitesettings'))
                 <li class="nav-item">
                     <a href="{{ route('admin.sitesettings.edit', 1) }}" class="nav-link">

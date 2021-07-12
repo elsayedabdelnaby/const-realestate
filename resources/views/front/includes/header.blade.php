@@ -95,7 +95,7 @@
                         <li><a href="{{ route('front.properties.index') }}">@lang('front.properties')</a></li>
                         <li><a href="{{ route('front.agencies.index') }}">@lang('front.agencies')</a></li>
                         <li><a href="{{ route('front.blogs.index') }}">@lang('front.blog')</a></li>
-                        <li><a href="contact-us.html">@lang('front.contact')</a>
+                        <li><a href="{{ route('front.create.contact-us') }}">@lang('front.contact')</a>
                         </li>
                     </ul>
                 </nav>

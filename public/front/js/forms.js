@@ -69,13 +69,8 @@
             var $contactform = forms.contactForm;
             $contactform.validate({
                 rules: {
-                    firstname: {
+                    name: {
                         required: true,
-                        minlength: 2
-                    },
-                    lastname: {
-                        required: true,
-                        minlength: 2
                     },
                     message: {
                         required: true,
@@ -88,13 +83,8 @@
 
                 },
                 messages: {
-                    firstname: {
-                        required: "Please enter your first name",
-                        minlength: "Your name must consist of at least 2 characters"
-                    },
-                    lastname: {
-                        required: "Please enter your last name",
-                        minlength: "Your name must consist of at least 2 characters"
+                    name: {
+                        required: "Please enter your name",
                     },
                     message: {
                         required: "Please enter message",
@@ -108,7 +98,7 @@
                     $(form).ajaxSubmit({
                         type: "POST",
                         data: $(form).serialize(),
-                        url: "form/process-contact.php",
+                        url: $('#url').val(),
                         success: function () {
                             $('#success').fadeIn();
                             $('#contactform').each(function () {

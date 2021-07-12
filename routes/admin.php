@@ -31,7 +31,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
 
         /** Parnters */
         Route::resource('partners', 'PartnerController');
-        
+
         /* tags routes */
         Route::resource('/tags', 'TagController')->except('show');
 
@@ -48,6 +48,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
 
         /**Why Choose Us Routes */
         Route::resource('/whychooseus', 'WhyChooseUsController')->except('show');
+
+        /** Contact Us Messages */
+        Route::get('contact-us', 'ContactUsController@index')->name('contact-us.index');
 
     });
 });

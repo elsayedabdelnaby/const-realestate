@@ -20,13 +20,18 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/font-awesome.min.css">
+    <!-- LEAFLET MAP -->
+    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/leaflet.css">
+    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/leaflet-gesture-handling.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/leaflet.markercluster.css">
+    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/leaflet.markercluster.default.css">
 
-    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/custom.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/animate.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/lightcase.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/bootstrap.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/menu.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/styles.css">
+    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/custom.css">
     <link rel="stylesheet" id="color" href="{{ asset('public/front/') }}/css/default.css">
     <link href="{{ asset('public/css/iziToast.css') }}" rel="stylesheet">
     @yield('style')
@@ -44,15 +49,21 @@
         @yield('content')
 
         @include('front.includes.footer')
-
         <script src="{{ asset('public/front/') }}/js/jquery.min.js"></script>
         <script src="{{ asset('public/front/') }}/js/tether.min.js"></script>
         <script src="{{ asset('public/front/') }}/js/bootstrap.min.js"></script>
         <script src="{{ asset('public/front/') }}/js/mmenu.min.js"></script>
         <script src="{{ asset('public/front/') }}/js/mmenu.js"></script>
+        <script src="{{ asset('public/front/') }}/js/jquery.form.js"></script>
+        <script src="{{ asset('public/front/') }}/js/jquery.validate.min.js"></script>
         <script src="{{ asset('public/front/') }}/js/smooth-scroll.min.js"></script>
         <script src="{{ asset('public/front/') }}/js/ajaxchimp.min.js"></script>
         <script src="{{ asset('public/front/') }}/js/newsletter.js"></script>
+        <script src="{{ asset('public/front/') }}/js/leaflet.js"></script>
+        <script src="{{ asset('public/front/') }}/js/leaflet-gesture-handling.min.js"></script>
+        <script src="{{ asset('public/front/') }}/js/leaflet-providers.js"></script>
+        <script src="{{ asset('public/front/') }}/js/leaflet.markercluster.js"></script>
+        <script src="{{ asset('public/front/') }}/js/map-single.js"></script>
         <script src="{{ asset('public/front/') }}/js/color-switcher.js"></script>
         <script src="{{ asset('public/front/') }}/js/inner.js"></script>
         <script src="{{ asset('public/js/iziToast.js') }}"></script>
