@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactUsMessagesTable extends Migration
+class CreateSeoModuleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateContactUsMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_us_messages', function (Blueprint $table) {
+        Schema::create('seo_pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->longText('text');
+            $table->enum('page_name', ['home', 'properties', 'agencies', 'blog', 'contact', 'aboutus']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +28,6 @@ class CreateContactUsMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_us_messages');
+        Schema::dropIfExists('seo_pages');
     }
 }

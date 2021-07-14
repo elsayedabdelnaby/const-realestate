@@ -88,7 +88,9 @@
 
                             </div>
                         @endforeach
-
+                    </div>
+                    
+                    <div class="row">
                         <div class="form-group col-sm-12 col-lg-12">
                             <label>Logo</label>
                             @error('logo')
@@ -106,7 +108,8 @@
                             @error('footer_logo')
                                 <span class="text-danger mx-1">{{ $message }}</span>
                             @enderror
-                            <input type="file" name="footer_logo" class="form-control input-sm image" accept="jpg, png, jpeg, svg">
+                            <input type="file" name="footer_logo" class="form-control input-sm image"
+                                accept="jpg, png, jpeg, svg">
 
                             <img src="{{ $site_settings->footer_logo_path }}" width="100px"
                                 class="img-thumbnail image-preview mt-1" alt="">

@@ -19,7 +19,8 @@ return [
             'partners' => 'c,r,u,d',
             'whychooseus' => 'c,r,u,d',
             'contactusinfo' => 'u',
-            'sitesettings' => 'u'
+            'sitesettings' => 'u',
+            'seo' => 'c,r,u,d',
         ],
         'admin' => [
 

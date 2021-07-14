@@ -52,5 +52,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         /** Contact Us Messages */
         Route::get('contact-us', 'ContactUsController@index')->name('contact-us.index');
 
+        /** SEO */
+        Route::resource('/seo', 'SEOController')->except('show');
+
     });
 });

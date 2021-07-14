@@ -203,6 +203,14 @@
                         </a>
                     </li>
                 @endif
+                @if (auth()->user()->hasPermission('read_seo'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.seo.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-bullseye"></i>
+                            <p>SEO</p>
+                        </a>
+                    </li>
+                @endif
 
             </ul> <!-- /.nav-sidebar -->
         </nav>
