@@ -22,49 +22,69 @@
             <div class="row">
 
                 {{-- @include('partials._errors') --}}
-                <form class="col-12" action="{{ route('admin.seo.update', $category->id) }}" method="post">
+                <form class="col-12" action="{{ route('admin.seo.update', $page->id) }}" method="post">
 
                     {{ csrf_field() }}
                     {{ method_field('put') }}
                     <div class="row">
-                        @foreach (config('translatable.locales') as $locale)
-                            <div class="col-sm-12 col-lg-6">
-                                <div class="form-group">
-                                    <label for="{{ $locale }}[name]">Category Name in @lang('site.' . $locale .
-                                        '.name')</label>
-                                    @error($locale . '.name')
-                                        <span class="text-danger mx-5">{{ $message }}</span>
-                                    @enderror
-                                    <input class="form-control input-thick" type="text" name="{{ $locale }}[name]"
-                                        value="{{ $category->translate($locale)->name }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="{{ $locale }}[meta_slug]">Slug in @lang('site.' . $locale .
-                                        '.meta_slug')</label>
-                                    @error($locale . '.meta_slug')
-                                        <br />
-                                        <span class="text-danger mx-5">{{ $message }}</span>
-                                    @enderror
-                                    <input class="form-control input-thick" type="text"
-                                        name="{{ $locale }}[meta_slug]"
-                                        value="{{ $category->translate($locale)->meta_slug }}">
-                                </div>
-
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="form-group">
+                                <label>Page Name</label>
+                                <select name="page_name" class="form-control">
+                                    <option value="0" disabled>Select Page Name</option>
+                                    <option value="home" @if($page->page_name == 'home') selected @endif>Home</option>
+                                    <option value="properties" @if($page->page_name == 'properties') selected @endif>Properties</option>
+                                    <option value="agencies" @if($page->page_name == 'agencies') selected @endif>Agencies</option>
+                                    <option value="blog" @if($page->page_name == 'blog') selected @endif>Blog</option>
+                                    <option value="contact" @if($page->page_name == 'contact') selected @endif>Contact Us</option>
+                                    <option value="aboutus" @if($page->page_name == 'aboutus') selected @endif>About Us</option>
+                                </select>
                             </div>
-                        @endforeach
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-sm-6 col-lg-6">
-                            <label>Active ?</label>
-                            <input type="checkbox" name="is_active" class="form-control" @if($category->is_active) checked @endif>
                         </div>
+                    </div>
+                    <div class="row">
+                        @foreach (config('translatable.locales') as $locale)
+                        <div class="col-sm-12 col-lg-6">
+
+                            <div class="form-group">
+                                <label>Meta Title in @lang('site.' . $locale . '.meta_title')</label>
+                                @error($locale . '.meta_title')
+                                    <span class="text-danger mx-5">{{ $message }}</span>
+                                @enderror
+                                <input class="form-control input-thick" type="text" name="{{ $locale }}[meta_title]"
+                                    value="{{ $page->translate($locale)->meta_title }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ $locale }}[meta_keywords]">Meta Keywords in @lang('site.' . $locale .
+                                    '.meta_keywords')</label>
+                                @error($locale . '.meta_keywords')
+                                    <br />
+                                    <span class="text-danger mx-5">{{ $message }}</span>
+                                @enderror
+                                <input class="form-control input-thick" type="text"
+                                    name="{{ $locale }}[meta_keywords]" value="{{ $page->translate($locale)->meta_keywords }}">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="{{ $locale }}[meta_description]">Meta Description in @lang('site.' . $locale .
+                                    '.meta_description')</label>
+                                @error($locale . '.meta_description')
+                                    <br />
+                                    <span class="text-danger mx-5">{{ $message }}</span>
+                                @enderror
+                                <input class="form-control input-thick" type="text"
+                                    name="{{ $locale }}[meta_description]" value="{{ $page->translate($locale)->meta_description }}">
+                            </div>
+
+                        </div>
+                        @endforeach
                     </div>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>
-                            Edit Category</button>
+                            Edit SEO Page</button>
                     </div>
 
                 </form><!-- end of form -->

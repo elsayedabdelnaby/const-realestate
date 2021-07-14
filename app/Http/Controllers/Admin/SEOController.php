@@ -83,7 +83,21 @@ class SEOController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $page = SEO::find($id);
+            if (!$page) {
+                session()->flash('error', "SEO Doesn't Exist or has been deleted");
+                return redirect()->route('admin.seo.index');
+            }
+            $page->update($request->except(['_token', '_method']));
+
+            session()->flash('success', 'SEO Page Updated Successfully');
+            return redirect()->route('admin.seo.index');
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator ' . $exception->getMessage());
+            return redirect()->route('admin.seo.index');
+        } // end of try -> catch
     }
 
     /**
@@ -94,6 +108,22 @@ class SEOController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $page = SEO::find($id);
+            if (!$page) {
+                session()->flash('error', "SEO Page Doesn't Exist or has been deleted");
+                return redirect()->route('admin.seo.index');
+            }
+
+            $page->deleteTranslations();
+            $page->delete();
+
+            session()->flash('success', 'SEO Page Deleted Successfully');
+            return redirect()->route('admin.seo.index');
+        } catch (\Exception $exception) {
+
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            return redirect()->route('admin.seo.index');
+        } // end of try -> catch
     }
 }

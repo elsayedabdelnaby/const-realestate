@@ -52,7 +52,7 @@ class CategoryController extends Controller
             $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
             $request_data = $request->except(['_token', '_method']);
             Category::create($request_data);
-            session()->flash('success', 'Tag Added Successfully');
+            session()->flash('success', 'Category Added Successfully');
             return redirect()->route('admin.categories.index');
         } catch (\Exception $exception) {
 
@@ -106,13 +106,13 @@ class CategoryController extends Controller
         try {
             $category = Category::find($id);
             if (!$category) {
-                session()->flash('error', "Type Doesn't Exist or has been deleted");
+                session()->flash('error', "Category Doesn't Exist or has been deleted");
                 return redirect()->route('admin.categories.index');
             }
             $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
             $category->update($request->except(['_token', '_method']));
 
-            session()->flash('success', 'Tag Updated Successfully');
+            session()->flash('success', 'Category Updated Successfully');
             return redirect()->route('admin.categories.index');
         } catch (\Exception $exception) {
 
@@ -132,14 +132,14 @@ class CategoryController extends Controller
         try {
             $category = Category::find($id);
             if (!$category) {
-                session()->flash('error', "Type Doesn't Exist or has been deleted");
+                session()->flash('error', "Category Doesn't Exist or has been deleted");
                 return redirect()->route('admin.categories.index');
             }
 
             $category->deleteTranslations();
             $category->delete();
 
-            session()->flash('success', 'Tag Deleted Successfully');
+            session()->flash('success', 'Category Deleted Successfully');
             return redirect()->route('admin.categories.index');
         } catch (\Exception $exception) {
 
