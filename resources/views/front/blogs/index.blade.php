@@ -9,8 +9,22 @@
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/menu.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/styles.css">
     <link rel="stylesheet" id="color" href="{{ asset('public/front/') }}/css/default.css">
-
 @stop
+
+@section('meta_tags')
+
+    @include('front.partials.meta', [
+    'title' => $meta_data->meta_title,
+    'keywords' => $meta_data->meta_keywords,
+    'description' => $meta_data->meta_description,
+    'image' => '',
+    ])
+
+@endsection
+
+@section('title')
+{{ $meta_data->meta_title }}
+@endsection
 
 @section('content')
 

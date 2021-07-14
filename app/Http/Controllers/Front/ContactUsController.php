@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\ContactUsMessage;
 use App\Http\Controllers\Controller;
+use App\Models\SEO;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,9 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-        return view('front.contact-us');
+        $page_name = 'contactus';
+        $meta_data = SEO::where('page_name', 'contact')->firstOrFail();
+        return view('front.contact-us', compact('page_name', 'meta_data'));
     }
 
     /**

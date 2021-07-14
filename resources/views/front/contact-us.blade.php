@@ -2,17 +2,17 @@
 
 @section('meta_tags')
 
-{{-- @include('front.partials.meta', [
-    'title' => $site_settings->title,
-    'keywords' => $site_settings->meta_keyword,
-    'description' => $site_settings->meta_description,
-    'image' => $site_settings->logo_path,
-    ]) --}}
+@include('front.partials.meta', [
+    'title' => $meta_data->meta_title,
+    'keywords' => $meta_data->meta_keywords,
+    'description' => $meta_data->meta_description,
+    'image' => '',
+    ])
 
 @endsection
 
 @section('title')
-Contact Us
+{{$meta_data->meta_title}}
 @endsection
 
 @section('style')

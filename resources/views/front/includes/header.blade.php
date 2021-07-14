@@ -91,11 +91,11 @@
                 <!-- Main Navigation -->
                 <nav id="navigation" class="style-1">
                     <ul id="responsive">
-                        <li><a class="current" href="{{ route('front.index') }}">@lang('front.home')</a></li>
-                        <li><a href="{{ route('front.properties.index') }}">@lang('front.properties')</a></li>
-                        <li><a href="{{ route('front.agencies.index') }}">@lang('front.agencies')</a></li>
-                        <li><a href="{{ route('front.blogs.index') }}">@lang('front.blog')</a></li>
-                        <li><a href="{{ route('front.create.contact-us') }}">@lang('front.contact')</a>
+                        <li><a @if($page_name == 'home') class="current" @endif href="{{ route('front.index') }}">@lang('front.home')</a></li>
+                        <li><a @if($page_name == 'properties') class="current" @endif href="{{ route('front.properties.index') }}">@lang('front.properties')</a></li>
+                        <li><a @if($page_name == 'agencies') class="current" @endif href="{{ route('front.agencies.index') }}">@lang('front.agencies')</a></li>
+                        <li><a @if($page_name == 'blogs') class="current" @endif href="{{ route('front.blogs.index') }}">@lang('front.blog')</a></li>
+                        <li><a @if($page_name == 'contactus') class="current" @endif href="{{ route('front.create.contact-us') }}">@lang('front.contact')</a>
                         </li>
                     </ul>
                 </nav>

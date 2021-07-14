@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Blog;
 use App\Models\Category;
+use App\Models\SEO;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -68,12 +69,16 @@ class BlogController extends Controller
             ['is_active', 1],
         ])->orderBy('created_at', 'ASC')->limit(5)->get();
 
+        $meta_data = SEO::where('page_name', 'blog')->firstOrFail();
+        $page_name = 'blogs';
 
         return view('front.blogs.index')->with([
             'blogs' => $blogs,
             'recent_blogs' => $recent_blogs,
             'categories' => $this->categories,
-            'popular_tags' => $this->popular_tags
+            'popular_tags' => $this->popular_tags,
+            'meta_data' => $meta_data,
+            'page_name' => $page_name
         ]);
     } // end of index
 

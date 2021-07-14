@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="{{ asset('public/front/') }}/revolution//css/navigation.css">
     <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/owl.carousel.min.css">//
+    <link rel="stylesheet" href="{{ asset('public/front/') }}/css/owl.carousel.min.css">
     <link rel="stylesheet" href="{{ asset('public/front/') }}/css/slick.css">
 @stop
 

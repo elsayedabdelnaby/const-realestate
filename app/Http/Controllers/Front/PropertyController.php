@@ -7,6 +7,7 @@ use App\Models\Admin\City;
 use App\Models\Admin\Property;
 use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
+use App\Models\SEO;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class PropertyController extends Controller
         $cities = City::all();
         $property_statuses = PropertyStatus::all();
         $property_types = PropertyType::all();
-
+        $meta_data = SEO::where('page_name', 'properties')->firstOrFail();
+        $page_name = 'properties';
         // properties details with search inquiries
         $properties = Property::with('country','city')
             ->when($request -> city_id , function($query) use ($request) {
@@ -30,7 +32,7 @@ class PropertyController extends Controller
                 return $query -> where('rent_sale', $request -> rent_sale);
         })->latest()->paginate(PAGINATION_COUNT);
 
-        return view('front.properties.index' , compact('cities', 'property_statuses', 'property_types' , 'properties'));
+        return view('front.properties.index' , compact('cities', 'property_statuses', 'property_types' , 'properties', 'meta_data', 'page_name'));
 
     } // end of index
 

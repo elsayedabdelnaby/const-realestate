@@ -31,7 +31,6 @@
                                 <label>Page Name</label>
                                 <select name="page_name" class="form-control">
                                     <option value="0" disabled>Select Page Name</option>
-                                    <option value="home">Home</option>
                                     <option value="properties">Properties</option>
                                     <option value="agencies">Agencies</option>
                                     <option value="blog">Blog</option>

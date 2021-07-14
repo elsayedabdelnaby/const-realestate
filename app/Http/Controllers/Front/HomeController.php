@@ -29,9 +29,10 @@ class HomeController extends Controller
             ['is_active', 1],
             ['show_in_homepage', 1],
         ])->limit(3)->get();
+        $page_name = "home";
 
         return view('front.index', compact('property_types',
             'property_statuses', 'agencies', 'properties', 'site_settings',
-            'whychooseus', 'blogs', 'partners'));
+            'whychooseus', 'blogs', 'partners', 'page_name'));
     }
 }

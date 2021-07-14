@@ -2,15 +2,28 @@
 
 @section('style')
     <!-- ARCHIVES CSS -->
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/animate.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/lightcase.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/bootstrap.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/menu.css">
-    <link rel="stylesheet" href="{{ asset('public/front') }}/css/styles.css">
-
+    <link rel="stylesheet" href="{{ asset('/front') }}/css/timedropper.css">
+    <link rel="stylesheet" href="{{ asset('/front') }}/css/datedropper.css">
+    <link rel="stylesheet" href="{{ asset('/front') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('/front') }}/css/menu.css">
+    <link rel="stylesheet" href="{{ asset('/front') }}/css/slick.css">
+    
 @stop
+
+@section('meta_tags')
+
+    @include('front.partials.meta', [
+    'title' => $meta_data->meta_title,
+    'keywords' => $meta_data->meta_keywords,
+    'description' => $meta_data->meta_description,
+    'image' => '',
+    ])
+
+@endsection
+
+@section('title')
+{{ $meta_data->meta_title }}
+@endsection
 
 @section('content')
 
@@ -260,21 +273,7 @@
 @endsection
 
 @section('script')
-    <!-- ARCHIVES JS -->
-    <script src="{{ asset('public/front') }}/js/jquery.min.js"></script>
-    <script src="{{ asset('public/front') }}/js/tether.min.js"></script>
-    <script src="{{ asset('public/front') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('public/front') }}/js/mmenu.min.js"></script>
-    <script src="{{ asset('public/front') }}/js/mmenu.js"></script>
-    <script src="{{ asset('public/front') }}/js/slick.min.js"></script>
-    <script src="{{ asset('public/front') }}/js/slick4.js"></script>
-    <script src="{{ asset('public/front') }}/js/smooth-scroll.min.js"></script>
-    <script src="{{ asset('public/front') }}/js/ajaxchimp.min.js"></script>
-    <script src="{{ asset('public/front') }}/js/newsletter.js"></script>
-    <script src="{{ asset('public/front') }}/js/color-switcher.js"></script>
-    <script src="{{ asset('public/front') }}/js/timedropper.js"></script>
-    <script src="{{ asset('public/front') }}/js/datedropper.js"></script>
-    <script src="{{ asset('public/front') }}/js/inner.js"></script>
+
 
     <!-- Date Dropper Script-->
     <script>

@@ -1,7 +1,6 @@
 @extends('layouts.front.app')
 
 @section('style')
-    <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{ asset('/front') }}/css/timedropper.css">
     <link rel="stylesheet" href="{{ asset('/front') }}/css/datedropper.css">
     <link rel="stylesheet" href="{{ asset('/front') }}/css/animate.css">
@@ -11,8 +10,20 @@
     <link rel="stylesheet" href="{{ asset('/front') }}/css/menu.css">
     <link rel="stylesheet" href="{{ asset('/front') }}/css/slick.css">
     <link rel="stylesheet" href="{{ asset('/front') }}/css/styles.css">
-
 @stop
+
+@section('meta_tags')
+@include('front.partials.meta', [
+    'title' => $meta_data->meta_title,
+    'keywords' => $meta_data->meta_keywords,
+    'description' => $meta_data->meta_description,
+    'image' => '',
+    ])
+@endsection
+
+@section('title')
+{{ $meta_data->meta_title }}
+@endsection
 
 @section('content')
 

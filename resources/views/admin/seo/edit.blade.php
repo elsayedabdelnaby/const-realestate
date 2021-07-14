@@ -32,7 +32,6 @@
                                 <label>Page Name</label>
                                 <select name="page_name" class="form-control">
                                     <option value="0" disabled>Select Page Name</option>
-                                    <option value="home" @if($page->page_name == 'home') selected @endif>Home</option>
                                     <option value="properties" @if($page->page_name == 'properties') selected @endif>Properties</option>
                                     <option value="agencies" @if($page->page_name == 'agencies') selected @endif>Agencies</option>
                                     <option value="blog" @if($page->page_name == 'blog') selected @endif>Blog</option>
