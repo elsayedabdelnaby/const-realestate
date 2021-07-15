@@ -21,6 +21,7 @@ return [
             'contactusinfo' => 'u',
             'sitesettings' => 'u',
             'seo' => 'c,r,u,d',
+            'subscribers' => 'c,r,u,d',
         ],
         'admin' => [
 

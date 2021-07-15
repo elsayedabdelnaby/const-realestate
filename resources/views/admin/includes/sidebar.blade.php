@@ -212,6 +212,15 @@
                     </li>
                 @endif
 
+                @if (auth()->user()->hasPermission('view_subscribers'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.subscribers.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-bullseye"></i>
+                            <p>Subscribers</p>
+                        </a>
+                    </li>
+                @endif
+
             </ul> <!-- /.nav-sidebar -->
         </nav>
         <!-- /.sidebar-menu -->

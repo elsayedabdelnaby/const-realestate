@@ -55,5 +55,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         /** SEO */
         Route::resource('/seo', 'SEOController')->except('show');
 
+        /** Subscribers */
+        Route::resource('/subscribers', 'SubscriberController')->except('show');
+
     });
 });

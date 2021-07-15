@@ -101,9 +101,12 @@
                     </div>
                     <form class="bloq-email mailchimp form-inline" method="post">
                         <label for="subscribeEmail" class="error"></label>
+                        <label for="subscribeEmail" class="success" style="color:#1cdc1c;"></label>
                         <div class="email">
-                            <input type="email" id="subscribeEmail" name="EMAIL" placeholder="Enter Your Email">
-                            <input type="submit" value="Subscribe">
+                            @csrf
+                            <input type="hidden" id="add_subscriber_url" name="add_subscriber_url" value="{{ route('front.subscriber.create') }}">
+                            <input type="email" id="subscribeEmail" name="email" placeholder="Enter Your Email">
+                            <input type="submit" value="Subscribe" id="add_subscriber_button">
                             <p class="subscription-success"></p>
                         </div>
                     </form>
@@ -114,7 +117,7 @@
     <div class="second-footer">
         <div class="container">
             <p>2020 © Copyright - All Rights Reserved.</p>
-            <p>Made With <i class="fa fa-heart" aria-hidden="true"></i> TMAC-s</p>
+            <p>Made With <i class="fa fa-heart" aria-hidden="true"></i> Elaraby</p>
         </div>
     </div>
 </footer>

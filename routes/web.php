@@ -28,6 +28,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ Fro
     Route::get('/contact-us', 'Front\ContactUsController@create')->name('front.create.contact-us');
     Route::post('/contact-us', 'Front\ContactUsController@store')->name('front.store.contact-us');
 
+    Route::post('/subscriber', 'Front\HomeController@addSubscriber')->name('front.subscriber.create');
 });
 
 Auth::routes(['register' => false]);

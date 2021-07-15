@@ -10,6 +10,7 @@ use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
 use App\Models\Partner;
 use App\Models\SiteSetting;
+use App\Models\Subscriber;
 use App\Models\WhyChooseUs;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,5 +35,23 @@ class HomeController extends Controller
         return view('front.index', compact('property_types',
             'property_statuses', 'agencies', 'properties', 'site_settings',
             'whychooseus', 'blogs', 'partners', 'page_name'));
+    }
+
+    public function addSubscriber(Request $request){
+        $subscribers = Subscriber::where('email', $request->email)->get();
+        if(count($subscribers)){
+            return response()->json([
+                'result' => 'failer',
+                'msg' => 'You Already Susbribed',
+            ]);
+        } else {
+            $subscriber = new Subscriber();
+            $subscriber->email = $request->email;
+            $subscriber->save();
+            return response()->json([
+                'result' => 'success',
+                'msg' => 'You Subscribed Successfully',
+            ]);
+        }
     }
 }
