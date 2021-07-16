@@ -59,6 +59,53 @@
                                         {{ $agency -> translate($locale)-> address }}
                                     </textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="{{ $locale }}[meta_title]">Meta Title in @lang('site.' . $locale .
+                                        '.meta_title')</label>
+                                    @error($locale . '.meta_title')
+                                        <br />
+                                        <span class="text-danger mx-5">{{ $message }}</span>
+                                    @enderror
+                                    <input class="form-control input-thick" type="text"
+                                        name="{{ $locale }}[meta_title]" value="{{ $agency-> translate($locale)-> meta_title }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="{{ $locale }}[meta_keywords]">Meta Keywords in @lang('site.' .
+                                        $locale .
+                                        '.meta_keywords')</label>
+                                    @error($locale . '.meta_keywords')
+                                        <br />
+                                        <span class="text-danger mx-5">{{ $message }}</span>
+                                    @enderror
+                                    <input class="form-control input-thick" type="text"
+                                        name="{{ $locale }}[meta_keywords]" value="{{ $agency-> translate($locale)-> meta_keywords }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="{{ $locale }}[meta_description]">Meta Description in @lang('site.' .
+                                        $locale .
+                                        '.meta_description')</label>
+                                    @error($locale . '.meta_description')
+                                        <br />
+                                        <span class="text-danger mx-5">{{ $message }}</span>
+                                    @enderror
+                                    <input class="form-control input-thick" type="text"
+                                        name="{{ $locale }}[meta_description]"
+                                        value="{{ $agency-> translate($locale)-> meta_description }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="{{ $locale }}[slug]">Slug in @lang('site.' . $locale .
+                                        '.slug')</label>
+                                    @error($locale . '.slug')
+                                        <br />
+                                        <span class="text-danger mx-5">{{ $message }}</span>
+                                    @enderror
+                                    <input class="form-control input-thick" type="text"
+                                        name="{{ $locale }}[slug]" value="{{ $agency-> translate($locale)-> slug }}">
+                                </div>
                             </div>
                         @endforeach
                     </div>

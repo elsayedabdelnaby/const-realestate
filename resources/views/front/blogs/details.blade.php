@@ -11,6 +11,11 @@
 
 @endsection
 
+
+@section('title')
+{{ $blog->meta_title }}
+@endsection
+
 @section('header-scripts')
 <script type="application/ld+json">
     {

@@ -12,7 +12,7 @@ class Agency extends Model implements TranslatableContract
     use Translatable;
     use SoftDeletes;
 
-    public $translatedAttributes = ['name', 'description', 'address'];
+    public $translatedAttributes = ['name', 'description', 'address', 'meta_title', 'meta_description', 'meta_keywords', 'slug'];
     protected $fillable = ['latitude', 'longitude', 'city_id', 'country_id', 'office_number', 'mobile', 'fax', 'email', 'image'];
     protected $guarded = [];
 
