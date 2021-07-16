@@ -19,6 +19,12 @@ class ContactUsController extends Controller
             return $query->where('text', 'LIKE', '%' . $request->search . '%');
         })->when($request -> email , function($query) use ($request) {
             return $query ->where('email', 'LIKE', '%' . $request -> email . '%');
+        })->when($request -> phone , function($query) use ($request) {
+            return $query ->where('phone', 'LIKE', '%' . $request -> phone . '%');
+        })->when($request -> status != "0", function($query) use ($request) {
+            return $query ->where('status', 'LIKE', '%' . $request -> status . '%');
+        })->when($request -> type != "0", function($query) use ($request) {
+            return $query ->where('type', 'LIKE', '%' . $request -> type . '%');
         })
         ->latest()->paginate(PAGINATION_COUNT);
         return view('admin.contact_us_msg.index', compact('contactus_messages'));

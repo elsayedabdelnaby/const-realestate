@@ -151,12 +151,31 @@
                                 <div class="sidebar-widget author-widget2">
                                     <div class="agent-contact-form-sidebar border-0 pt-0">
                                         <h4>Request Inquiry</h4>
-                                        <form name="contact_form" method="post" action="https://code-theme.com/html/findhouses/functions.php">
-                                            <input type="text" id="fname" name="full_name" placeholder="Full Name" required />
-                                            <input type="number" id="pnumber" name="phone_number" placeholder="Phone Number" required />
-                                            <input type="email" id="emailid" name="email_address" placeholder="Email Address" required />
+                                        <form id="contactform" class="contact-form" name="contact_form" method="post">
+                                            <div id="success" class="successform">
+                                                <p class="alert alert-success font-weight-bold" role="alert">Your message
+                                                    was sent successfully!
+                                                </p>
+                                            </div>
+                                            <div id="error" class="errorform">
+                                                <p>Something went wrong, try refreshing and submitting the form again.</p>
+                                            </div>
+                                            @csrf
+                                            <input type="hidden" name="url" id="url" value="{{ route('front.store.contact-us') }}">
+                                            <input type="hidden" name="type" value="Inquiry">
+                                            @auth
+                                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                                <input type="text" id="name" name="name" placeholder="Full Name" required value="{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}"/>
+                                                <input type="number" id="pnumber" name="phone" placeholder="Phone Number" required />
+                                                <input type="email" id="emailid" name="email" placeholder="Email Address" required value="{{ auth()->user()->email }}"/>
+                                            @endauth
+                                            @guest
+                                                <input type="text" id="name" name="name" placeholder="Full Name" required />
+                                                <input type="number" id="pnumber" name="phone" placeholder="Phone Number" required />
+                                                <input type="email" id="emailid" name="email" placeholder="Email Address" required />
+                                            @endguest
                                             <textarea placeholder="Message" name="message" required></textarea>
-                                            <input type="submit" name="sendmessage" class="multiple-send-message" value="Submit Request" />
+                                            <input type="submit" id="submit-contact" name="sendmessage" class="multiple-send-message" value="Submit Request" />
                                         </form>
                                     </div>
                                 </div>
@@ -341,20 +360,11 @@
 
 @section('script')
     <!-- ARCHIVES JS -->
-    <script src="{{ asset('/front') }}/js/jquery.min.js"></script>
-    <script src="{{ asset('/front') }}/js/tether.min.js"></script>
-    <script src="{{ asset('/front') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('/front') }}/js/mmenu.min.js"></script>
-    <script src="{{ asset('/front') }}/js/mmenu.js"></script>
-    <script src="{{ asset('/front') }}/js/slick.min.js"></script>
-    <script src="{{ asset('/front') }}/js/slick4.js"></script>
-    <script src="{{ asset('/front') }}/js/smooth-scroll.min.js"></script>
-    <script src="{{ asset('/front') }}/js/ajaxchimp.min.js"></script>
-    <script src="{{ asset('/front') }}/js/newsletter.js"></script>
-    <script src="{{ asset('/front') }}/js/color-switcher.js"></script>
-    <script src="{{ asset('/front') }}/js/timedropper.js"></script>
-    <script src="{{ asset('/front') }}/js/datedropper.js"></script>
-    <script src="{{ asset('/front') }}/js/inner.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/slick4.js"></script>
+    <script src="{{ asset('public/front') }}/js/timedropper.js"></script>
+    <script src="{{ asset('public/front') }}/js/datedropper.js"></script>
+    <script src="{{ asset('public/front/') }}/js/forms.js?v=1.0"></script>
 
     <!-- Date Dropper Script-->
     <script>

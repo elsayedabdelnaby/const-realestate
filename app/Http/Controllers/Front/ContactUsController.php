@@ -43,14 +43,12 @@ class ContactUsController extends Controller
         $contactus_message = new ContactUsMessage();
         if (isset($request->user_id)) {
             $contactus_message->user_id = $request->user_id;
-            $user = User::findorFail($request->user_id);
-            $contactus_message->name = $user->first_name . ' ' . $user->last_name;
-            $contactus_message->email = $user->email;
-        } else {
-            $contactus_message->name = $request->name;
-            $contactus_message->email = $request->email;
         }
+        $contactus_message->name = $request->name;
+        $contactus_message->phone = $request->phone;
+        $contactus_message->email = $request->email;
         $contactus_message->text = $request->message;
+        $contactus_message->type = $request->type;
         $contactus_message->save();
         return true;
     }
