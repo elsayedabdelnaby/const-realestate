@@ -19,8 +19,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "mcamara/laravel-localization": "^1.6",
-        "santigarcor/laratrust": "5.2.*",
-        "tizis/lara-comments": "^3.0"
+        "santigarcor/laratrust": "5.2.*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

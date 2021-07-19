@@ -85,16 +85,19 @@ class BlogController extends Controller
     public function show($slug)
     {
         $blog = Blog::whereTranslationLike('meta_slug', $slug)->firstOrFail();
+        $blog = Blog::where('id', 3)->get()[0];
         $recent_blogs = Blog::where([
             ['is_active', 1],
             ['id', '<>', $blog->id],
         ])->orderBy('created_at', 'ASC')->limit(5)->get();
+        $page_name = 'blogs';
 
         return view('front.blogs.details')->with([
             'blog' => $blog,
             'recent_blogs' => $recent_blogs,
             'categories' => $this->categories,
-            'popular_tags' => $this->popular_tags
+            'popular_tags' => $this->popular_tags,
+            'page_name' => $page_name
         ]);
     }
 } // end of controller
