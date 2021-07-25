@@ -8,14 +8,11 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
-use tizis\laraComments\Contracts\ICommentable;
-use tizis\laraComments\Traits\Commentable;
 
-class Blog extends Model implements ICommentable
+class Blog extends Model
 {
     use Translatable;
     use SoftDeletes;
-    use Commentable;
 
     public $translatedAttributes = ['title', 'description', 'creator', 'meta_title', 'meta_keywords', 'meta_description', 'meta_slug'];
     protected $guarded = [];

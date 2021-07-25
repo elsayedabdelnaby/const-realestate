@@ -1,19 +1,14 @@
 @extends('layouts.front.app')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/timedropper.css">
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/datedropper.css">
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/animate.css">
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/lightcase.css">
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/bootstrap.css">
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/menu.css">
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/slick.css">
-    <link rel="stylesheet" href="{{ asset('/front') }}/css/styles.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/timedropper.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/datedropper.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('public/front') }}/css/slick.css">
 @stop
 
 @section('meta_tags')
-@include('front.partials.meta', [
+    @include('front.partials.meta', [
     'title' => $meta_data->meta_title,
     'keywords' => $meta_data->meta_keywords,
     'description' => $meta_data->meta_description,
@@ -22,7 +17,7 @@
 @endsection
 
 @section('title')
-{{ $meta_data->meta_title }}
+    {{ $meta_data->meta_title }}
 @endsection
 
 @section('content')
@@ -47,7 +42,8 @@
                             <div class="detail-wrapper-body">
                                 <div class="listing-title-bar">
                                     <div class="text-heading text-left">
-                                        <p><a href="{{ route('front.index') }}">Home </a> &nbsp;/&nbsp; <span>List View</span></p>
+                                        <p><a href="{{ route('front.index') }}">Home </a> &nbsp;/&nbsp; <span>List
+                                                View</span></p>
                                     </div>
                                     <h3>Our Agencies</h3>
                                 </div>
@@ -61,34 +57,40 @@
                         </div>
                     </section>
                     <div class="row">
-                        <div class="col-md-12 col-xs-12">
-
-                            @foreach($agencies as $agency)
+                        @foreach ($agencies as $agency)
+                            <div class="col-md-12 col-xs-12 space">
                                 <div class="news-item news-item-sm">
                                     <a href="#" class="news-img-link">
                                         <div class="news-item-img homes">
-                                            <div class="homes-tag button alt featured">{{ $agency -> properties -> count() }} Listings</div>
-                                            <img class="resp-img" src="{{ $agency -> image_path }}" alt="blog image">
+                                            <div class="homes-tag button alt featured">
+                                                {{ $agency->properties->count() }} Listings</div>
+                                            <img class="resp-img" src="{{ $agency->image_path }}" alt="blog image">
                                         </div>
                                     </a>
                                     <div class="news-item-text">
-                                        <a href="{{ route('front.agencies.show' , $agency -> id) }}"><h3>{{ $agency -> name }}</h3></a>
+                                        <a href="{{ route('front.agencies.show', $agency->id) }}">
+                                            <h3>{{ $agency->name }}</h3>
+                                        </a>
                                         <div class="the-agents">
                                             <ul class="the-agents-details">
-                                                <li><a href="#">Office: {{ $agency -> office_number }}</a></li>
-                                                <li><a href="#">Mobile: {{ $agency -> mobile }}</a></li>
-                                                <li><a href="#">Fax: {{ $agency -> fax }}</a></li>
-                                                <li><a href="#">Email: {{ $agency -> email }}</a></li>
+                                                <li><a href="#">Office: {{ $agency->office_number }}</a></li>
+                                                <li><a href="#">Mobile: {{ $agency->mobile }}</a></li>
+                                                <li><a href="#">Fax: {{ $agency->fax }}</a></li>
+                                                <li><a href="#">Email: {{ $agency->email }}</a></li>
                                             </ul>
                                         </div>
                                         <div class="news-item-bottom">
-                                            <a href="#" class="news-link">View My Listings</a>
+                                            <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
+                                            <div class="admin">
+                                                <p>{{ $agency->name }}</p>
+                                                <img src="{{ asset($agency->getImagePathAttribute()) }}"
+                                                    alt="{{ $agency->name }}">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <aside class="col-lg-4 col-md-12 car">
@@ -101,7 +103,10 @@
                             <div class="widget-boxed-body">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 book">
-                                        <input type="text" id="reservation-date" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
+                                        <input type="text" id="reservation-date" data-lang="en" data-large-mode="true"
+                                            data-min-year="2017" data-max-year="2020"
+                                            data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0"
+                                            data-theme="my-style" class="form-control" readonly="">
                                     </div>
                                     <div class="col-lg-6 col-md-12 book2">
                                         <input type="text" id="reservation-time" class="form-control" readonly="">
@@ -111,37 +116,46 @@
                                     <div class="col-lg-6 col-md-12 mt-4">
                                         <label class="mb-4">Adult</label>
                                         <div class="input-group">
-                                                <span class="input-group-btn">
-										 <button type="button" class="btn counter-btn theme-cl btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-											 <i class="fa fa-minus"></i>
-										 </button>
-									        </span>
-                                            <input type="text" name="quant[1]" class="border-0 text-center form-control input-number" data-min="0" data-max="10" value="0">
                                             <span class="input-group-btn">
-											 <button type="button" class="btn counter-btn theme-cl btn-number" data-type="plus" data-field="quant[1]">
-											  <i class="fa fa-plus"></i>
-											 </button>
-									        </span>
+                                                <button type="button" class="btn counter-btn theme-cl btn-number"
+                                                    disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </span>
+                                            <input type="text" name="quant[1]"
+                                                class="border-0 text-center form-control input-number" data-min="0"
+                                                data-max="10" value="0">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn counter-btn theme-cl btn-number"
+                                                    data-type="plus" data-field="quant[1]">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12 mt-4">
                                         <label class="mb-4">Children</label>
                                         <div class="input-group">
-                                                <span class="input-group-btn">
-										 <button type="button" class="btn counter-btn theme-cl btn-number" disabled="disabled" data-type="minus" data-field="quant[2]">
-											 <i class="fa fa-minus"></i>
-										 </button>
-									        </span>
-                                            <input type="text" name="quant[2]" class="border-0 text-center form-control input-number" data-min="0" data-max="10" value="0">
                                             <span class="input-group-btn">
-											 <button type="button" class="btn counter-btn theme-cl btn-number" data-type="plus" data-field="quant[2]">
-											  <i class="fa fa-plus"></i>
-											 </button>
-									        </span>
+                                                <button type="button" class="btn counter-btn theme-cl btn-number"
+                                                    disabled="disabled" data-type="minus" data-field="quant[2]">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </span>
+                                            <input type="text" name="quant[2]"
+                                                class="border-0 text-center form-control input-number" data-min="0"
+                                                data-max="10" value="0">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn counter-btn theme-cl btn-number"
+                                                    data-type="plus" data-field="quant[2]">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="payment-method.html" class="btn reservation btn-radius theme-btn full-width mrg-top-10">Submit Request</a>
+                                <a href="payment-method.html"
+                                    class="btn reservation btn-radius theme-btn full-width mrg-top-10">Submit Request</a>
                             </div>
                         </div>
                         <!-- End: Schedule a Tour -->
@@ -161,21 +175,28 @@
                                                 <p>Something went wrong, try refreshing and submitting the form again.</p>
                                             </div>
                                             @csrf
-                                            <input type="hidden" name="url" id="url" value="{{ route('front.store.contact-us') }}">
+                                            <input type="hidden" name="url" id="url"
+                                                value="{{ route('front.store.contact-us') }}">
                                             <input type="hidden" name="type" value="Inquiry">
                                             @auth
                                                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                                <input type="text" id="name" name="name" placeholder="Full Name" required value="{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}"/>
-                                                <input type="number" id="pnumber" name="phone" placeholder="Phone Number" required />
-                                                <input type="email" id="emailid" name="email" placeholder="Email Address" required value="{{ auth()->user()->email }}"/>
+                                                <input type="text" id="name" name="name" placeholder="Full Name" required
+                                                    value="{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}" />
+                                                <input type="number" id="pnumber" name="phone" placeholder="Phone Number"
+                                                    required />
+                                                <input type="email" id="emailid" name="email" placeholder="Email Address"
+                                                    required value="{{ auth()->user()->email }}" />
                                             @endauth
                                             @guest
                                                 <input type="text" id="name" name="name" placeholder="Full Name" required />
-                                                <input type="number" id="pnumber" name="phone" placeholder="Phone Number" required />
-                                                <input type="email" id="emailid" name="email" placeholder="Email Address" required />
+                                                <input type="number" id="pnumber" name="phone" placeholder="Phone Number"
+                                                    required />
+                                                <input type="email" id="emailid" name="email" placeholder="Email Address"
+                                                    required />
                                             @endguest
                                             <textarea placeholder="Message" name="message" required></textarea>
-                                            <input type="submit" id="submit-contact" name="sendmessage" class="multiple-send-message" value="Submit Request" />
+                                            <input type="submit" id="submit-contact" name="sendmessage"
+                                                class="multiple-send-message" value="Submit Request" />
                                         </form>
                                     </div>
                                 </div>
@@ -189,28 +210,40 @@
                                         <div class="recent-post">
                                             <div class="recent-main">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-1.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img
+                                                            src="{{ asset('public/front/') }}/images/feature-properties/fp-1.jpg"
+                                                            alt=""></a>
                                                 </div>
                                                 <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                    <a href="blog-details.html">
+                                                        <h6>Family Home</h6>
+                                                    </a>
                                                     <p>$230,000</p>
                                                 </div>
                                             </div>
                                             <div class="recent-main my-4">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-2.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img
+                                                            src="{{ asset('public/front/') }}/images/feature-properties/fp-2.jpg"
+                                                            alt=""></a>
                                                 </div>
                                                 <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                    <a href="blog-details.html">
+                                                        <h6>Family Home</h6>
+                                                    </a>
                                                     <p>$230,000</p>
                                                 </div>
                                             </div>
                                             <div class="recent-main">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('public/front/') }}/images/feature-properties/fp-3.jpg" alt=""></a>
+                                                    <a href="blog-details.html"><img
+                                                            src="{{ asset('public/front/') }}/images/feature-properties/fp-3.jpg"
+                                                            alt=""></a>
                                                 </div>
                                                 <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                    <a href="blog-details.html">
+                                                        <h6>Family Home</h6>
+                                                    </a>
                                                     <p>$230,000</p>
                                                 </div>
                                             </div>
@@ -231,7 +264,8 @@
                                                             <span>For Sale</span>
                                                         </div>
                                                         <div class="listing-img-content">
-                                                            <span class="listing-compact-title">House Luxury <i>New York</i></span>
+                                                            <span class="listing-compact-title">House Luxury <i>New
+                                                                    York</i></span>
                                                             <ul class="listing-hidden-content">
                                                                 <li>Area <span>720 sq ft</span></li>
                                                                 <li>Rooms <span>6</span></li>
@@ -239,7 +273,8 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-1.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-1.jpg"
+                                                            alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -251,7 +286,8 @@
                                                             <span class="rent">For Rent</span>
                                                         </div>
                                                         <div class="listing-img-content">
-                                                            <span class="listing-compact-title">House Luxury <i>Los Angles</i></span>
+                                                            <span class="listing-compact-title">House Luxury <i>Los
+                                                                    Angles</i></span>
                                                             <ul class="listing-hidden-content">
                                                                 <li>Area <span>720 sq ft</span></li>
                                                                 <li>Rooms <span>6</span></li>
@@ -259,7 +295,8 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-2.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-2.jpg"
+                                                            alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -271,7 +308,8 @@
                                                             <span>For Sale</span>
                                                         </div>
                                                         <div class="listing-img-content">
-                                                            <span class="listing-compact-title">House Luxury <i>San Francisco</i></span>
+                                                            <span class="listing-compact-title">House Luxury <i>San
+                                                                    Francisco</i></span>
                                                             <ul class="listing-hidden-content">
                                                                 <li>Area <span>720 sq ft</span></li>
                                                                 <li>Rooms <span>6</span></li>
@@ -279,7 +317,8 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-3.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-3.jpg"
+                                                            alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -291,7 +330,8 @@
                                                             <span class="rent">For Rent</span>
                                                         </div>
                                                         <div class="listing-img-content">
-                                                            <span class="listing-compact-title">House Luxury <i>Miami FL</i></span>
+                                                            <span class="listing-compact-title">House Luxury <i>Miami
+                                                                    FL</i></span>
                                                             <ul class="listing-hidden-content">
                                                                 <li>Area <span>720 sq ft</span></li>
                                                                 <li>Rooms <span>6</span></li>
@@ -299,7 +339,8 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-4.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-4.jpg"
+                                                            alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -311,7 +352,8 @@
                                                             <span>For Sale</span>
                                                         </div>
                                                         <div class="listing-img-content">
-                                                            <span class="listing-compact-title">House Luxury <i>Chicago IL</i></span>
+                                                            <span class="listing-compact-title">House Luxury <i>Chicago
+                                                                    IL</i></span>
                                                             <ul class="listing-hidden-content">
                                                                 <li>Area <span>720 sq ft</span></li>
                                                                 <li>Rooms <span>6</span></li>
@@ -319,7 +361,8 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-5.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-5.jpg"
+                                                            alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -331,7 +374,8 @@
                                                             <span class="rent">For Rent</span>
                                                         </div>
                                                         <div class="listing-img-content">
-                                                            <span class="listing-compact-title">House Luxury <i>Toronto CA</i></span>
+                                                            <span class="listing-compact-title">House Luxury <i>Toronto
+                                                                    CA</i></span>
                                                             <ul class="listing-hidden-content">
                                                                 <li>Area <span>720 sq ft</span></li>
                                                                 <li>Rooms <span>6</span></li>
@@ -339,7 +383,8 @@
                                                                 <li>Baths <span>3</span></li>
                                                             </ul>
                                                         </div>
-                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-6.jpg" alt="">
+                                                        <img src="{{ asset('public/front/') }}/images/feature-properties/fp-6.jpg"
+                                                            alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -360,16 +405,24 @@
 
 @section('script')
     <!-- ARCHIVES JS -->
+    <script src="{{ asset('public/front') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/tether.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/mmenu.js"></script>
     <script src="{{ asset('public/front') }}/js/slick.min.js"></script>
     <script src="{{ asset('public/front') }}/js/slick4.js"></script>
+    <script src="{{ asset('public/front') }}/js/smooth-scroll.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/ajaxchimp.min.js"></script>
+    <script src="{{ asset('public/front') }}/js/newsletter.js"></script>
+    <script src="{{ asset('public/front') }}/js/color-switcher.js"></script>
     <script src="{{ asset('public/front') }}/js/timedropper.js"></script>
     <script src="{{ asset('public/front') }}/js/datedropper.js"></script>
-    <script src="{{ asset('public/front/') }}/js/forms.js?v=1.0"></script>
+    <script src="{{ asset('public/front') }}/js/inner.js"></script>
 
     <!-- Date Dropper Script-->
     <script>
         $('#reservation-date').dateDropper();
-
     </script>
     <!-- Time Dropper Script-->
     <script>
@@ -380,6 +433,5 @@
             borderColor: "#e8212a",
             minutesInterval: '15'
         });
-
     </script>
 @stop
