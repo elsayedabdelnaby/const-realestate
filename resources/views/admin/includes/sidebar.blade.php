@@ -221,6 +221,15 @@
                     </li>
                 @endif
 
+                @if (auth()->user()->hasPermission('read_projects'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.projects.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-bullseye"></i>
+                            <p>Projects</p>
+                        </a>
+                    </li>
+                @endif
+
             </ul> <!-- /.nav-sidebar -->
         </nav>
         <!-- /.sidebar-menu -->

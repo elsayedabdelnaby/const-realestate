@@ -58,5 +58,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         /** Subscribers */
         Route::resource('/subscribers', 'SubscriberController')->except('show');
 
+        /** Projects */
+        Route::resource('/projects', 'ProjectController')->except('show');
+
     });
 });

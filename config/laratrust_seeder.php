@@ -22,6 +22,7 @@ return [
             'sitesettings' => 'u',
             'seo' => 'c,r,u,d',
             'subscribers' => 'c,r,u,d',
+            'projects' => 'c,r,u,d',
         ],
         'admin' => [
 
