@@ -24,7 +24,7 @@ class CreateProjectsTable extends Migration
             $table->integer('price_to')->default(0);
             $table->integer('downpayment')->nullable();
             $table->integer('installments_years')->nullable();
-            $table->string('video_link');
+            $table->string('video_link')->nullable();
             $table->string('google_map_link')->nullable();
             $table->decimal('latitude', 17, 15)->nullable();
             $table->decimal('longitude', 17, 15)->nullable();

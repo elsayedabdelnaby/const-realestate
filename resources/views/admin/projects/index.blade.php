@@ -43,14 +43,12 @@
 
                     <div class="col-md-4 p-0">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
-                        {{-- @if (auth()->user()->hasPermission('create_projects'))
+                        @if (auth()->user()->hasPermission('create_projects'))
                             <a href="{{ route('admin.projects.create') }}" class="btn btn-primary"><i
                                     class="fa fa-plus"></i> Add Project</a>
                         @else
                             <a href="#" class="btn btn-p`rimary disabled"><i class="fa fa-plus"></i> Add Project</a>
-                        @endif --}}
-                        <a href="{{ route('admin.projects.create') }}" class="btn btn-primary"><i
-                            class="fa fa-plus"></i> Add Project</a>
+                        @endif
                     </div>
 
                 </div>
@@ -77,12 +75,15 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($projects as $index => $property)
+                        @foreach ($projects as $index => $project)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $project->name }}</td>
-                                <td><a
-                                        href="{{ route('admin.agencies.show', $project->agency->id) }}">{{ $project->agency->name }}</a>
+                                <td>
+                                    @if ($project->agency)
+                                        <a
+                                            href="{{ route('admin.agencies.show', $project->agency->id) }}">{{ $project->agency->name }}</a>
+                                    @endif
                                 </td>
                                 <td>
                                     @if ($project->is_active == 1)
@@ -92,31 +93,19 @@
                                     @if ($project->is_featured == 1)
                                         <span class="badge badge-pill bg-teal p-2">{{ $project->getFeatured() }}</span>
                                     @endif
-                                    @if ($property->rent_sale == 0)
-                                        <span
-                                            class="badge badge-pill bg-green p-2 text-white">{{ $property->getRentSale() }}</span>
-                                    @endif
-                                    @if ($property->add_to_home == 1)
-                                        <span
-                                            class="badge badge-pill bg-indigo p-2 text-white">{{ $property->getAddToHome() }}</span>
+                                    @if ($project->finish_status == 1)
+                                        <span class="badge badge-pill bg-danger p-2">{{ $project->getFinishStatus() }}</span>
                                     @endif
                                 </td>
                                 <td>
                                     @if (auth()->user()->hasPermission('update_projects'))
-                                        <a href="#" class="text-white btn bg-cyan btn-sm"><i class="fa fa-eye"></i>
-                                            Features</a>
-                                        {{-- @else
-                                    <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a> --}}
-                                    @endif
-
-                                    @if (auth()->user()->hasPermission('update_projects'))
-                                        <a href="{{ route('admin.projects.edit', $property->id) }}"
+                                        <a href="{{ route('admin.projects.edit', $project->id) }}"
                                             class="text-white btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                         {{-- @else
                                     <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a> --}}
                                     @endif
                                     @if (auth()->user()->hasPermission('delete_projects'))
-                                        <form action="{{ route('admin.projects.destroy', $property->id) }}" method="post"
+                                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="post"
                                             style="display: inline-block">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}

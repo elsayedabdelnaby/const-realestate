@@ -35,7 +35,7 @@
                             <span class="text-danger mx-5">{{ $message }}</span>
                             @enderror
                             <select name="agency_id" class="form-control">
-                                <option value="all">All Agencies</option>
+                                <option value="">All Agencies</option>
                                 @foreach ($agencies as $agency)
                                     <option value="{{ $agency -> id }}">{{ $agency -> name }}</option>
                                 @endforeach

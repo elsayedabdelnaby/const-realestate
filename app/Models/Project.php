@@ -6,12 +6,15 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Admin\Agency;
 
 class Project extends Model implements TranslatableContract
 {
     use SoftDeletes, Translatable;
 
     public $translatedAttributes = ['name', 'description', 'address', 'meta_title', 'meta_keywords', 'meta_description', 'slug'];
+
+    protected $fillable = ['agency_id', 'image', 'area_from', 'area_to', 'meter_price', 'price_from', 'price_to', 'downpayment', 'installments_years', 'video_link', 'google_map_link', 'latitude', 'longitude', 'city_id', 'country_id', 'is_active', 'is_featured', 'finish_status', 'gallery', 'sketches'];
 
     protected $appends = [
         'image_path',

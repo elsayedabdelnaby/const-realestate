@@ -15,7 +15,7 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->middleware(['permission:read_projects'])->only('index');
-        //$this->middleware(['permission:create_projects'])->only(['create', 'store']);
+        $this->middleware(['permission:create_projects'])->only(['create', 'store']);
         $this->middleware(['permission:update_projects'])->only(['edit', 'update']);
         $this->middleware(['permission:delete_projects'])->only(['destroy']);
     } // end of construct
@@ -54,10 +54,7 @@ class ProjectController extends Controller
             $request_data = $request->except('_method', '_token');
 
             if ($request->image) {
-                Image::make($request->image)->resize(500, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save(public_path('/uploads/projects/' . $request->image->hashName()));
-
+                request()->image->move(public_path('/uploads/projects/'), $request->image->hashName());
                 $request_data['image'] = $request->image->hashName();
             }
 
@@ -65,9 +62,7 @@ class ProjectController extends Controller
                 $gallery_arr = [];
                 foreach ($request->gallery as $index => $item) {
                     $gallery_arr += [$index => $item->hashName(),];
-                    Image::make($item)->resize(500, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->save(public_path('/uploads/projects/gallery/' . $item->hashName()));
+                    $item->move(public_path('/uploads/projects/gallery/'), $item->hashName());
                 }
                 $request_data['gallery'] = json_encode($gallery_arr);
             }
@@ -76,9 +71,7 @@ class ProjectController extends Controller
                 $sketches_arr = [];
                 foreach ($request->sketches as $index => $item) {
                     $sketches_arr += [$index => $item->hashName(),];
-                    Image::make($item)->resize(500, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->save(public_path('/uploads/projects/sketches/' . $item->hashName()));
+                    $item->move(public_path('/uploads/projects/gallery/'), $item->hashName());
                 }
                 $request_data['sketches'] = json_encode($sketches_arr);
             }
@@ -88,7 +81,7 @@ class ProjectController extends Controller
             session()->flash('success', 'Project Added Successfully');
             return redirect()->route('admin.projects.index');
         } catch (\Exception $e) {
-
+            dd($e->getMessage());
             session()->flash('error', 'Something Went Wrong, Please Contact Administrator, ' . $e->getMessage());
             return redirect()->route('admin.projects.index');
         }

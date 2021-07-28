@@ -99,7 +99,7 @@ class PropertyController extends Controller
 
         } catch (\Exception $exception) {
 
-            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator ' . $exception->getMessage());
             return redirect()->route('admin.properties.index');
 
         } // end of try -> catch
