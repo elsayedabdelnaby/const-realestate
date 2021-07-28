@@ -196,7 +196,7 @@
                                     <hr>
                                 </div>
 
-                                <div class="form-group col-sm-12 col-lg-3">
+                                <div class="form-group col-sm-12 col-lg-4">
                                     <label for="price_from">Price From</label>
                                     @error('price_from')
                                     <br />
@@ -205,13 +205,40 @@
                                     <input type="number" name="price_from" class="form-control" value="{{ old('price_from') }}">
                                 </div>
 
-                                <div class="form-group col-sm-12 col-lg-3">
+                                <div class="form-group col-sm-12 col-lg-4">
                                     <label for="price_to">Price To</label>
                                     @error('price_to')
                                     <br />
                                     <span class="text-danger mx-1">{{ $message }}</span>
                                     @enderror
                                     <input type="number" name="price_to" class="form-control" value="{{ old('price_to') }}">
+                                </div>
+
+                                <div class="form-group col-sm-12 col-lg-4">
+                                    <label for="meter_price">Meter Price</label>
+                                    @error('meter_price')
+                                    <br />
+                                    <span class="text-danger mx-1">{{ $message }}</span>
+                                    @enderror
+                                    <input type="number" name="meter_price" class="form-control" value="{{ old('meter_price') }}">
+                                </div>
+
+                                <div class="form-group col-sm-12 col-lg-4">
+                                    <label for="price_to">Down Payment</label>
+                                    @error('downpayment')
+                                    <br />
+                                    <span class="text-danger mx-1">{{ $message }}</span>
+                                    @enderror
+                                    <input type="number" name="downpayment" class="form-control" value="{{ old('downpayment') }}">
+                                </div>
+
+                                <div class="form-group col-sm-12 col-lg-4">
+                                    <label for="price_to">Installments Year</label>
+                                    @error('installments_years')
+                                    <br />
+                                    <span class="text-danger mx-1">{{ $message }}</span>
+                                    @enderror
+                                    <input type="number" name="installments_years" class="form-control" value="{{ old('installments_years') }}">
                                 </div>
 
                             </div> {{-- end of Pricing row --}}
@@ -302,7 +329,7 @@
                                         <br />
                                         <span class="text-danger mx-1">{{ $message }}</span>
                                         @enderror
-                                        <input type="text" name="video" class="form-control input-sm">
+                                        <input type="text" name="video_link" class="form-control input-sm">
 
                                     </div> {{-- end of form group image --}}
                                 </div>
