@@ -113,67 +113,75 @@ class ProjectController extends Controller
 
     } // end of edit
 
-    public function update(PropertyUpdateRequest $request, Property $property)
+    public function update(Request $request, Project $project)
     {
         try {
             // set active
             $request -> has('is_active') ? $request -> request -> add(['is_active' => 1]) : $request -> request -> add(['is_active' => 0]);
             $request -> has('is_featured') ? $request -> request -> add(['is_featured' => 1]) : $request -> request -> add(['is_featured' => 0]);
-            $request -> has('add_to_home') ? $request -> request -> add(['add_to_home' => 1]) : $request -> request -> add(['add_to_home' => 0]);
-            // for rent for sale feature
-            if(!$request -> has('rent_sale') || $request -> rent_sale == 'sale')
-            {
-                $request -> request -> add(['rent_sale' => 0]);
-            } else {
-                $request -> request -> add(['rent_sale' => 1]);
-            }
+            $request -> has('finish_status') ? $request -> request -> add(['finish_status' => 1]) : $request -> request -> add(['finish_status' => 0]);
 
-            $request_data = $request -> except('gallery');
+            $request_data = $request -> except('gallery', '_token', '_method', 'sketches');
 
             if($request->image){
-                if ($property->image != 'default.png') {
+                if ($project->image != 'default.png') {
 
-                    Storage::disk('public_uploads')->delete('/properties/' . $property ->image);
+                    Storage::disk('public_uploads')->delete('/projects/' . $project ->image);
 
                 } // end of image inner if
 
-                Image::make($request->image)->resize(100, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save(public_path('uploads/properties/'. $request ->image->hashName()));
+                request()->image->move(public_path('/uploads/projects/'), $request->image->hashName());
 
                 $request_data['image'] = $request->image->hashName();
             } // end of image outer if.
 
             if($request -> gallery){
 
-                if ($property -> gallery != null) {
-                    foreach (json_decode($property->gallery, true) as $index => $item) {
-                        Storage::disk('public_uploads')->delete('/properties/gallery/' . $item);
+                if ($project -> gallery != null) {
+                    foreach (json_decode($project->gallery, true) as $index => $item) {
+                        Storage::disk('public_uploads')->delete('/projects/gallery/' . $item);
                     }
-                    $property->update(['gallery' => null]);
+                    $project->update(['gallery' => null]);
                 } // end of inner if
 
                 $gallery_arr = [];
                 foreach ( $request -> gallery as $index => $item){
                     $gallery_arr += [ $index => $item ->hashName(),];
-                    Image::make($item)->resize(500, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->save(public_path('/uploads/properties/gallery/'. $item -> hashName()));
+                    $item->move(public_path('/uploads/projects/gallery/'), $item->hashName());
                 }
 
-                $property->update(['gallery' => json_encode($gallery_arr) ]);
+                $project->update(['gallery' => json_encode($gallery_arr) ]);
 
             }
 
-            $property->update($request_data);
+            if($request -> sketches){
 
-            session()->flash('success', 'Property Updated Successfully');
-            return redirect()->route('admin.properties.index');
+                if ($project -> sketches != null) {
+                    foreach (json_decode($project->sketches, true) as $index => $item) {
+                        Storage::disk('public_uploads')->delete('/projects/gallery/' . $item);
+                    }
+                    $project->update(['sketches' => null]);
+                } // end of inner if
+
+                $sketches_arr = [];
+                foreach ( $request -> sketches as $index => $item){
+                    $sketches_arr += [ $index => $item ->hashName(),];
+                    $item->move(public_path('/uploads/projects/gallery/'), $item->hashName());
+                }
+
+                $project->update(['sketches' => json_encode($sketches_arr) ]);
+
+            }
+
+            $project->update($request_data);
+
+            session()->flash('success', 'Project Updated Successfully');
+            return redirect()->route('admin.projects.index');
 
         } catch (\Exception $exception) {
 
-            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
-            return redirect()->route('admin.properties.index');
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator ' . $exception->getMessage());
+            return redirect()->route('admin.projects.index');
 
         } // end of try -> catch
 
