@@ -36,6 +36,7 @@
                                     <option value="blog">Blog</option>
                                     <option value="contact">Contact Us</option>
                                     <option value="aboutus">About Us</option>
+                                    <option value="projects">Projects</option>
                                 </select>
                             </div>
                         </div>

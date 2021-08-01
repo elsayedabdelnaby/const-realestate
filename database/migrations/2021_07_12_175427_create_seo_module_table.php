@@ -15,7 +15,7 @@ class CreateSeoModuleTable extends Migration
     {
         Schema::create('seo_pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('page_name', ['home', 'properties', 'agencies', 'blog', 'contact', 'aboutus']);
+            $table->enum('page_name', ['home', 'properties', 'agencies', 'blog', 'contact', 'aboutus', 'projects']);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -93,6 +93,7 @@
                     <ul id="responsive">
                         <li><a @if($page_name == 'home') class="current" @endif href="{{ route('front.index') }}">@lang('front.home')</a></li>
                         <li><a @if($page_name == 'properties') class="current" @endif href="{{ route('front.properties.index') }}">@lang('front.properties')</a></li>
+                        <li><a @if($page_name == 'projects') class="current" @endif href="{{ route('front.projects.index') }}">@lang('front.projects')</a></li>
                         <li><a @if($page_name == 'agencies') class="current" @endif href="{{ route('front.agencies.index') }}">@lang('front.agencies')</a></li>
                         <li><a @if($page_name == 'blogs') class="current" @endif href="{{ route('front.blogs.index') }}">@lang('front.blog')</a></li>
                         <li><a @if($page_name == 'contactus') class="current" @endif href="{{ route('front.create.contact-us') }}">@lang('front.contact')</a>

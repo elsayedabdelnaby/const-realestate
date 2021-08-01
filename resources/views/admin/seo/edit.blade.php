@@ -37,6 +37,7 @@
                                     <option value="blog" @if($page->page_name == 'blog') selected @endif>Blog</option>
                                     <option value="contact" @if($page->page_name == 'contact') selected @endif>Contact Us</option>
                                     <option value="aboutus" @if($page->page_name == 'aboutus') selected @endif>About Us</option>
+                                    <option value="projects" @if($page->page_name == 'projects') selected @endif>Projects</option>
                                 </select>
                             </div>
                         </div>

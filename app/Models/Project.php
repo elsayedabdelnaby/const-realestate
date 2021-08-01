@@ -7,6 +7,9 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Admin\Agency;
+use Carbon\Carbon;
+use App\Models\Admin\Country;
+use App\Models\Admin\City;
 
 class Project extends Model implements TranslatableContract
 {
@@ -63,5 +66,22 @@ class Project extends Model implements TranslatableContract
     {
         return $this -> finish_status == 1 ? 'Finished' : '';
     } // end fo get Finish Status
+
+    public function postedAt()
+    {
+        return Carbon::now()->diffInDays($this-> created_at);
+    } // end of get postedAt
+
+    public function city()
+    {
+        return $this -> belongsTo(City::class);
+
+    } // end of city
+
+    public function country()
+    {
+        return $this -> belongsTo(Country::class);
+
+    } // end of country
 
 }

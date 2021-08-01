@@ -33,5 +33,27 @@ return [
     'contact' => 'Contact',
     'about_us' => 'About Us',
     'submit_property' => 'Submit Property',
-    'footer_paragraph' => 'lorem'
+    'footer_paragraph' => 'lorem',
+
+    /** Projects */
+    'projects_listing' => 'Projects Listing',
+    'projects' => 'Projects',
+    'projects_listing' => 'Projects Listing',
+    'view_project' => 'View Project',
+    'days_ago' => 'Days ago',
+    'search_projects' => 'Search Projects',
+    'search_your_project' => 'Search Your Project',
+    'filter' => 'Filter',
+    'city' => 'City',
+    'not_finish' => 'Not Finished',
+    'finish' => 'Finish',
+    'finished' => 'Finished',
+    'search' => 'Search',
+    'recent_projects' => 'Recent Projects',
+    'featured' => 'Featured',
+    'area_from' => 'Area from',
+    'area_to' => 'Area to',
+    'meter_square' => 'M<sup>2</sup>',
+    'price_from' => 'Price to',
+    'price_to' => 'Price to',
 ];
