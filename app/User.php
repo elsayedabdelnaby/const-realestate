@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
+use Laravelista\Comments\Commenter;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait;
-    use Notifiable;
-    use SoftDeletes;
+    use LaratrustUserTrait, Notifiable, Commenter, SoftDeletes;
 
     protected $fillable = [
         'first_name',  'last_name','email', 'password', 'image'

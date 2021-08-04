@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ FrontEnd::class, 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
+
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [FrontEnd::class, 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
     Route::get('/', 'Front\HomeController@index')->name('front.index'); // end of welcome
 
@@ -32,6 +33,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ Fro
     Route::post('/contact-us', 'Front\ContactUsController@store')->name('front.store.contact-us');
 
     Route::post('/subscriber', 'Front\HomeController@addSubscriber')->name('front.subscriber.create');
+
+    Route::post('comments', '\Laravelista\Comments\CommentController@store');
+    Route::delete('comments/{comment}', '\Laravelista\Comments\CommentController@destroy');
+    Route::put('comments/{comment}', '\Laravelista\Comments\CommentController@update');
+    Route::post('comments/{comment}', '\Laravelista\Comments\CommentController@reply');
 });
 
 Auth::routes(['register' => false]);

@@ -7,11 +7,11 @@ use App\Models\Tag;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
+use Laravelista\Comments\Commentable;
 
 class Blog extends Model
 {
-    use Translatable;
+    use Translatable, Commentable;
     use SoftDeletes;
 
     public $translatedAttributes = ['title', 'description', 'creator', 'meta_title', 'meta_keywords', 'meta_description', 'meta_slug'];
