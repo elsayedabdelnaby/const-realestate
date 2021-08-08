@@ -39,9 +39,9 @@ class Project extends Model implements TranslatableContract
 
     public function getSketchesItemsAttribute()
     {
-        if($this -> gallery != null){
+        if($this -> sketches != null){
             foreach (json_decode( $this -> sketches, true) as $index => $item){
-                echo '{id: ' . $index . ' , src: "' . asset('public/uploads/properties/sketches/') . '/'. $item . '"},';
+                echo '{id: ' . $index . ' , src: "' . asset('public/uploads/projects/gallery/') . '/'. $item . '"},';
             }
         }
     }

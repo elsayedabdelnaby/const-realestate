@@ -55,11 +55,9 @@ class PartnerController extends Controller
             $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
             $request_data = $request->except(['_token', '_method']);
             if ($request->logo) {
-                Image::make($request->logo)->resize(1000, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save(public_path('/uploads/partners/' . $request->logo->hashName()));
-
                 $request_data['logo'] = $request->logo->hashName();
+                $image = $request->file('logo');
+                $image->move(public_path('uploads/partners') . '/', $request->logo->hashName());
             }
             Partner::create($request_data);
             session()->flash('success', 'Partner Added Successfully');
@@ -129,10 +127,9 @@ class PartnerController extends Controller
                     Storage::disk('public_uploads')->delete('/partners/' . $partner->logo);
                 } // end of inner if
 
-                Image::make($request->logo)->resize(1000, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save(public_path('uploads/partners/' . $request->logo->hashName()));
                 $request_data['logo'] = $request->logo->hashName();
+                $image = $request->file('logo');
+                $image->move(public_path('uploads/partners') . '/', $request->logo->hashName());
             }
 
             $partner->update($request_data);

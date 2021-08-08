@@ -55,15 +55,16 @@ class ProjectController extends Controller
             $request_data = $request->except('_method', '_token');
 
             if ($request->image) {
-                request()->image->move(public_path('/uploads/projects/'), $request->image->hashName());
                 $request_data['image'] = $request->image->hashName();
+                $image = $request->file('image');
+                $image->move(public_path('uploads/projects') . '/', $request->image->hashName());
             }
 
             if ($request->gallery) {
                 $gallery_arr = [];
                 foreach ($request->gallery as $index => $item) {
-                    $gallery_arr += [$index => $item->hashName(),];
-                    $item->move(public_path('/uploads/projects/gallery/'), $item->hashName());
+                    $gallery_arr += [$index => $item->hashName()];
+                    $item->move(public_path('uploads/projects/gallery/') . '/', $item->hashName());
                 }
                 $request_data['gallery'] = json_encode($gallery_arr);
             }
@@ -72,7 +73,7 @@ class ProjectController extends Controller
                 $sketches_arr = [];
                 foreach ($request->sketches as $index => $item) {
                     $sketches_arr += [$index => $item->hashName(),];
-                    $item->move(public_path('/uploads/projects/gallery/'), $item->hashName());
+                    $item->move(public_path('uploads/projects/gallery/') . '/', $item->hashName());
                 }
                 $request_data['sketches'] = json_encode($sketches_arr);
             }
@@ -92,7 +93,7 @@ class ProjectController extends Controller
     {
         try {
             $project = Project::find($id);
-            if(!$project) {
+            if (!$project) {
                 session()->flash('error', "Project Doesn't Exist or has been deleted");
                 return redirect()->route('admin.projects.index');
             }
@@ -101,14 +102,14 @@ class ProjectController extends Controller
             $cities = City::all();
             $agencies = Agency::all();
 
-            return view('admin.projects.edit',
-                compact('project', 'countries', 'cities', 'agencies'));
-
+            return view(
+                'admin.projects.edit',
+                compact('project', 'countries', 'cities', 'agencies')
+            );
         } catch (\Exception $exception) {
 
             session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
-            return redirect()->route('admin.properties.index');
-
+            return redirect()->route('admin.projects.index');
         } // end of try -> catch
 
     } // end of edit
@@ -117,72 +118,70 @@ class ProjectController extends Controller
     {
         try {
             // set active
-            $request -> has('is_active') ? $request -> request -> add(['is_active' => 1]) : $request -> request -> add(['is_active' => 0]);
-            $request -> has('is_featured') ? $request -> request -> add(['is_featured' => 1]) : $request -> request -> add(['is_featured' => 0]);
-            $request -> has('finish_status') ? $request -> request -> add(['finish_status' => 1]) : $request -> request -> add(['finish_status' => 0]);
+            $request->has('is_active') ? $request->request->add(['is_active' => 1]) : $request->request->add(['is_active' => 0]);
+            $request->has('is_featured') ? $request->request->add(['is_featured' => 1]) : $request->request->add(['is_featured' => 0]);
+            $request->has('finish_status') ? $request->request->add(['finish_status' => 1]) : $request->request->add(['finish_status' => 0]);
 
-            $request_data = $request -> except('gallery', '_token', '_method', 'sketches');
+            $request_data = $request->except('gallery', '_token', '_method', 'sketches');
 
-            if($request->image){
-                if ($project->image != 'default.png') {
-
-                    Storage::disk('public_uploads')->delete('/projects/' . $project ->image);
-
-                } // end of image inner if
-
-                request()->image->move(public_path('/uploads/projects/'), $request->image->hashName());
-
+            if ($request->image) {
+                Storage::disk('public_uploads')->delete('/projects/' . $project->image);
                 $request_data['image'] = $request->image->hashName();
-            } // end of image outer if.
-
-            if($request -> gallery){
-
-                if ($project -> gallery != null) {
-                    foreach (json_decode($project->gallery, true) as $index => $item) {
-                        Storage::disk('public_uploads')->delete('/projects/gallery/' . $item);
+                $image = $request->file('image');
+                $image->move(public_path('uploads/projects') . '/', $request->image->hashName());
+            } // end of outer if
+            $gallery = [];
+            if ($request->gallery) {
+                if ($project->gallery != null) {
+                    $gallery = json_decode($project->gallery, true);
+                    foreach ($gallery as $index => $item) {
+                        if (!in_array($index, $request->gallery)) {
+                            Storage::disk('public_uploads')->delete('/projects/gallery/' . $item);
+                            unset($gallery[array_search($item, $gallery)]);
+                        }
                     }
-                    $project->update(['gallery' => null]);
-                } // end of inner if
-
-                $gallery_arr = [];
-                foreach ( $request -> gallery as $index => $item){
-                    $gallery_arr += [ $index => $item ->hashName(),];
-                    $item->move(public_path('/uploads/projects/gallery/'), $item->hashName());
                 }
-
-                $project->update(['gallery' => json_encode($gallery_arr) ]);
-
+                foreach ($request->gallery as $index => $item) {
+                    if (gettype($item) == 'object') {
+                        $gallery[] = $item->hashName();
+                        $item->move(public_path('uploads/projects/gallery/') . '/', $item->hashName());
+                    }
+                }
+                $request_data['gallery'] = json_encode($gallery);
+            } else {
+                $request_data['gallery'] = null;
             }
 
-            if($request -> sketches){
-
-                if ($project -> sketches != null) {
-                    foreach (json_decode($project->sketches, true) as $index => $item) {
-                        Storage::disk('public_uploads')->delete('/projects/gallery/' . $item);
+            $sketches = [];
+            if ($request->sketches) {
+                if ($project->sketches != null) {
+                    $sketches = json_decode($project->sketches, true);
+                    foreach ($sketches as $index => $item) {
+                        if (!in_array($index, $request->sketches)) {
+                            Storage::disk('public_uploads')->delete('/projects/gallery/' . $item);
+                            unset($sketches[array_search($item, $sketches)]);
+                        }
                     }
-                    $project->update(['sketches' => null]);
-                } // end of inner if
-
-                $sketches_arr = [];
-                foreach ( $request -> sketches as $index => $item){
-                    $sketches_arr += [ $index => $item ->hashName(),];
-                    $item->move(public_path('/uploads/projects/gallery/'), $item->hashName());
                 }
-
-                $project->update(['sketches' => json_encode($sketches_arr) ]);
-
+                foreach ($request->sketches as $index => $item) {
+                    if (gettype($item) == 'object') {
+                        $sketches[] = $item->hashName();
+                        $item->move(public_path('uploads/projects/gallery/') . '/', $item->hashName());
+                    }
+                }
+                $request_data['sketches'] = json_encode($sketches);
+            } else {
+                $request_data['sketches'] = null;
             }
 
             $project->update($request_data);
 
             session()->flash('success', 'Project Updated Successfully');
             return redirect()->route('admin.projects.index');
-
         } catch (\Exception $exception) {
 
             session()->flash('error', 'Something Went Wrong, Please Contact Administrator ' . $exception->getMessage());
             return redirect()->route('admin.projects.index');
-
         } // end of try -> catch
 
     } // end of update
@@ -190,36 +189,33 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         try {
-            if($project -> image != 'default.png'){
-                Storage::disk('public_uploads')->delete('/projects/' . $project ->image);
+            if ($project->image != 'default.png') {
+                Storage::disk('public_uploads')->delete('/projects/' . $project->image);
             }
 
-            if ($project -> gallery != null) {
+            if ($project->gallery != null) {
                 foreach (json_decode($project->gallery, true) as $index => $item) {
                     Storage::disk('public_uploads')->delete('/projects/gallery/' . $item);
                 }
                 $project->update(['gallery' => null]);
             } // end of inner if
 
-            if ($project -> sketches != null) {
+            if ($project->sketches != null) {
                 foreach (json_decode($project->sketches, true) as $index => $item) {
                     Storage::disk('public_uploads')->delete('/projects/gallery/' . $item);
                 }
                 $project->update(['sketches' => null]);
             } // end of inner if
 
-            $project -> deleteTranslations();
-            $project -> delete();
+            $project->deleteTranslations();
+            $project->delete();
 
             session()->flash('success', 'Proejct Deleted Successfully');
             return redirect()->route('admin.projects.index');
-
         } catch (\Exception $exception) {
 
             session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
             return redirect()->route('admin.projects.index');
-
         }
-
     } // end of destroy
 }
