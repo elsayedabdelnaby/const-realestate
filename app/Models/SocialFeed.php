@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,4 +10,8 @@ class SocialFeed extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $table = 'social_feeds';
+    protected $fillable = ['type', 'title', 'url', 'feed', 'display_in_home'];
+
 }

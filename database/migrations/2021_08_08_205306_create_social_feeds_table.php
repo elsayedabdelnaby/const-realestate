@@ -16,8 +16,10 @@ class CreateSocialFeedsTable extends Migration
         Schema::create('social_feeds', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('type', ['Facebook', 'Twitter', 'Instagram', 'Linkedin']);
+            $table->string('title');
             $table->string('url');
-            $table->longText('feed');
+            $table->string('feed');
+            $table->boolean('display_in_home')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

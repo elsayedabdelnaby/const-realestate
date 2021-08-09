@@ -59,36 +59,25 @@
                         <h3>Twitter Feeds</h3>
                         <div class="twitter-widget contuct">
                             <div class="twitter-area">
+                                @foreach($social_feeds as $social_feed)
                                 <div class="single-item">
                                     <div class="icon-holder">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        @if ($social_feed->type == 'Twitter')
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        @elseif( $social_feed->type == 'Facebook')
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        @elseif( $social_feed->type == 'Instagram')
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        @elseif( $social_feed->type == 'Linkedin')
+                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                        @endif
                                     </div>
                                     <div class="text">
-                                        <h5><a href="#">@findhouses</a> all share them with me baby said inspet.
+                                        <h5><a href="{{ $social_feed->url }}" target="_blank">{{'@'.$social_feed->title}}</a> {{ $social_feed->feed }}
                                         </h5>
-                                        <h4>about 5 days ago</h4>
                                     </div>
                                 </div>
-                                <div class="single-item">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h5><a href="#">@findhouses</a> all share them with me baby said inspet.
-                                        </h5>
-                                        <h4>about 5 days ago</h4>
-                                    </div>
-                                </div>
-                                <div class="single-item">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h5><a href="#">@findhouses</a> all share them with me baby said inspet.
-                                        </h5>
-                                        <h4>about 5 days ago</h4>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

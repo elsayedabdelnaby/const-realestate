@@ -230,6 +230,16 @@
                     </li>
                 @endif
 
+
+                @if (auth()->user()->hasPermission('view_social_feeds'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.social-feeds.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-bullseye"></i>
+                            <p>Social Feeds</p>
+                        </a>
+                    </li>
+                @endif
+
             </ul> <!-- /.nav-sidebar -->
         </nav>
         <!-- /.sidebar-menu -->

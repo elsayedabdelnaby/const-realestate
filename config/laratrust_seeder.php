@@ -23,6 +23,7 @@ return [
             'seo' => 'c,r,u,d',
             'subscribers' => 'c,r,u,d',
             'projects' => 'c,r,u,d',
+            'social_feeds' => 'c,r,u,d',
         ],
         'admin' => [
 
