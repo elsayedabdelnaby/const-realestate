@@ -2,7 +2,7 @@
 
 @section('meta_tags')
 
-@include('front.partials.meta', [
+    @include('front.partials.meta', [
     'title' => $site_settings->title,
     'keywords' => $site_settings->meta_keyword,
     'description' => $site_settings->meta_description,
@@ -12,7 +12,7 @@
 @endsection
 
 @section('title')
-{{ $site_settings->title }}
+    {{ $site_settings->title }}
 @endsection
 
 @section('style')
@@ -42,14 +42,16 @@
                         <div class="col-12">
                             <div class="banner-inner">
                                 <h1 class="title text-center">@lang('front.index.Find Your Dream Home')</h1>
-                                <h5 class="sub-title text-center">@lang('front.index.We Have Over Million Properties For You')</h5>
+                                <h5 class="sub-title text-center">@lang('front.index.We Have Over Million Properties For
+                                    You')</h5>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="banner-search-wrap">
                                 <ul class="nav nav-tabs rld-banner-tab">
                                     <li class="nav-item">
-                                        <a class="nav-link  active" data-toggle="tab" href="#for_sale">@lang('front.For Sale')</a>
+                                        <a class="nav-link  active" data-toggle="tab" href="#for_sale">@lang('front.For
+                                            Sale')</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#for_rent">@lang('front.For Rent')</a>
@@ -57,15 +59,18 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="for_sale">
-                                        <form action="{{ route('front.properties.index', ['rent_sale' => 0 ]) }}" method="GET">
+                                        <form action="{{ route('front.properties.index', ['rent_sale' => 0]) }}"
+                                            method="GET">
                                             <div class="rld-main-search">
                                                 <div class="row">
                                                     <div class="col-xl-3 col-lg-6 col-md-6">
                                                         <div class="rld-single-select left-icon">
                                                             <select name="agency_id" class="select single-select">
                                                                 <option value="">@lang('front.index.Agency')</option>
-                                                                @foreach($agencies as $agency)
-                                                                    <option value="{{ $agency -> id }}" {{ request()->agency_id == $agency-> id ? 'selected' : '' }}>{{ $agency -> name }}</option>
+                                                                @foreach ($agencies as $agency)
+                                                                    <option value="{{ $agency->id }}"
+                                                                        {{ request()->agency_id == $agency->id ? 'selected' : '' }}>
+                                                                        {{ $agency->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -74,8 +79,10 @@
                                                         <div class="rld-single-select">
                                                             <select name="property_type" class="select single-select">
                                                                 <option value="">@lang('front.property_type')</option>
-                                                                @foreach($property_types as $property_type)
-                                                                    <option value="{{ $property_type -> id }}" {{ request()->property_type == $property_type-> id ? 'selected' : '' }}>{{ $property_type -> name }}</option>
+                                                                @foreach ($property_types as $property_type)
+                                                                    <option value="{{ $property_type->id }}"
+                                                                        {{ request()->property_type == $property_type->id ? 'selected' : '' }}>
+                                                                        {{ $property_type->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -84,14 +91,17 @@
                                                         <div class="rld-single-select">
                                                             <select name="property_status" class="select single-select">
                                                                 <option value="">@lang('front.property_status')</option>
-                                                                @foreach($property_statuses as $property_status)
-                                                                    <option value="{{ $property_status -> id }}" {{ request()->property_status == $property_type-> id ? 'selected' : '' }}>{{ $property_status -> name }}</option>
+                                                                @foreach ($property_statuses as $property_status)
+                                                                    <option value="{{ $property_status->id }}"
+                                                                        {{ request()->property_status == $property_type->id ? 'selected' : '' }}>
+                                                                        {{ $property_status->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-4 col-md-4">
-                                                        <button type="submit" class="btn btn-yellow">@lang('front.search')</button>
+                                                        <button type="submit"
+                                                            class="btn btn-yellow">@lang('front.search')</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -99,15 +109,18 @@
                                     </div>
 
                                     <div class="tab-pane fade" id="for_rent">
-                                        <form action="{{ route('front.properties.index', ['rent_sale' => 1 ]) }}" method="GET">
+                                        <form action="{{ route('front.properties.index', ['rent_sale' => 1]) }}"
+                                            method="GET">
                                             <div class="rld-main-search">
                                                 <div class="row">
                                                     <div class="col-xl-3 col-lg-6 col-md-6">
                                                         <div class="rld-single-select left-icon">
                                                             <select name="agency_id" class="select single-select">
                                                                 <option value="">@lang('front.index.Agency')</option>
-                                                                @foreach($agencies as $agency)
-                                                                    <option value="{{ $agency -> id }}" {{ request()->agency_id == $agency-> id ? 'selected' : '' }}>{{ $agency -> name }}</option>
+                                                                @foreach ($agencies as $agency)
+                                                                    <option value="{{ $agency->id }}"
+                                                                        {{ request()->agency_id == $agency->id ? 'selected' : '' }}>
+                                                                        {{ $agency->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -116,8 +129,10 @@
                                                         <div class="rld-single-select">
                                                             <select name="property_type" class="select single-select">
                                                                 <option value="">@lang('front.property_type')</option>
-                                                                @foreach($property_types as $property_type)
-                                                                    <option value="{{ $property_type -> id }}" {{ request()->property_type == $property_type-> id ? 'selected' : '' }}>{{ $property_type -> name }}</option>
+                                                                @foreach ($property_types as $property_type)
+                                                                    <option value="{{ $property_type->id }}"
+                                                                        {{ request()->property_type == $property_type->id ? 'selected' : '' }}>
+                                                                        {{ $property_type->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -126,14 +141,17 @@
                                                         <div class="rld-single-select">
                                                             <select name="property_status" class="select single-select">
                                                                 <option value="">@lang('front.property_status')</option>
-                                                                @foreach($property_statuses as $property_status)
-                                                                    <option value="{{ $property_status -> id }}" {{ request()->property_status == $property_type-> id ? 'selected' : '' }}>{{ $property_status -> name }}</option>
+                                                                @foreach ($property_statuses as $property_status)
+                                                                    <option value="{{ $property_status->id }}"
+                                                                        {{ request()->property_status == $property_type->id ? 'selected' : '' }}>
+                                                                        {{ $property_status->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-3 col-lg-4 col-md-4">
-                                                        <button type="submit" class="btn btn-yellow">@lang('front.search')</button>
+                                                        <button type="submit"
+                                                            class="btn btn-yellow">@lang('front.search')</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +169,7 @@
 
     <!-- START SECTION PROPERTIES FOR SALE -->
     <section class="recently portfolio bg-white-1 home18">
-        @foreach($properties as $property)
+        @foreach ($properties as $property)
             <div class="container">
                 <div class="sec-title">
                     <h2><span>@lang('front.properties') </span>@lang('front.For Sale')</h2>
@@ -159,65 +177,74 @@
                 </div>
                 <div class="portfolio col-xl-12">
                     <div class="slick-lancers">
-                        @if($property -> add_to_home == 1 && $property ->  rent_sale == 0 )
+                        @if ($property->add_to_home == 1 && $property->rent_sale == 0)
                             <div class="agents-grid">
                                 <div class="landscapes">
                                     <div class="project-single">
                                         <div class="project-inner project-head">
                                             <div class="project-bottom">
-                                                <h4><a href="{{ route('front.properties.show', $property -> id) }}">View Property</a><span class="category">{{ $property -> name }}</span>
+                                                <h4><a href="{{ route('front.properties.show', $property->id) }}">View
+                                                        Property</a><span class="category">{{ $property->name }}</span>
                                                 </h4>
                                             </div>
                                             <div class="homes">
                                                 <!-- homes img -->
                                                 <a href="#" class="homes-img">
-                                                    @if( $property -> is_featured == 1 )
+                                                    @if ($property->is_featured == 1)
                                                         <div class="homes-tag button alt featured">Featured</div>
                                                     @endif
                                                     <div class="homes-tag button alt sale">For Sale</div>
-    {{--                                                    <div class="homes-price">Family Home</div>--}}
-                                                    <img src="{{ $property -> image_path }}" alt="{{ $property -> name }}" class="img-responsive">
+                                                    {{-- <div class="homes-price">Family Home</div> --}}
+                                                    <img src="{{ $property->image_path }}"
+                                                        alt="{{ $property->name }}" class="img-responsive">
                                                 </a>
                                             </div>
                                             <div class="button-effect">
-                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="btn"><i class="fa fa-link"></i></a>
+                                                <a href="{{ route('front.properties.show', $property->id) }}"
+                                                    class="btn"><i class="fa fa-link"></i></a>
                                                 <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                                   class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                                    class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                <a href="{{ route('front.properties.show', $property->id) }}"
+                                                    class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                             </div>
                                         </div>
                                         <!-- homes content -->
                                         <div class="homes-content">
                                             <!-- homes address -->
-                                            <h3><a href="{{ route('front.properties.show', $property -> id ) }}">{{ $property -> name }}</a></h3>
+                                            <h3><a
+                                                    href="{{ route('front.properties.show', $property->id) }}">{{ $property->name }}</a>
+                                            </h3>
                                             <p class="homes-address mb-3">
-                                                <a href="{{ route('front.properties.show' , $property -> id) }}">
-                                                    <i class="fa fa-map-marker"></i><span>{{ $property -> address }} - {{ $property -> city -> name}}, {{ $property -> country -> name}}</span>
+                                                <a href="{{ route('front.properties.show', $property->id) }}">
+                                                    <i class="fa fa-map-marker"></i><span>{{ $property->address }} -
+                                                        {{ $property->city->name }},
+                                                        {{ $property->country->name }}</span>
                                                 </a>
                                             </p>
                                             <!-- homes List -->
                                             <ul class="homes-list clearfix">
                                                 <li>
                                                     <i class="fa fa-bed" aria-hidden="true"></i>
-                                                    <span>{{ $property -> bedrooms }} Bedrooms</span>
+                                                    <span>{{ $property->bedrooms }} Bedrooms</span>
                                                 </li>
                                                 <li>
                                                     <i class="fa fa-bath" aria-hidden="true"></i>
-                                                    <span>{{ $property -> bathrooms }} Bathrooms</span>
+                                                    <span>{{ $property->bathrooms }} Bathrooms</span>
                                                 </li>
                                                 <li>
                                                     <i class="fa fa-object-group" aria-hidden="true"></i>
-                                                    <span>{{ $property -> plot_area }} m sq</span>
+                                                    <span>{{ $property->plot_area }} m sq</span>
                                                 </li>
                                                 <li>
                                                     <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                                    <span>{{ $property -> garages }} Garages</span>
+                                                    <span>{{ $property->garages }} Garages</span>
                                                 </li>
                                             </ul>
                                             <!-- Price -->
                                             <div class="price-properties">
                                                 <h3 class="title mt-3">
-                                                    <a href="{{ route('front.properties.show' , $property -> id) }}">$ {{ $property -> price }}</a>
+                                                    <a href="{{ route('front.properties.show', $property->id) }}">$
+                                                        {{ $property->price }}</a>
                                                 </h3>
                                                 <div class="compare">
                                                     <a href="#" title="Compare">
@@ -232,12 +259,12 @@
                                                 </div>
                                             </div>
                                             <div class="footer">
-                                                <a href="{{ route('front.agencies.show' , $property -> agency -> id) }}">
-                                                    <i class="fa fa-user"></i> {{ $property -> agency -> name }}
+                                                <a href="{{ route('front.agencies.show', $property->agency->id) }}">
+                                                    <i class="fa fa-user"></i> {{ $property->agency->name }}
                                                 </a>
                                                 <span>
-                                                <i class="fa fa-calendar"></i> {{ $property -> postedAt() }} Days ago
-                                            </span>
+                                                    <i class="fa fa-calendar"></i> {{ $property->postedAt() }} Days ago
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -248,7 +275,8 @@
                 </div>
             </div>
             <div class="bg-all">
-                <a href="{{ route('front.properties.index' , ['rent_sale' => 0]) }}" class="btn btn-outline-light">View All</a>
+                <a href="{{ route('front.properties.index', ['rent_sale' => 0]) }}" class="btn btn-outline-light">View
+                    All</a>
             </div>
         @endforeach
     </section>
@@ -256,7 +284,7 @@
 
     <!-- START SECTION PROPERTIES FOR RENT -->
     <section class="recently portfolio home18">
-        @foreach($properties as $property)
+        @foreach ($properties as $property)
             <div class="container">
                 <div class="sec-title">
                     <h2><span>Properties </span>For Rent</h2>
@@ -264,65 +292,74 @@
                 </div>
                 <div class="portfolio col-xl-12">
                     <div class="slick-lancers">
-                        @if($property -> add_to_home == 1 && $property ->  rent_sale == 1 )
+                        @if ($property->add_to_home == 1 && $property->rent_sale == 1)
                             <div class="agents-grid">
                                 <div class="landscapes">
                                     <div class="project-single">
                                         <div class="project-inner project-head">
                                             <div class="project-bottom">
-                                                <h4><a href="{{ route('front.properties.show', $property -> id) }}">View Property</a><span class="category">{{ $property -> name }}</span>
+                                                <h4><a href="{{ route('front.properties.show', $property->id) }}">View
+                                                        Property</a><span class="category">{{ $property->name }}</span>
                                                 </h4>
                                             </div>
                                             <div class="homes">
                                                 <!-- homes img -->
                                                 <a href="#" class="homes-img">
-                                                    @if( $property -> is_featured == 1 )
+                                                    @if ($property->is_featured == 1)
                                                         <div class="homes-tag button alt featured">Featured</div>
                                                     @endif
-                                                        <div class="homes-tag button sale rent">For Rent</div>
-                                                    {{--                                                    <div class="homes-price">Family Home</div>--}}
-                                                    <img src="{{ $property -> image_path }}" alt="{{ $property -> name }}" class="img-responsive">
+                                                    <div class="homes-tag button sale rent">For Rent</div>
+                                                    {{-- <div class="homes-price">Family Home</div> --}}
+                                                    <img src="{{ $property->image_path }}"
+                                                        alt="{{ $property->name }}" class="img-responsive">
                                                 </a>
                                             </div>
                                             <div class="button-effect">
-                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="btn"><i class="fa fa-link"></i></a>
+                                                <a href="{{ route('front.properties.show', $property->id) }}"
+                                                    class="btn"><i class="fa fa-link"></i></a>
                                                 <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                                   class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                                    class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                <a href="{{ route('front.properties.show', $property->id) }}"
+                                                    class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                             </div>
                                         </div>
                                         <!-- homes content -->
                                         <div class="homes-content">
                                             <!-- homes address -->
-                                            <h3><a href="{{ route('front.properties.show', $property -> id ) }}">{{ $property -> name }}</a></h3>
+                                            <h3><a
+                                                    href="{{ route('front.properties.show', $property->id) }}">{{ $property->name }}</a>
+                                            </h3>
                                             <p class="homes-address mb-3">
-                                                <a href="{{ route('front.properties.show' , $property -> id) }}">
-                                                    <i class="fa fa-map-marker"></i><span>{{ $property -> address }} - {{ $property -> city -> name}}, {{ $property -> country -> name}}</span>
+                                                <a href="{{ route('front.properties.show', $property->id) }}">
+                                                    <i class="fa fa-map-marker"></i><span>{{ $property->address }} -
+                                                        {{ $property->city->name }},
+                                                        {{ $property->country->name }}</span>
                                                 </a>
                                             </p>
                                             <!-- homes List -->
                                             <ul class="homes-list clearfix">
                                                 <li>
                                                     <i class="fa fa-bed" aria-hidden="true"></i>
-                                                    <span>{{ $property -> bedrooms }} Bedrooms</span>
+                                                    <span>{{ $property->bedrooms }} Bedrooms</span>
                                                 </li>
                                                 <li>
                                                     <i class="fa fa-bath" aria-hidden="true"></i>
-                                                    <span>{{ $property -> bathrooms }} Bathrooms</span>
+                                                    <span>{{ $property->bathrooms }} Bathrooms</span>
                                                 </li>
                                                 <li>
                                                     <i class="fa fa-object-group" aria-hidden="true"></i>
-                                                    <span>{{ $property -> plot_area }} m sq</span>
+                                                    <span>{{ $property->plot_area }} m sq</span>
                                                 </li>
                                                 <li>
                                                     <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                                    <span>{{ $property -> garages }} Garages</span>
+                                                    <span>{{ $property->garages }} Garages</span>
                                                 </li>
                                             </ul>
                                             <!-- Price -->
                                             <div class="price-properties">
                                                 <h3 class="title mt-3">
-                                                    <a href="{{ route('front.properties.show' , $property -> id) }}">$ {{ $property -> price }}</a>
+                                                    <a href="{{ route('front.properties.show', $property->id) }}">$
+                                                        {{ $property->price }}</a>
                                                 </h3>
                                                 <div class="compare">
                                                     <a href="#" title="Compare">
@@ -337,12 +374,12 @@
                                                 </div>
                                             </div>
                                             <div class="footer">
-                                                <a href="{{ route('front.agencies.show' , $property -> agency -> id) }}">
-                                                    <i class="fa fa-user"></i> {{ $property -> agency -> name }}
+                                                <a href="{{ route('front.agencies.show', $property->agency->id) }}">
+                                                    <i class="fa fa-user"></i> {{ $property->agency->name }}
                                                 </a>
                                                 <span>
-                                                <i class="fa fa-calendar"></i> {{ $property -> postedAt() }} Days ago
-                                            </span>
+                                                    <i class="fa fa-calendar"></i> {{ $property->postedAt() }} Days ago
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -353,7 +390,8 @@
                 </div>
             </div>
             <div class="bg-all">
-                <a href="{{ route('front.properties.index' , ['rent_sale' => 1]) }}" class="btn btn-outline-light">View All</a>
+                <a href="{{ route('front.properties.index', ['rent_sale' => 1]) }}" class="btn btn-outline-light">View
+                    All</a>
             </div>
         @endforeach
     </section>
@@ -368,18 +406,18 @@
                 <p>We provide full service at every step.</p>
             </div>
             <div class="row service-1">
-                @foreach($whychooseus as $item)
-                <article class="col-lg-4 col-md-6 col-xs-12 serv">
-                    <div class="serv-flex">
-                        <div class="art-1 img-13">
-                            <img src="{{ asset($item->getImagePathAttribute()) }}" alt="{{ $item->title }}">
-                            <h3>{{ $item->title }}</h3>
+                @foreach ($whychooseus as $item)
+                    <article class="col-lg-4 col-md-6 col-xs-12 serv">
+                        <div class="serv-flex">
+                            <div class="art-1 img-13">
+                                <img src="{{ asset($item->getImagePathAttribute()) }}" alt="{{ $item->title }}">
+                                <h3>{{ $item->title }}</h3>
+                            </div>
+                            <div class="service-text-p">
+                                <p class="text-center">{{ $item->description }}</p>
+                            </div>
                         </div>
-                        <div class="service-text-p">
-                            <p class="text-center">{{ $item->description }}</p>
-                        </div>
-                    </div>
-                </article>
+                    </article>
                 @endforeach
             </div>
         </div>
@@ -399,7 +437,8 @@
                 <div class="col-lg-6 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box hover-effect">
-                        <img src="{{ asset('public/front/') }}/images/popular-places/7.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front/') }}/images/popular-places/7.jpg" class="img-responsive"
+                            alt="">
                         <!-- Badge -->
                         <div class="img-box-content visible">
                             <h4 class="mb-2">New York</h4>
@@ -422,7 +461,8 @@
                 <div class="col-lg-3 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box hover-effect">
-                        <img src="{{ asset('public/front/') }}/images/popular-places/8.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front/') }}/images/popular-places/8.jpg" class="img-responsive"
+                            alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">Los Angeles</h4>
                             <span>307 Properties</span>
@@ -444,7 +484,8 @@
                 <div class="col-lg-3 col-md-6 pr">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box hover-effect">
-                        <img src="{{ asset('public/front/') }}/images/popular-places/9.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front/') }}/images/popular-places/9.jpg" class="img-responsive"
+                            alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">Miami </h4>
                             <span>409 Properties</span>
@@ -466,7 +507,8 @@
                 <div class="col-lg-3 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box no-mb mi x3 hover-effect">
-                        <img src="{{ asset('public/front/') }}/images/popular-places/10.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front/') }}/images/popular-places/10.jpg" class="img-responsive"
+                            alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">Chicago</h4>
                             <span>507 Properties</span>
@@ -488,7 +530,8 @@
                 <div class="col-lg-3 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box no-mb mi x3 hover-effect">
-                        <img src="{{ asset('public/front/') }}/images/popular-places/11.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front/') }}/images/popular-places/11.jpg" class="img-responsive"
+                            alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">San Francisco</h4>
                             <span>99 Properties</span>
@@ -510,7 +553,8 @@
                 <div class="col-lg-6 col-md-6 pr">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box san no-mb x3 hover-effect">
-                        <img src="{{ asset('public/front/') }}/images/popular-places/5.jpg" class="img-responsive" alt="">
+                        <img src="{{ asset('public/front/') }}/images/popular-places/5.jpg" class="img-responsive"
+                            alt="">
                         <div class="img-box-content visible">
                             <h4 class="mb-2">Detroit </h4>
                             <span>308 Properties</span>
@@ -539,142 +583,33 @@
         <div class="container">
             <div class="sec-title">
                 <h2><span>People</span> Says</h2>
-                <p>There are many variations of lorem of Lorem Ipsum available for use a sit amet, consectetur
-                    debits adipisicing lacus.</p>
+        {{--         <p>There are many variations of lorem of Lorem Ipsum available for use a sit amet, consectetur
+                    debits adipisicing lacus.</p> --}}
             </div>
             <div class="owl-carousel style1">
-                <div class="single-testimonial">
-                    <div class="client-comment">
-                        <p>Lorem ipsum dolor sit amet, luctus posuere semper felis consectetuer hendrerit, enim
-                            varius enim, tellus tincidunt tellus est sed</p>
-                    </div>
-                    <div class="clinet-inner">
-                        <div class="client-thumb">
-                            <img src="{{ asset('public/front/') }}/images/testimonials/ts-1.jpg" alt="" />
+                @foreach ($people_says as $people_say)
+                    <div class="single-testimonial">
+                        <div class="client-comment">
+                            <p>{{ $people_say->say }}</p>
                         </div>
-                        <div class="client-info">
-                            <h2>Lisa Smith</h2>
-                            <span>New York City</span>
-                            <div class="client-reviews">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                        <div class="clinet-inner">
+                            <div class="client-thumb">
+                                <img src="{{ asset($people_say->getImagePathAttribute()) }}" alt="{{ $people_say->name }}" />
+                            </div>
+                            <div class="client-info">
+                                <h2>{{ $people_say->name }}</h2>
+                                <span>{{ $people_say->job }}</span>
+                                <div class="client-reviews">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="single-testimonial">
-                    <div class="client-comment">
-                        <p>Lorem ipsum dolor sit amet, luctus posuere semper felis consectetuer hendrerit, enim
-                            varius enim, tellus tincidunt tellus est sed</p>
-                    </div>
-                    <div class="clinet-inner">
-                        <div class="client-thumb">
-                            <img src="{{ asset('public/front/') }}/images/testimonials/ts-2.jpg" alt="" />
-                        </div>
-                        <div class="client-info">
-                            <h2>Jhon Morris</h2>
-                            <span>Los Angeles</span>
-                            <div class="client-reviews">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-empty"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-testimonial">
-                    <div class="client-comment">
-                        <p>Lorem ipsum dolor sit amet, luctus posuere semper felis consectetuer hendrerit, enim
-                            varius enim, tellus tincidunt tellus est sed</p>
-                    </div>
-                    <div class="clinet-inner">
-                        <div class="client-thumb">
-                            <img src="{{ asset('public/front/') }}/images/testimonials/ts-3.jpg" alt="" />
-                        </div>
-                        <div class="client-info">
-                            <h2>Mary Deshaw</h2>
-                            <span>Chicago</span>
-                            <div class="client-reviews">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-testimonial">
-                    <div class="client-comment">
-                        <p>Lorem ipsum dolor sit amet, luctus posuere semper felis consectetuer hendrerit, enim
-                            varius enim, tellus tincidunt tellus est sed</p>
-                    </div>
-                    <div class="clinet-inner">
-                        <div class="client-thumb">
-                            <img src="{{ asset('public/front/') }}/images/testimonials/ts-4.jpg" alt="" />
-                        </div>
-                        <div class="client-info">
-                            <h2>Gary Steven</h2>
-                            <span>Philadelphia</span>
-                            <div class="client-reviews">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-empty"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-testimonial">
-                    <div class="client-comment">
-                        <p>Lorem ipsum dolor sit amet, luctus posuere semper felis consectetuer hendrerit, enim
-                            varius enim, tellus tincidunt tellus est sed</p>
-                    </div>
-                    <div class="clinet-inner">
-                        <div class="client-thumb">
-                            <img src="{{ asset('public/front/') }}/images/testimonials/ts-5.jpg" alt="" />
-                        </div>
-                        <div class="client-info">
-                            <h2>Cristy Mayer</h2>
-                            <span>San Francisco</span>
-                            <div class="client-reviews">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-testimonial">
-                    <div class="client-comment">
-                        <p>Lorem ipsum dolor sit amet, luctus posuere semper felis consectetuer hendrerit, enim
-                            varius enim, tellus tincidunt tellus est sed</p>
-                    </div>
-                    <div class="clinet-inner">
-                        <div class="client-thumb">
-                            <img src="{{ asset('public/front/') }}/images/testimonials/ts-6.jpg" alt="" />
-                        </div>
-                        <div class="client-info">
-                            <h2>Ichiro Tasaka</h2>
-                            <span>Houston</span>
-                            <div class="client-reviews">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-empty"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -689,40 +624,42 @@
             </div>
             <div class="news-wrap">
                 <div class="row">
-                    @foreach($blogs as $blog)
-                    <div class="col-xl-4 col-md-6 col-xs-12">
-                        <div class="news-item">
-                            <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-img-link">
-                                <div class="news-item-img">
-                                    <img class="img-responsive" src="{{ asset($blog->getImagePathAttribute()) }}" alt="blog image">
-                                </div>
-                            </a>
-                            <div class="news-item-text">
-                                <a href="{{ route('front.blogs.show', $blog->meta_slug) }}">
-                                    <h3>{{ $blog->title }}</h3>
+                    @foreach ($blogs as $blog)
+                        <div class="col-xl-4 col-md-6 col-xs-12">
+                            <div class="news-item">
+                                <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-img-link">
+                                    <div class="news-item-img">
+                                        <img class="img-responsive" src="{{ asset($blog->getImagePathAttribute()) }}"
+                                            alt="blog image">
+                                    </div>
                                 </a>
-                                <div class="dates">
-                                    <span class="date">{{ $blog->created_at->format('M d, Y') }} &nbsp;</span>
-                                    {{-- <ul class="action-list pl-0">
+                                <div class="news-item-text">
+                                    <a href="{{ route('front.blogs.show', $blog->meta_slug) }}">
+                                        <h3>{{ $blog->title }}</h3>
+                                    </a>
+                                    <div class="dates">
+                                        <span class="date">{{ $blog->created_at->format('M d, Y') }} &nbsp;</span>
+                                        {{-- <ul class="action-list pl-0">
                                         <li class="action-item pl-2"><i class="fa fa-heart"></i> <span>306</span>
                                         </li>
                                         <li class="action-item"><i class="fa fa-comment"></i> <span>34</span></li>
                                         <li class="action-item"><i class="fa fa-share-alt"></i> <span>122</span>
                                         </li>
                                     </ul> --}}
-                                </div>
-                                <div class="news-item-descr big-news">
-                                    <p>{{ $blog->description }}</p>
-                                </div>
-                                <div class="news-item-bottom">
-                                    <a href="{{ route('front.blogs.show', $blog->meta_slug) }}" class="news-link">Read more...</a>
-                                    <div class="admin">
-                                        <p>{{ $blog->creator }}</p>
+                                    </div>
+                                    <div class="news-item-descr big-news">
+                                        <p>{{ $blog->description }}</p>
+                                    </div>
+                                    <div class="news-item-bottom">
+                                        <a href="{{ route('front.blogs.show', $blog->meta_slug) }}"
+                                            class="news-link">Read more...</a>
+                                        <div class="admin">
+                                            <p>{{ $blog->creator }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                     {{-- <div class="col-xl-4 col-md-6 col-xs-12">
                         <div class="news-item">
@@ -771,7 +708,7 @@
         <div class="container">
             <div class="owl-carousel style2">
                 @forelse ($partners as $partner)
-                <div class="owl-item"><img src="{{ $partner->logo_path }}" alt="{{ $partner->name }}"></div>
+                    <div class="owl-item"><img src="{{ $partner->logo_path }}" alt="{{ $partner->name }}"></div>
                 @empty
 
                 @endforelse
@@ -788,42 +725,43 @@
 
 
 @section('script')
-    <!-- ARCHIVES JS -->
-    <script src="{{ asset('public/front/') }}/js/jquery-ui.js"></script>
-    <script src="{{ asset('public/front/') }}/js/moment.js"></script>
-    <script src="{{ asset('public/front/') }}/js/transition.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/slick.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/slick3.js"></script>
-    <script src="{{ asset('public/front/') }}/js/fitvids.js"></script>
-    <script src="{{ asset('public/front/') }}/js/jquery.waypoints.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/jquery.counterup.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/imagesloaded.pkgd.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/isotope.pkgd.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/lightcase.js"></script>
-    <script src="{{ asset('public/front/') }}/js/owl.carousel.js"></script>
-    <script src="{{ asset('public/front/') }}/js/jquery.magnific-popup.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/jquery.form.js"></script>
-    <script src="{{ asset('public/front/') }}/js/jquery.validate.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/forms-2.js"></script>
-    <script src="{{ asset('public/front/') }}/js/leaflet.js"></script>
-    <script src="{{ asset('public/front/') }}/js/leaflet-gesture-handling.min.js"></script>
-    <script src="{{ asset('public/front/') }}/js/leaflet-providers.js"></script>
-    <script src="{{ asset('public/front/') }}/js/leaflet.markercluster.js"></script>
-    <script src="{{ asset('public/front/') }}/js/map4.js"></script>
+<!-- ARCHIVES JS -->
+<script src="{{ asset('public/front/') }}/js/jquery-ui.js"></script>
+<script src="{{ asset('public/front/') }}/js/moment.js"></script>
+<script src="{{ asset('public/front/') }}/js/transition.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/slick.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/slick3.js"></script>
+<script src="{{ asset('public/front/') }}/js/fitvids.js"></script>
+<script src="{{ asset('public/front/') }}/js/jquery.waypoints.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/jquery.counterup.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/imagesloaded.pkgd.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/isotope.pkgd.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/lightcase.js"></script>
+<script src="{{ asset('public/front/') }}/js/owl.carousel.js"></script>
+<script src="{{ asset('public/front/') }}/js/jquery.magnific-popup.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/jquery.form.js"></script>
+<script src="{{ asset('public/front/') }}/js/jquery.validate.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/forms-2.js"></script>
+<script src="{{ asset('public/front/') }}/js/leaflet.js"></script>
+<script src="{{ asset('public/front/') }}/js/leaflet-gesture-handling.min.js"></script>
+<script src="{{ asset('public/front/') }}/js/leaflet-providers.js"></script>
+<script src="{{ asset('public/front/') }}/js/leaflet.markercluster.js"></script>
+<script src="{{ asset('public/front/') }}/js/map4.js"></script>
 
-    <!-- Slider Revolution scripts -->
-    <script src="{{ asset('public/front/') }}/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<!-- Slider Revolution scripts -->
+<script src="{{ asset('public/front/') }}/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.layeranimation.min.js">
+</script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
-    <!-- MAIN JS -->
-    <script src="{{ asset('public/front/') }}/js/script.js"></script>
+<!-- MAIN JS -->
+<script src="{{ asset('public/front/') }}/js/script.js"></script>
 @stop

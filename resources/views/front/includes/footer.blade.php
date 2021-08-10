@@ -39,16 +39,12 @@
                         <div class="nav-footer">
                             <ul class="mx-5">
                                 <li><a href="{{ route('front.index') }}">@lang('front.home')</a></li>
-                                <li><a href="">@lang('front.properties')</a></li>
-                                <li><a href="">@lang('front.properties')</a></li>
-                                <li><a href="#">@lang('front.agencies')</a></li>
-                                <li class="no-mgb"><a href="#">@lang('front.agencies')</a></li>
+                                <li><a href="{{ route('front.properties.index') }}">@lang('front.properties')</a></li>
+                                <li><a href="{{ route('front.agencies.index') }}">@lang('front.agencies')</a></li>
                             </ul>
                             <ul class="nav-right">
-                                <li><a href="#">@lang('front.agencies')</a></li>
                                 <li><a href="#">@lang('front.about_us')</a></li>
-                                <li><a href="#">@lang('front.blog')</a></li>
-                                <li><a href="#">@lang('front.blog')</a></li>
+                                <li><a href="{{ route('front.blogs.index') }}">@lang('front.blog')</a></li>
                                 <li class="no-mgb"><a href="{{ route('front.create.contact-us') }}">@lang('front.contact')</a></li>
                             </ul>
                         </div>

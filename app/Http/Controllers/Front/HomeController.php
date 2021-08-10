@@ -9,6 +9,7 @@ use App\Models\Admin\Property;
 use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
 use App\Models\Partner;
+use App\Models\PeopleSay;
 use App\Models\SiteSetting;
 use App\Models\Subscriber;
 use App\Models\WhyChooseUs;
@@ -30,11 +31,12 @@ class HomeController extends Controller
             ['is_active', 1],
             ['show_in_homepage', 1],
         ])->limit(3)->get();
+        $people_says = PeopleSay::where('is_active', 1)->get();
         $page_name = "home";
 
         return view('front.index', compact('property_types',
             'property_statuses', 'agencies', 'properties', 'site_settings',
-            'whychooseus', 'blogs', 'partners', 'page_name'));
+            'whychooseus', 'blogs', 'partners', 'page_name', 'people_says'));
     }
 
     public function addSubscriber(Request $request){

@@ -240,6 +240,15 @@
                     </li>
                 @endif
 
+                @if (auth()->user()->hasPermission('view_people_says'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.people-says.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-bullseye"></i>
+                            <p>People Says</p>
+                        </a>
+                    </li>
+                @endif
+
             </ul> <!-- /.nav-sidebar -->
         </nav>
         <!-- /.sidebar-menu -->

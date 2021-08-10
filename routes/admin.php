@@ -64,5 +64,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         /** Social Feeds */
         Route::resource('/social-feeds', 'SocialFeedController')->except('show');
 
+        /** People Says */
+        Route::resource('/people-says', 'PeopleSayController')->except('show');
+
     });
 });
