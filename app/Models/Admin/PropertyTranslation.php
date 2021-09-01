@@ -10,6 +10,6 @@ class PropertyTranslation extends Model
     use SoftDeletes;
 
     public $timestamps = true;
-    protected $fillable = ['name', 'description', 'address'];
+    protected $fillable = ['name', 'description', 'address', 'meta_title', 'meta_description', 'meta_keywords', 'meta_slug'];
 
 } // end of model

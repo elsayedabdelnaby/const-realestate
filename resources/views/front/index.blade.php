@@ -41,8 +41,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="banner-inner">
-                                <h1 class="title text-center">@lang('front.index.Find Your Dream Home')</h1>
-                                <h5 class="sub-title text-center">@lang('front.index.We Have Over Million Properties For
+                                <h1 class="title text-center">@lang('front.Find Your Dream Home')</h1>
+                                <h5 class="sub-title text-center">@lang('front.We Have Over Million Properties For
                                     You')</h5>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                                     <div class="col-xl-3 col-lg-6 col-md-6">
                                                         <div class="rld-single-select left-icon">
                                                             <select name="agency_id" class="select single-select">
-                                                                <option value="">@lang('front.index.Agency')</option>
+                                                                <option value="">@lang('front.Agency')</option>
                                                                 @foreach ($agencies as $agency)
                                                                     <option value="{{ $agency->id }}"
                                                                         {{ request()->agency_id == $agency->id ? 'selected' : '' }}>
@@ -117,7 +117,7 @@
                                                     <div class="col-xl-3 col-lg-6 col-md-6">
                                                         <div class="rld-single-select left-icon">
                                                             <select name="agency_id" class="select single-select">
-                                                                <option value="">@lang('front.index.Agency')</option>
+                                                                <option value="">@lang('front.Agency')</option>
                                                                 @foreach ($agencies as $agency)
                                                                     <option value="{{ $agency->id }}"
                                                                         {{ request()->agency_id == $agency->id ? 'selected' : '' }}>
@@ -170,234 +170,176 @@
 
     <!-- START SECTION PROPERTIES FOR SALE -->
     <section class="recently portfolio bg-white-1 home18">
-        @foreach ($properties as $property)
-            <div class="container">
-                <div class="sec-title">
-                    <h2><span>@lang('front.properties') </span>@lang('front.For Sale')</h2>
-                    <p>Find your dream home from our Sale added properties.</p>
-                </div>
-                <div class="portfolio col-xl-12">
-                    <div class="slick-lancers">
-                        @if ($property->add_to_home == 1 && $property->rent_sale == 0)
-                            <div class="agents-grid">
-                                <div class="landscapes">
-                                    <div class="project-single">
-                                        <div class="project-inner project-head">
-                                            <div class="project-bottom">
-                                                <h4><a href="{{ route('front.properties.show', $property->id) }}">View
-                                                        Property</a><span
-                                                        class="category">{{ $property->name }}</span>
-                                                </h4>
-                                            </div>
-                                            <div class="homes">
-                                                <!-- homes img -->
-                                                <a href="#" class="homes-img">
-                                                    @if ($property->is_featured == 1)
-                                                        <div class="homes-tag button alt featured">Featured</div>
-                                                    @endif
-                                                    <div class="homes-tag button alt sale">For Sale</div>
-                                                    {{-- <div class="homes-price">Family Home</div> --}}
-                                                    <img src="{{ $property->image_path }}" alt="{{ $property->name }}"
-                                                        class="img-responsive">
-                                                </a>
-                                            </div>
-                                            <div class="button-effect">
-                                                <a href="{{ route('front.properties.show', $property->id) }}"
-                                                    class="btn"><i class="fa fa-link"></i></a>
-                                                <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                                    class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                                <a href="{{ route('front.properties.show', $property->id) }}"
-                                                    class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                            </div>
+        <div class="container">
+            <div class="sec-title">
+                <h2><span>@lang('front.properties') </span>@lang('front.for_sale')</h2>
+                <p>@lang('front.find_your_dream_home_from_our_sale_added_properties').</p>
+            </div>
+            <div class="portfolio col-xl-12">
+                <div class="slick-lancers">
+                    @foreach ($properties_for_sale as $property)
+                        <div class="agents-grid">
+                            <div class="landscapes">
+                                <div class="project-single">
+                                    <div class="project-inner project-head">
+                                        <div class="project-bottom">
+                                            <h4><a
+                                                    href="{{ route('front.properties.show', $property->id) }}">@lang('front.view_property')</a><span
+                                                    class="category">@lang('front.real_estate')</span>
+                                            </h4>
                                         </div>
-                                        <!-- homes content -->
-                                        <div class="homes-content">
-                                            <!-- homes address -->
-                                            <h3><a
-                                                    href="{{ route('front.properties.show', $property->id) }}">{{ $property->name }}</a>
+                                        <div class="homes">
+                                            <!-- homes img -->
+                                            <a href="{{ route('front.properties.show', $property->id) }}"
+                                                class="homes-img">
+                                                @if ($property->is_featured == 1)<div class="homes-tag button alt featured">@lang('front.featured')</div>@endif
+                                                <div class="homes-tag button alt sale">@lang('front.for_sale')</div>
+                                                <div class="homes-price">{{ $property->propertyType->name }}</div>
+                                                <img src="{{ $property->getImagePathAttribute() }}"
+                                                    alt="{{ $property->name }}" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="button-effect">
+                                            @if ($property->video != '')
+                                                <a href="{{ $property->video }}" class="btn popup-video popup-youtube"><i
+                                                        class="fas fa-video"></i></a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!-- homes content -->
+                                    <div class="homes-content">
+                                        <!-- homes address -->
+                                        <h3><a
+                                                href="{{ route('front.properties.show', $property->id) }}">{{ $property->name }}</a>
+                                        </h3>
+                                        <p class="homes-address mb-3">
+                                            <a href="{{ route('front.properties.show', $property->id) }}">
+                                                <i class="fa fa-map-marker"></i><span>{{ $property->address }}</span>
+                                            </a>
+                                        </p>
+                                        <!-- homes List -->
+                                        <ul class="homes-list clearfix">
+                                            <li>
+                                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                                <span>{{ $property->bedrooms }} @lang('front.bedrooms')</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-bath" aria-hidden="true"></i>
+                                                <span>{{ $property->bathrooms }} @lang('front.bathrooms')</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-object-group" aria-hidden="true"></i>
+                                                <span>{{ $property->construction_area }} @lang('front.sq_ft')</span>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-warehouse" aria-hidden="true"></i>
+                                                <span>{{ $property->garages }} @lang('front.garages')</span>
+                                            </li>
+                                        </ul>
+                                        <!-- Price -->
+                                        <div class="price-properties">
+                                            <h3 class="title mt-3">
+                                                <a href="{{ route('front.properties.show', $property->id) }}">$
+                                                    {{ $property->price }}</a>
                                             </h3>
-                                            <p class="homes-address mb-3">
-                                                <a href="{{ route('front.properties.show', $property->id) }}">
-                                                    <i class="fa fa-map-marker"></i><span>{{ $property->address }} -
-                                                        {{ $property->city->name }},
-                                                        {{ $property->country->name }}</span>
-                                                </a>
-                                            </p>
-                                            <!-- homes List -->
-                                            <ul class="homes-list clearfix">
-                                                <li>
-                                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                                    <span>{{ $property->bedrooms }} Bedrooms</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-bath" aria-hidden="true"></i>
-                                                    <span>{{ $property->bathrooms }} Bathrooms</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-object-group" aria-hidden="true"></i>
-                                                    <span>{{ $property->plot_area }} m sq</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                                    <span>{{ $property->garages }} Garages</span>
-                                                </li>
-                                            </ul>
-                                            <!-- Price -->
-                                            <div class="price-properties">
-                                                <h3 class="title mt-3">
-                                                    <a href="{{ route('front.properties.show', $property->id) }}">$
-                                                        {{ $property->price }}</a>
-                                                </h3>
-                                                <div class="compare">
-                                                    <a href="#" title="Compare">
-                                                        <i class="fas fa-exchange-alt"></i>
-                                                    </a>
-                                                    <a href="#" title="Share">
-                                                        <i class="fas fa-share-alt"></i>
-                                                    </a>
-                                                    <a href="#" title="Favorites">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="footer">
-                                                <a href="{{ route('front.agencies.show', $property->agency->id) }}">
-                                                    <i class="fa fa-user"></i> {{ $property->agency->name }}
-                                                </a>
-                                                <span>
-                                                    <i class="fa fa-calendar"></i> {{ $property->postedAt() }} Days ago
-                                                </span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @endif
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="bg-all">
-                <a href="{{ route('front.properties.index', ['rent_sale' => 0]) }}" class="btn btn-outline-light">View
-                    All</a>
-            </div>
-        @endforeach
+        </div>
+        <div class="bg-all">
+            <a href="{{ route('front.properties.index') }}" class="btn btn-outline-light">@lang('front.view_all')</a>
+        </div>
     </section>
     <!-- END SECTION PROPERTIES FOR SALE -->
 
     <!-- START SECTION PROPERTIES FOR RENT -->
     <section class="recently portfolio home18">
-        @foreach ($properties as $property)
-            <div class="container">
-                <div class="sec-title">
-                    <h2><span>Properties </span>For Rent</h2>
-                    <p>Find your dream home from our Rent added properties.</p>
-                </div>
-                <div class="portfolio col-xl-12">
-                    <div class="slick-lancers">
-                        @if ($property->add_to_home == 1 && $property->rent_sale == 1)
-                            <div class="agents-grid">
-                                <div class="landscapes">
-                                    <div class="project-single">
-                                        <div class="project-inner project-head">
-                                            <div class="project-bottom">
-                                                <h4><a href="{{ route('front.properties.show', $property->id) }}">View
-                                                        Property</a><span
-                                                        class="category">{{ $property->name }}</span>
-                                                </h4>
-                                            </div>
-                                            <div class="homes">
-                                                <!-- homes img -->
-                                                <a href="#" class="homes-img">
-                                                    @if ($property->is_featured == 1)
-                                                        <div class="homes-tag button alt featured">Featured</div>
-                                                    @endif
-                                                    <div class="homes-tag button sale rent">For Rent</div>
-                                                    {{-- <div class="homes-price">Family Home</div> --}}
-                                                    <img src="{{ $property->image_path }}" alt="{{ $property->name }}"
-                                                        class="img-responsive">
-                                                </a>
-                                            </div>
-                                            <div class="button-effect">
-                                                <a href="{{ route('front.properties.show', $property->id) }}"
-                                                    class="btn"><i class="fa fa-link"></i></a>
-                                                <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                                    class="btn popup-video popup-youtube"><i
-                                                        class="fas fa-video"></i></a>
-                                                <a href="{{ route('front.properties.show', $property->id) }}"
-                                                    class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                            </div>
+        <div class="container">
+            <div class="sec-title">
+                <h2><span>@lang('front.properties') </span>@lang('front.for_rent')</h2>
+                <p>@lang('front.find_your_dream_home_from_our_rent_added_properties').</p>
+            </div>
+            <div class="portfolio col-xl-12">
+                <div class="slick-lancers">
+                    @foreach ($properties_for_rent as $property)
+                        <div class="agents-grid">
+                            <div class="landscapes">
+                                <div class="project-single">
+                                    <div class="project-inner project-head">
+                                        <div class="project-bottom">
+                                            <h4><a
+                                                    href="{{ route('front.properties.show', $property->id) }}">@lang('front.view_property')</a><span
+                                                    class="category">@lang('front.real_estate')</span>
+                                            </h4>
                                         </div>
-                                        <!-- homes content -->
-                                        <div class="homes-content">
-                                            <!-- homes address -->
-                                            <h3><a
-                                                    href="{{ route('front.properties.show', $property->id) }}">{{ $property->name }}</a>
+                                        <div class="homes">
+                                            <!-- homes img -->
+                                            <a href="{{ route('front.properties.show', $property->id) }}"
+                                                class="homes-img">
+                                                @if ($property->is_featured == 1)<div class="homes-tag button alt featured">@lang('front.featured')</div>@endif
+                                                <div class="homes-tag button alt sale">@lang('front.for_rent')</div>
+                                                <div class="homes-price">{{ $property->propertyType->name }}</div>
+                                                <img src="{{ $property->getImagePathAttribute() }}"
+                                                    alt="{{ $property->name }}" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="button-effect">
+                                            @if ($property->video != '')
+                                                <a href="{{ $property->video }}" class="btn popup-video popup-youtube"><i
+                                                        class="fas fa-video"></i></a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!-- homes content -->
+                                    <div class="homes-content">
+                                        <!-- homes address -->
+                                        <h3><a href="{{ route('front.properties.show', $property->id) }}">{{ $property->name }}</a></h3>
+                                        <p class="homes-address mb-3">
+                                            <a href="{{ route('front.properties.show', $property->id) }}">
+                                                <i class="fa fa-map-marker"></i><span>{{ $property->address }}</span>
+                                            </a>
+                                        </p>
+                                        <!-- homes List -->
+                                        <ul class="homes-list clearfix">
+                                            <li>
+                                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                                <span>{{ $property -> bedrooms }} @lang('front.bedrooms')</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-bath" aria-hidden="true"></i>
+                                                <span>{{ $property -> bathrooms }} @lang('front.bathrooms')</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-object-group" aria-hidden="true"></i>
+                                                <span>{{ $property -> construction_area }} @lang('sq_ft')</span>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-warehouse" aria-hidden="true"></i>
+                                                <span>{{ $property -> garages }} @lang('front.garages')</span>
+                                            </li>
+                                        </ul>
+                                        <!-- Price -->
+                                        <div class="price-properties">
+                                            <h3 class="title mt-3">
+                                                <a href="{{ route('front.properties.show', $property->id) }}">$ {{ $property->price }}</a>
                                             </h3>
-                                            <p class="homes-address mb-3">
-                                                <a href="{{ route('front.properties.show', $property->id) }}">
-                                                    <i class="fa fa-map-marker"></i><span>{{ $property->address }} -
-                                                        {{ $property->city->name }},
-                                                        {{ $property->country->name }}</span>
-                                                </a>
-                                            </p>
-                                            <!-- homes List -->
-                                            <ul class="homes-list clearfix">
-                                                <li>
-                                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                                    <span>{{ $property->bedrooms }} Bedrooms</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-bath" aria-hidden="true"></i>
-                                                    <span>{{ $property->bathrooms }} Bathrooms</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-object-group" aria-hidden="true"></i>
-                                                    <span>{{ $property->plot_area }} m sq</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                                    <span>{{ $property->garages }} Garages</span>
-                                                </li>
-                                            </ul>
-                                            <!-- Price -->
-                                            <div class="price-properties">
-                                                <h3 class="title mt-3">
-                                                    <a href="{{ route('front.properties.show', $property->id) }}">$
-                                                        {{ $property->price }}</a>
-                                                </h3>
-                                                <div class="compare">
-                                                    <a href="#" title="Compare">
-                                                        <i class="fas fa-exchange-alt"></i>
-                                                    </a>
-                                                    <a href="#" title="Share">
-                                                        <i class="fas fa-share-alt"></i>
-                                                    </a>
-                                                    <a href="#" title="Favorites">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="footer">
-                                                <a href="{{ route('front.agencies.show', $property->agency->id) }}">
-                                                    <i class="fa fa-user"></i> {{ $property->agency->name }}
-                                                </a>
-                                                <span>
-                                                    <i class="fa fa-calendar"></i> {{ $property->postedAt() }} Days ago
-                                                </span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @endif
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="bg-all">
-                <a href="{{ route('front.properties.index', ['rent_sale' => 1]) }}" class="btn btn-outline-light">View
-                    All</a>
-            </div>
-        @endforeach
+        </div>
+        <div class="bg-all">
+            <a href="{{ route('front.properties.index') }}" class="btn btn-outline-light">@lang('view_all')</a>
+        </div>
     </section>
 
     <!-- END SECTION PROPERTIES FOR RENT -->
@@ -432,8 +374,8 @@
     <section class="visited-cities bg-white-2 home18">
         <div class="container">
             <div class="sec-title">
-                <h2><span>@lang('front.index.most_popular') </span>@lang('front.index.places')</h2>
-                <p>@lang('front.index.we_provide_full_service_at_every_step').</p>
+                <h2><span>@lang('front.most_popular') </span>@lang('front.places')</h2>
+                <p>@lang('front.we_provide_full_service_at_every_step').</p>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -442,12 +384,11 @@
                     <div class="col-lg-6 col-md-6 pr-1">
                         <!-- Image Box -->
                         <a href="{{ route('front.city.show', $city->id) }}" class="img-box hover-effect">
-                            <img src="{{ asset($city->getImagePathAttribute()) }}" class="img-responsive"
-                                alt="">
+                            <img src="{{ asset($city->getImagePathAttribute()) }}" class="img-responsive" alt="">
                             <!-- Badge -->
                             <div class="img-box-content visible">
                                 <h4 class="mb-2">{{ $city->name }}</h4>
-                                <span>{{count($city->properties)}} @lang('front.index.properties')</span>
+                                <span>{{ count($city->properties) }} @lang('front.properties')</span>
                                 <ul class="starts text-center mt-2">
                                     <li><i class="fa fa-star"></i>
                                     </li>

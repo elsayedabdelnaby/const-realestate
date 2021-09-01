@@ -91,12 +91,7 @@
                            @endif
                         </td>
                         <td>
-                            @if (auth()->user()->hasPermission('update_properties'))
-                                <a href="#" class="text-white btn bg-cyan btn-sm"><i class="fa fa-eye"></i> Features</a>
-                                {{-- @else
-                                    <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a> --}}
-                            @endif
-
+                            
                             @if (auth()->user()->hasPermission('update_properties'))
                                 <a href="{{ route('admin.properties.edit', $property->id) }}" class="text-white btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                 {{-- @else

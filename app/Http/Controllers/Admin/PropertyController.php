@@ -75,9 +75,13 @@ class PropertyController extends Controller
             if ($request->image) {
                 $request_data['image'] = $request->image->hashName();
                 $image = $request->file('image');
-                $image->move(public_path('uploads/cities') . '/', $request->image->hashName());
+                $image->move(public_path('uploads/properties') . '/', $request->image->hashName());
             }
-
+            if ($request->floor_plan) {
+                $request_data['floor_plan'] = $request->floor_plan->hashName();
+                $floor_plan = $request->file('floor_plan');
+                $floor_plan->move(public_path('uploads/properties') . '/', $request->floor_plan->hashName());
+            }
             if ($request->gallery) {
                 $gallery_arr = [];
                 foreach ($request->gallery as $index => $item) {
@@ -144,16 +148,23 @@ class PropertyController extends Controller
             $request_data = $request->except('gallery');
 
             if ($request->image) {
-                Storage::disk('public_uploads')->delete('/projects/' . $project->image);
+                Storage::disk('public_uploads')->delete('/properties/' . $property->image);
                 $request_data['image'] = $request->image->hashName();
                 $image = $request->file('image');
-                $image->move(public_path('uploads/projects') . '/', $request->image->hashName());
+                $image->move(public_path('uploads/properties') . '/', $request->image->hashName());
+            } // end of outer if
+
+            if ($request->floor_plan) {
+                Storage::disk('public_uploads')->delete('/properties/' . $property->floor_plan);
+                $request_data['floor_plan'] = $request->image->hashName();
+                $image = $request->file('floor_plan');
+                $image->move(public_path('uploads/properties') . '/', $request->floor_plan->hashName());
             } // end of outer if
 
             $gallery = [];
             if ($request->gallery) {
-                if ($project->gallery != null) {
-                    $gallery = json_decode($project->gallery, true);
+                if ($property->gallery != null) {
+                    $gallery = json_decode($property->gallery, true);
                     foreach ($gallery as $index => $item) {
                         if (!in_array($index, $request->gallery)) {
                             Storage::disk('public_uploads')->delete('/properties/gallery/' . $item);
@@ -189,6 +200,10 @@ class PropertyController extends Controller
         try {
             if ($property->image != 'default.png') {
                 Storage::disk('public_uploads')->delete('/properties/' . $property->image);
+            }
+
+            if ($property->floor_plan != 'default.png') {
+                Storage::disk('public_uploads')->delete('/properties/' . $property->floor_plan);
             }
 
             if ($property->gallery != null) {

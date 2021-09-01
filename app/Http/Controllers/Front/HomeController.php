@@ -24,7 +24,16 @@ class HomeController extends Controller
         $property_types = PropertyType::all();
         $property_statuses = PropertyStatus::all();
         $agencies = Agency::all();
-        $properties = Property::all();
+        $properties_for_sale = Property::where([
+            ['is_active', 1],
+            ['rent_sale', 0],
+            ['add_to_home', 1]
+        ])->get();
+        $properties_for_rent = Property::where([
+            ['is_active', 1],
+            ['rent_sale', 1],
+            ['add_to_home', 1]
+        ])->get();
         $site_settings = SiteSetting::firstOrFail();
         $whychooseus = WhyChooseUs::where('is_active', 1)->get();
         $partners = Partner::where('is_active', 1)->get();
@@ -36,14 +45,26 @@ class HomeController extends Controller
         $cities = City::where('show_in_homepage', 1)->get();
         $page_name = "home";
 
-        return view('front.index', compact('property_types',
-            'property_statuses', 'agencies', 'properties', 'site_settings',
-            'whychooseus', 'blogs', 'partners', 'page_name', 'people_says', 'cities'));
+        return view('front.index', compact(
+            'property_types',
+            'property_statuses',
+            'agencies',
+            'properties_for_sale',
+            'properties_for_rent',
+            'site_settings',
+            'whychooseus',
+            'blogs',
+            'partners',
+            'page_name',
+            'people_says',
+            'cities'
+        ));
     }
 
-    public function addSubscriber(Request $request){
+    public function addSubscriber(Request $request)
+    {
         $subscribers = Subscriber::where('email', $request->email)->get();
-        if(count($subscribers)){
+        if (count($subscribers)) {
             return response()->json([
                 'result' => 'failer',
                 'msg' => 'You Already Susbribed',
