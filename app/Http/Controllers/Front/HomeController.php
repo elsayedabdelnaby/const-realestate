@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Agency;
 use App\Models\Admin\Blog;
+use App\Models\Admin\City;
 use App\Models\Admin\Property;
 use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
@@ -32,11 +33,12 @@ class HomeController extends Controller
             ['show_in_homepage', 1],
         ])->limit(3)->get();
         $people_says = PeopleSay::where('is_active', 1)->get();
+        $cities = City::where('show_in_homepage', 1)->get();
         $page_name = "home";
 
         return view('front.index', compact('property_types',
             'property_statuses', 'agencies', 'properties', 'site_settings',
-            'whychooseus', 'blogs', 'partners', 'page_name', 'people_says'));
+            'whychooseus', 'blogs', 'partners', 'page_name', 'people_says', 'cities'));
     }
 
     public function addSubscriber(Request $request){

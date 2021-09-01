@@ -53,6 +53,7 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>counrty</th>
+                    <th>Show in Homepage ?</th>
                     @if (auth()->user()->hasPermission('update_cities','delete_cities'))
                         <th>Action</th>
                     @endif
@@ -65,6 +66,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $city -> name }}</td>
                         <td>{{ $city -> country -> name }}</td>
+                        <td>@if($city -> show_in_homepage)<i class="fa fa-check" aria-hidden="true"></i> @endif </td>
                         <td>
                             @if (auth()->user()->hasPermission('update_cities'))
                                 <a href="{{ route('admin.cities.edit', $city->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>

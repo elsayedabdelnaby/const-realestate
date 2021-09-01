@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Create city')
+@section('title', 'Edit city')
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>Create city</h1>
+        <h1>Edit city</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -42,7 +42,7 @@
                             </div>
                         @endforeach
 
-                            <div class="col-sm-12 col-lg-12">
+                            <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
                                     <label for="country_id">Country</label>
                                     @error('country_id')
@@ -57,6 +57,24 @@
                                 </div>
                             </div>
 
+                            <div class="form-group col-sm-6 col-lg-6">
+                                <label>Image</label>
+                                @error('image')
+                                    <span class="text-danger mx-1">{{ $message }}</span>
+                                @enderror
+                                <input type="file" name="image" class="form-control input-sm image">
+
+                                <img src="{{ $city->image_path }}" width="300px" class="img-thumbnail image-preview mt-1"
+                                    alt="">
+                            </div> {{-- end of form group image --}}
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6 col-lg-6">
+                            <label>Show in Home Page ?</label>
+                            <input type="checkbox" name="show_in_homepage" class="form-control" @if($city->show_in_homepage) checked @endif>
+                        </div>
                     </div>
 
                     <div class="form-group">

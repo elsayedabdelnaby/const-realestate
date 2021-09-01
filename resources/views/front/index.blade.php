@@ -54,7 +54,8 @@
                                             Sale')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#for_rent">@lang('front.For Rent')</a>
+                                        <a class="nav-link" data-toggle="tab" href="#for_rent">@lang('front.For
+                                            Rent')</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
@@ -184,7 +185,8 @@
                                         <div class="project-inner project-head">
                                             <div class="project-bottom">
                                                 <h4><a href="{{ route('front.properties.show', $property->id) }}">View
-                                                        Property</a><span class="category">{{ $property->name }}</span>
+                                                        Property</a><span
+                                                        class="category">{{ $property->name }}</span>
                                                 </h4>
                                             </div>
                                             <div class="homes">
@@ -195,8 +197,8 @@
                                                     @endif
                                                     <div class="homes-tag button alt sale">For Sale</div>
                                                     {{-- <div class="homes-price">Family Home</div> --}}
-                                                    <img src="{{ $property->image_path }}"
-                                                        alt="{{ $property->name }}" class="img-responsive">
+                                                    <img src="{{ $property->image_path }}" alt="{{ $property->name }}"
+                                                        class="img-responsive">
                                                 </a>
                                             </div>
                                             <div class="button-effect">
@@ -299,7 +301,8 @@
                                         <div class="project-inner project-head">
                                             <div class="project-bottom">
                                                 <h4><a href="{{ route('front.properties.show', $property->id) }}">View
-                                                        Property</a><span class="category">{{ $property->name }}</span>
+                                                        Property</a><span
+                                                        class="category">{{ $property->name }}</span>
                                                 </h4>
                                             </div>
                                             <div class="homes">
@@ -310,15 +313,16 @@
                                                     @endif
                                                     <div class="homes-tag button sale rent">For Rent</div>
                                                     {{-- <div class="homes-price">Family Home</div> --}}
-                                                    <img src="{{ $property->image_path }}"
-                                                        alt="{{ $property->name }}" class="img-responsive">
+                                                    <img src="{{ $property->image_path }}" alt="{{ $property->name }}"
+                                                        class="img-responsive">
                                                 </a>
                                             </div>
                                             <div class="button-effect">
                                                 <a href="{{ route('front.properties.show', $property->id) }}"
                                                     class="btn"><i class="fa fa-link"></i></a>
                                                 <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                                    class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                                    class="btn popup-video popup-youtube"><i
+                                                        class="fas fa-video"></i></a>
                                                 <a href="{{ route('front.properties.show', $property->id) }}"
                                                     class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                             </div>
@@ -428,36 +432,38 @@
     <section class="visited-cities bg-white-2 home18">
         <div class="container">
             <div class="sec-title">
-                <h2><span>Most Popular </span>Places</h2>
-                <p>We provide full service at every step.</p>
+                <h2><span>@lang('front.index.most_popular') </span>@lang('front.index.places')</h2>
+                <p>@lang('front.index.we_provide_full_service_at_every_step').</p>
             </div>
             <div class="row">
                 <div class="col-md-12">
                 </div>
-                <div class="col-lg-6 col-md-6 pr-1">
-                    <!-- Image Box -->
-                    <a href="listing-details.html" class="img-box hover-effect">
-                        <img src="{{ asset('public/front/') }}/images/popular-places/7.jpg" class="img-responsive"
-                            alt="">
-                        <!-- Badge -->
-                        <div class="img-box-content visible">
-                            <h4 class="mb-2">New York</h4>
-                            <span>203 Properties</span>
-                            <ul class="starts text-center mt-2">
-                                <li><i class="fa fa-star"></i>
-                                </li>
-                                <li><i class="fa fa-star"></i>
-                                </li>
-                                <li><i class="fa fa-star"></i>
-                                </li>
-                                <li><i class="fa fa-star"></i>
-                                </li>
-                                <li><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                        </div>
-                    </a>
-                </div>
+                @foreach ($cities as $city)
+                    <div class="col-lg-6 col-md-6 pr-1">
+                        <!-- Image Box -->
+                        <a href="{{ route('front.city.show', $city->id) }}" class="img-box hover-effect">
+                            <img src="{{ asset($city->getImagePathAttribute()) }}" class="img-responsive"
+                                alt="">
+                            <!-- Badge -->
+                            <div class="img-box-content visible">
+                                <h4 class="mb-2">{{ $city->name }}</h4>
+                                <span>{{count($city->properties)}} @lang('front.index.properties')</span>
+                                <ul class="starts text-center mt-2">
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
                 <div class="col-lg-3 col-md-6 pr-1">
                     <!-- Image Box -->
                     <a href="listing-details.html" class="img-box hover-effect">
@@ -583,7 +589,7 @@
         <div class="container">
             <div class="sec-title">
                 <h2><span>People</span> Says</h2>
-        {{--         <p>There are many variations of lorem of Lorem Ipsum available for use a sit amet, consectetur
+                {{-- <p>There are many variations of lorem of Lorem Ipsum available for use a sit amet, consectetur
                     debits adipisicing lacus.</p> --}}
             </div>
             <div class="owl-carousel style1">
@@ -594,7 +600,8 @@
                         </div>
                         <div class="clinet-inner">
                             <div class="client-thumb">
-                                <img src="{{ asset($people_say->getImagePathAttribute()) }}" alt="{{ $people_say->name }}" />
+                                <img src="{{ asset($people_say->getImagePathAttribute()) }}"
+                                    alt="{{ $people_say->name }}" />
                             </div>
                             <div class="client-info">
                                 <h2>{{ $people_say->name }}</h2>
@@ -638,7 +645,8 @@
                                         <h3>{{ $blog->title }}</h3>
                                     </a>
                                     <div class="dates">
-                                        <span class="date">{{ $blog->created_at->format('M d, Y') }} &nbsp;</span>
+                                        <span class="date">{{ $blog->created_at->format('M d, Y') }}
+                                            &nbsp;</span>
                                         {{-- <ul class="action-list pl-0">
                                         <li class="action-item pl-2"><i class="fa fa-heart"></i> <span>306</span>
                                         </li>
@@ -708,7 +716,8 @@
         <div class="container">
             <div class="owl-carousel style2">
                 @forelse ($partners as $partner)
-                    <div class="owl-item"><img src="{{ $partner->logo_path }}" alt="{{ $partner->name }}"></div>
+                    <div class="owl-item"><img src="{{ $partner->logo_path }}" alt="{{ $partner->name }}">
+                    </div>
                 @empty
 
                 @endforelse
@@ -725,43 +734,43 @@
 
 
 @section('script')
-<!-- ARCHIVES JS -->
-<script src="{{ asset('public/front/') }}/js/jquery-ui.js"></script>
-<script src="{{ asset('public/front/') }}/js/moment.js"></script>
-<script src="{{ asset('public/front/') }}/js/transition.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/slick.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/slick3.js"></script>
-<script src="{{ asset('public/front/') }}/js/fitvids.js"></script>
-<script src="{{ asset('public/front/') }}/js/jquery.waypoints.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/jquery.counterup.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/imagesloaded.pkgd.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/isotope.pkgd.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/lightcase.js"></script>
-<script src="{{ asset('public/front/') }}/js/owl.carousel.js"></script>
-<script src="{{ asset('public/front/') }}/js/jquery.magnific-popup.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/jquery.form.js"></script>
-<script src="{{ asset('public/front/') }}/js/jquery.validate.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/forms-2.js"></script>
-<script src="{{ asset('public/front/') }}/js/leaflet.js"></script>
-<script src="{{ asset('public/front/') }}/js/leaflet-gesture-handling.min.js"></script>
-<script src="{{ asset('public/front/') }}/js/leaflet-providers.js"></script>
-<script src="{{ asset('public/front/') }}/js/leaflet.markercluster.js"></script>
-<script src="{{ asset('public/front/') }}/js/map4.js"></script>
+    <!-- ARCHIVES JS -->
+    <script src="{{ asset('public/front/') }}/js/jquery-ui.js"></script>
+    <script src="{{ asset('public/front/') }}/js/moment.js"></script>
+    <script src="{{ asset('public/front/') }}/js/transition.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/slick.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/slick3.js"></script>
+    <script src="{{ asset('public/front/') }}/js/fitvids.js"></script>
+    <script src="{{ asset('public/front/') }}/js/jquery.waypoints.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/jquery.counterup.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/imagesloaded.pkgd.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/isotope.pkgd.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/lightcase.js"></script>
+    <script src="{{ asset('public/front/') }}/js/owl.carousel.js"></script>
+    <script src="{{ asset('public/front/') }}/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/jquery.form.js"></script>
+    <script src="{{ asset('public/front/') }}/js/jquery.validate.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/forms-2.js"></script>
+    <script src="{{ asset('public/front/') }}/js/leaflet.js"></script>
+    <script src="{{ asset('public/front/') }}/js/leaflet-gesture-handling.min.js"></script>
+    <script src="{{ asset('public/front/') }}/js/leaflet-providers.js"></script>
+    <script src="{{ asset('public/front/') }}/js/leaflet.markercluster.js"></script>
+    <script src="{{ asset('public/front/') }}/js/map4.js"></script>
 
-<!-- Slider Revolution scripts -->
-<script src="{{ asset('public/front/') }}/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/jquery.themepunch.revolution.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.layeranimation.min.js">
-</script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <!-- Slider Revolution scripts -->
+    <script src="{{ asset('public/front/') }}/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.layeranimation.min.js">
+    </script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="{{ asset('public/front/') }}/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
-<!-- MAIN JS -->
-<script src="{{ asset('public/front/') }}/js/script.js"></script>
+    <!-- MAIN JS -->
+    <script src="{{ asset('public/front/') }}/js/script.js"></script>
 @stop
