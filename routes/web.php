@@ -22,7 +22,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [Fro
     Route::get('/agency/{id}', 'Front\AgencyController@show')->name('front.agencies.show');
 
     Route::get('/properties', 'Front\PropertyController@index')->name('front.properties.index');
-    Route::get('/property/{id}', 'Front\PropertyController@show')->name('front.properties.show');
+    Route::get('/property/{slug}', 'Front\PropertyController@show')->name('front.properties.show');
     Route::get('/cities/{id}', 'Front\CityController@show')->name('front.city.show');
 
     Route::get('/projects', 'Front\ProjectController@index')->name('front.projects.index');
@@ -34,11 +34,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [Fro
     Route::post('/contact-us', 'Front\ContactUsController@store')->name('front.store.contact-us');
 
     Route::post('/subscriber', 'Front\HomeController@addSubscriber')->name('front.subscriber.create');
-
-    Route::post('comments', '\Laravelista\Comments\CommentController@store');
-    Route::delete('comments/{comment}', '\Laravelista\Comments\CommentController@destroy');
-    Route::put('comments/{comment}', '\Laravelista\Comments\CommentController@update');
-    Route::post('comments/{comment}', '\Laravelista\Comments\CommentController@reply');
 });
 
 Auth::routes(['register' => false]);

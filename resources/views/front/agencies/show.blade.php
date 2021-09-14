@@ -22,7 +22,7 @@
             "@type": "Organization",
             "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "{{ $agency->city->translate(App::getLocale())->name }}", {{ $agency->country->translate(App::getCountry())->name }}"
+                "addressLocality": "{{ $agency->city->translate(App::getLocale())->name }}", {{ $agency->country->translate(App::getLocale())->name }}"
             },
             "email": "{{ $agency->email }}",
             "faxNumber": "{{ $agency->fax }}",

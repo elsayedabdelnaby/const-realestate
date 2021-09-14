@@ -13,7 +13,7 @@ class Property extends Model implements TranslatableContract
     use Translatable;
     use SoftDeletes;
 
-    public $translatedAttributes = ['name', 'description', 'address'];
+    public $translatedAttributes = ['name', 'description', 'address', 'meta_title', 'meta_description', 'meta_keywords', 'meta_slug'];
     protected $guarded = [];
 
     /******************************************

@@ -69,5 +69,6 @@ return [
     'most_popular' => 'Most Popular',
     'places' => 'Places',
     'properties' => 'Properties',
+    'properties_listing' => 'Properties Listing',
 
 ];

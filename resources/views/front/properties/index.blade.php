@@ -1,5 +1,16 @@
 @extends('layouts.front.app')
 
+@section('meta_tags')
+
+    @include('front.partials.meta', [
+    'title' => $meta_data->meta_title,
+    'keywords' => $meta_data->meta_keywords,
+    'description' => $meta_data->meta_description,
+    'image' => '',
+    ])
+
+@endsection
+
 @section('style')
     <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{ asset('/front') }}/css/timedropper.css">
@@ -7,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('/front') }}/css/owl.carousel.min.css">
     <link rel="stylesheet" href="{{ asset('/front') }}/css/menu.css">
     <link rel="stylesheet" href="{{ asset('/front') }}/css/slick.css">
-    
+
 @stop
 
 @section('meta_tags')
@@ -30,8 +41,8 @@
     <section class="headings">
         <div class="text-heading text-center">
             <div class="container">
-                <h1>Properties</h1>
-                <h2><a href="{{ route('front.index') }}">Home </a> &nbsp;/&nbsp; Properties</h2>
+                <h1>@lang('front.properties')</h1>
+                <h2><a href="{{ route('front.index') }}">@lang('front.home') </a> &nbsp;/&nbsp; @lang('front.properties')</h2>
             </div>
         </div>
     </section>
@@ -50,7 +61,7 @@
                                 <span class="heading-icon">
                                 <i class="fa fa-th-list"></i>
                                 </span>
-                                    <span class="hidden-sm-down">Properties Listing</span>
+                                    <span class="hidden-sm-down">@lang('front.properties_listing')</span>
                                 </h4>
                             </div>
                         </div>
@@ -63,7 +74,7 @@
                                     <div class="project-single mb-0 bb-0">
                                         <div class="project-inner project-head">
                                             <div class="project-bottom">
-                                                <h4><a href="{{ route('front.properties.show' , $property -> id) }}">View Property</a><span class="category">{{ $property -> name }}</span></h4>
+                                                <h4><a href="{{ route('front.properties.show', $property->meta_slug) }}">View Property</a><span class="category">{{ $property -> name }}</span></h4>
                                             </div>
                                             <div class="homes">
                                                 <!-- homes img -->
@@ -76,13 +87,14 @@
                                                     @else
                                                         <div class="homes-tag button sale rent">For Rent</div>
                                                     @endif
-                                                    <img src="{{ $property -> image_path }}" alt="home-1" class="img-responsive">
+                                                    <img src="{{ $property -> image_path }}" alt="{{ $property -> name }}" class="img-responsive">
                                                 </a>
                                             </div>
                                             <div class="button-effect">
-                                                <a href="{{ route('front.properties.show' , $property -> id) }}" class="btn"><i class="fa fa-link"></i></a>
-                                                <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4" target="_blank" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                                <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                                @if ($property->video != '')
+                                                <a href="{{ $property->video }}" class="btn popup-video popup-youtube"><i
+                                                        class="fas fa-video"></i></a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -90,9 +102,9 @@
                                 <!-- homes content -->
                                 <div class="col-lg-7 col-md-12 homes-content pb-0 mb-44">
                                     <!-- homes address -->
-                                    <h3><a href="{{ route('front.properties.show' , $property -> id) }}">{{ $property -> name }}</a></h3>
+                                    <h3><a href="{{ route('front.properties.show', $property->meta_slug) }}">{{ $property -> name }}</a></h3>
                                     <p class="homes-address mb-3">
-                                        <a href="{{ route('front.properties.show' , $property -> id) }}">
+                                        <a href="{{ route('front.properties.show', $property->meta_slug) }}">
                                             <i class="fa fa-map-marker"></i><span>{{ $property -> address }} - {{ $property -> city -> name}}, {{ $property -> country -> name}}</span>
                                         </a>
                                     </p>
@@ -100,11 +112,11 @@
                                     <ul class="homes-list clearfix">
                                         <li>
                                             <i class="fa fa-bed" aria-hidden="true"></i>
-                                            <span>{{ $property -> bedrooms }} Bedrooms</span>
+                                            <span>{{ $property -> bedrooms }} @lang('bedrooms')</span>
                                         </li>
                                         <li>
                                             <i class="fa fa-bath" aria-hidden="true"></i>
-                                            <span>{{ $property -> bathrooms }} Bathrooms</span>
+                                            <span>{{ $property -> bathrooms }} @lang('bathrooms')</span>
                                         </li>
                                         <li>
                                             <i class="fa fa-object-group" aria-hidden="true"></i>
@@ -112,25 +124,14 @@
                                         </li>
                                         <li>
                                             <i class="fas fa-warehouse" aria-hidden="true"></i>
-                                            <span>{{ $property -> garages }} Garages</span>
+                                            <span>{{ $property -> garages }} @lang('garages')</span>
                                         </li>
                                     </ul>
                                     <!-- Price -->
                                     <div class="price-properties">
                                         <h3 class="title mt-3">
-                                            <a href="{{ route('front.properties.show' , $property -> id) }}">$ {{ $property -> price }}</a>
+                                            <a href="{{ route('front.properties.show', $property->meta_slug) }}">$ {{ $property -> price }}</a>
                                         </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </div>
                                     </div>
                                     <div class="footer">
                                         <a href="{{ route('front.agencies.show' , $property -> agency -> id) }}">

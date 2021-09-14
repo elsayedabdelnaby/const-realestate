@@ -1,5 +1,20 @@
 @extends('layouts.front.app')
 
+@section('meta_tags')
+
+    @include('front.partials.meta', [
+    'title' => $property->meta_title,
+    'keywords' => $property->meta_keywords,
+    'description' => $property->meta_description,
+    'image' => $property->image_path,
+    ])
+
+@endsection
+
+@section('title')
+    {{ $property->meta_title }}
+@endsection
+
 @section('style')
     <!-- LEAFLET MAP -->
     <link rel="stylesheet" href="{{ asset('public/front') }}/css/leaflet.css">
@@ -17,7 +32,7 @@
     <link rel="stylesheet" href="{{ asset('public/front') }}/css/menu.css">
     <link rel="stylesheet" href="{{ asset('public/front') }}/css/slick.css">
     <link rel="stylesheet" href="{{ asset('public/front') }}/css/styles.css">
-    <link rel="stylesheet" id="color" href="{{ asset('public/front') }}/css/default.css"
+    <link rel="stylesheet" id="color" href="{{ asset('public/front') }}/css/default.css">
 
 @stop
 

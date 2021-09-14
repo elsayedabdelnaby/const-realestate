@@ -21,7 +21,8 @@ class AgencyController extends Controller
     public function show($id)
     {
         $agency = Agency::find($id);
-        return view('front.agencies.show', compact('agency'));
+        $page_name = 'agencies';
+        return view('front.agencies.show', compact('agency', 'page_name'));
 
     } // end of show
 

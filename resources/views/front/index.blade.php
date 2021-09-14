@@ -50,11 +50,11 @@
                             <div class="banner-search-wrap">
                                 <ul class="nav nav-tabs rld-banner-tab">
                                     <li class="nav-item">
-                                        <a class="nav-link  active" data-toggle="tab" href="#for_sale">@lang('front.For
+                                        <a class="nav-link  active" data-toggle="tab" href="#">@lang('front.For
                                             Sale')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#for_rent">@lang('front.For
+                                        <a class="nav-link" data-toggle="tab" href="#">@lang('front.For
                                             Rent')</a>
                                     </li>
                                 </ul>
@@ -184,13 +184,13 @@
                                     <div class="project-inner project-head">
                                         <div class="project-bottom">
                                             <h4><a
-                                                    href="{{ route('front.properties.show', $property->id) }}">@lang('front.view_property')</a><span
+                                                    href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}">@lang('front.view_property')</a><span
                                                     class="category">@lang('front.real_estate')</span>
                                             </h4>
                                         </div>
                                         <div class="homes">
                                             <!-- homes img -->
-                                            <a href="{{ route('front.properties.show', $property->id) }}"
+                                            <a href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}"
                                                 class="homes-img">
                                                 @if ($property->is_featured == 1)<div class="homes-tag button alt featured">@lang('front.featured')</div>@endif
                                                 <div class="homes-tag button alt sale">@lang('front.for_sale')</div>
@@ -210,10 +210,10 @@
                                     <div class="homes-content">
                                         <!-- homes address -->
                                         <h3><a
-                                                href="{{ route('front.properties.show', $property->id) }}">{{ $property->name }}</a>
+                                                href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}">{{ $property->name }}</a>
                                         </h3>
                                         <p class="homes-address mb-3">
-                                            <a href="{{ route('front.properties.show', $property->id) }}">
+                                            <a href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}">
                                                 <i class="fa fa-map-marker"></i><span>{{ $property->address }}</span>
                                             </a>
                                         </p>
@@ -229,7 +229,7 @@
                                             </li>
                                             <li>
                                                 <i class="fa fa-object-group" aria-hidden="true"></i>
-                                                <span>{{ $property->construction_area }} @lang('front.sq_ft')</span>
+                                                <span>{{ $property->plot_area }} @lang('front.sq_ft')</span>
                                             </li>
                                             <li>
                                                 <i class="fas fa-warehouse" aria-hidden="true"></i>
@@ -239,7 +239,7 @@
                                         <!-- Price -->
                                         <div class="price-properties">
                                             <h3 class="title mt-3">
-                                                <a href="{{ route('front.properties.show', $property->id) }}">$
+                                                <a href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}">$
                                                     {{ $property->price }}</a>
                                             </h3>
                                         </div>
@@ -273,13 +273,13 @@
                                     <div class="project-inner project-head">
                                         <div class="project-bottom">
                                             <h4><a
-                                                    href="{{ route('front.properties.show', $property->id) }}">@lang('front.view_property')</a><span
+                                                    href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}">@lang('front.view_property')</a><span
                                                     class="category">@lang('front.real_estate')</span>
                                             </h4>
                                         </div>
                                         <div class="homes">
                                             <!-- homes img -->
-                                            <a href="{{ route('front.properties.show', $property->id) }}"
+                                            <a href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}"
                                                 class="homes-img">
                                                 @if ($property->is_featured == 1)<div class="homes-tag button alt featured">@lang('front.featured')</div>@endif
                                                 <div class="homes-tag button alt sale">@lang('front.for_rent')</div>
@@ -298,9 +298,9 @@
                                     <!-- homes content -->
                                     <div class="homes-content">
                                         <!-- homes address -->
-                                        <h3><a href="{{ route('front.properties.show', $property->id) }}">{{ $property->name }}</a></h3>
+                                        <h3><a href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}">{{ $property->name }}</a></h3>
                                         <p class="homes-address mb-3">
-                                            <a href="{{ route('front.properties.show', $property->id) }}">
+                                            <a href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}">
                                                 <i class="fa fa-map-marker"></i><span>{{ $property->address }}</span>
                                             </a>
                                         </p>
@@ -316,7 +316,7 @@
                                             </li>
                                             <li>
                                                 <i class="fa fa-object-group" aria-hidden="true"></i>
-                                                <span>{{ $property -> construction_area }} @lang('sq_ft')</span>
+                                                <span>{{ $property -> plot_area }} @lang('sq_ft')</span>
                                             </li>
                                             <li>
                                                 <i class="fas fa-warehouse" aria-hidden="true"></i>
@@ -326,8 +326,16 @@
                                         <!-- Price -->
                                         <div class="price-properties">
                                             <h3 class="title mt-3">
-                                                <a href="{{ route('front.properties.show', $property->id) }}">$ {{ $property->price }}</a>
+                                                <a href="{{ route('front.properties.show', ['slug' => $property->meta_slug]) }}">$ {{ $property->price }}</a>
                                             </h3>
+                                        </div>
+                                        <div class="footer">
+                                            <a href="{{ route('front.agencies.show' , $property -> agency -> id) }}">
+                                                <i class="fa fa-building"></i> {{ $property -> agency -> name }}
+                                            </a>
+                                            <span>
+                                                <i class="fa fa-calendar"></i> {{ $property -> postedAt() }} Days ago
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

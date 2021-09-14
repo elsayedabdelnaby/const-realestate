@@ -36,10 +36,13 @@ class PropertyController extends Controller
 
     } // end of index
 
-    public function show($id)
+    public function show($slug)
     {
-        $property = Property::find($id);
-        return view('front.properties.show', compact('property'));
+        $page_name = 'properties';
+        $property = Property::whereHas('translations', function ($query) use ($slug) {
+                    $query->where('meta_slug', 'LIKE', '%' . $slug . '%');
+                })->get()[0];
+        return view('front.properties.show', compact('property', 'page_name'));
 
     } // end of show
 }
