@@ -21,28 +21,33 @@ class PropertyController extends Controller
         $meta_data = SEO::where('page_name', 'properties')->firstOrFail();
         $page_name = 'properties';
         // properties details with search inquiries
-        $properties = Property::with('country','city')
-            ->when($request -> city_id , function($query) use ($request) {
-            return $query -> where('city_id', $request -> city_id);
-            })->when($request -> property_status , function($query) use ($request) {
-            return $query -> where('property_status_id', $request -> property_status);
-            })->when($request -> property_type , function($query) use ($request) {
-            return $query -> where('property_type_id', $request -> property_type);
-            })->when($request -> rent_sale , function($query) use ($request) {
-                return $query -> where('rent_sale', $request -> rent_sale);
-        })->latest()->paginate(PAGINATION_COUNT);
+        $properties = Property::with('country', 'city')
+            ->when($request->city_id, function ($query) use ($request) {
+                return $query->where('city_id', $request->city_id);
+            })->when($request->property_status, function ($query) use ($request) {
+                return $query->where('property_status_id', $request->property_status);
+            })->when($request->property_type, function ($query) use ($request) {
+                return $query->where('property_type_id', $request->property_type);
+            })->when($request->rent_sale, function ($query) use ($request) {
+                return $query->where('rent_sale', $request->rent_sale);
+            })->when($request->min_area, function ($query) use ($request) {
+                return $query->where('plot_area', '>=', $request->min_area);
+            })->when($request->max_area, function ($query) use ($request) {
+                return $query->where('plot_area', '<=', $request->min_area);
+            })
+            ->latest()->paginate(PAGINATION_COUNT);
 
-        return view('front.properties.index' , compact('cities', 'property_statuses', 'property_types' , 'properties', 'meta_data', 'page_name'));
+        $recent_properties = Property::orderBy('created_at', 'DESC')->limit(3)->get();
 
+        return view('front.properties.index', compact('cities', 'property_statuses', 'property_types', 'properties', 'meta_data', 'page_name', 'recent_properties'));
     } // end of index
 
     public function show($slug)
     {
         $page_name = 'properties';
         $property = Property::whereHas('translations', function ($query) use ($slug) {
-                    $query->where('meta_slug', 'LIKE', '%' . $slug . '%');
-                })->get()[0];
+            $query->where('meta_slug', 'LIKE', '%' . $slug . '%');
+        })->get()[0];
         return view('front.properties.show', compact('property', 'page_name'));
-
     } // end of show
 }
