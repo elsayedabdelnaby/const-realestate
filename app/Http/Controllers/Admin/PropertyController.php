@@ -13,6 +13,7 @@ use App\Models\Admin\Feature;
 use App\Models\Admin\Property;
 use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -50,9 +51,10 @@ class PropertyController extends Controller
         $property_statuses = PropertyStatus::all();
         $agencies = Agency::all();
         $currencies = Currency::all();
+        $tags = Tag::all();
         return view(
             'admin.properties.create',
-            compact('countries', 'cities', 'property_types', 'property_statuses', 'agencies', 'currencies')
+            compact('countries', 'cities', 'property_types', 'property_statuses', 'agencies', 'currencies', 'tags')
         );
     } // end of create
 
@@ -91,7 +93,11 @@ class PropertyController extends Controller
                 $request_data['gallery'] = json_encode($gallery_arr);
             }
 
-            Property::create($request_data);
+            $property = Property::create($request_data);
+            $tags = $request->input('tags');
+            if ($tags) {
+                $property->tags()->attach($tags);
+            }
 
             session()->flash('success', 'Property Added Successfully');
             return redirect()->route('admin.properties.index');
@@ -118,10 +124,13 @@ class PropertyController extends Controller
             $property_statuses = PropertyStatus::all();
             $agencies = Agency::all();
             $currencies = Currency::all();
+            $tags = Tag::all();
+
+            $property_tags =$property->tags->pluck('id')->toArray();
 
             return view(
                 'admin.properties.edit',
-                compact('property', 'countries', 'cities', 'property_types', 'property_statuses', 'agencies', 'currencies')
+                compact('property', 'countries', 'cities', 'property_types', 'property_statuses', 'agencies', 'currencies', 'property_tags', 'tags')
             );
         } catch (\Exception $exception) {
 
@@ -145,7 +154,7 @@ class PropertyController extends Controller
                 $request->request->add(['rent_sale' => 1]);
             }
 
-            $request_data = $request->except('gallery');
+            $request_data = $request->except('gallery', 'tags');
 
             if ($request->image) {
                 Storage::disk('public_uploads')->delete('/properties/' . $property->image);
@@ -185,11 +194,19 @@ class PropertyController extends Controller
 
             $property->update($request_data);
 
+            $tags = $request->input('tags');
+            if (is_array($tags)) {
+                $property->tags()->sync([]);
+                $property->tags()->attach($tags);
+            } else {
+                $property->tags()->sync([]);
+            }
+
             session()->flash('success', 'Property Updated Successfully');
             return redirect()->route('admin.properties.index');
         } catch (\Exception $exception) {
 
-            session()->flash('error', 'Something Went Wrong, Please Contact Administrator');
+            session()->flash('error', 'Something Went Wrong, Please Contact Administrator ' . $exception->getMessage());
             return redirect()->route('admin.properties.index');
         } // end of try -> catch
 

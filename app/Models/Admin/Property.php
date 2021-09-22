@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Tag;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
@@ -134,5 +135,13 @@ class Property extends Model implements TranslatableContract
             'feature_id'
         );
     } // end of properties
+
+    /**
+     * Get all of the tags for the property.
+     */
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
 
 } // end of model

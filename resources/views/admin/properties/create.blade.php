@@ -338,6 +338,17 @@
 
                             </div> {{-- end of Pricing row --}}
 
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-lg-6">
+                                    <label>Tags</label>
+                                    <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                        @foreach ($tags as $tag)
+                                            <option value={{ $tag->id }}>{{ $tag->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                         </div> {{-- end of form group for Property Information --}}
 
                         <div class="form-group col-sm-12 card card-info card-outline">
@@ -497,5 +508,11 @@
 
     <script>
         $('.gallery').imageUploader();
+        $(document).ready(function() {
+
+            $('.js-example-basic-multiple').select2({
+                placeholder: 'Select Tags'
+            });
+        });
     </script>
 @stop

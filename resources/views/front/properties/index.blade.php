@@ -90,8 +90,8 @@
                                                     @else
                                                         <div class="homes-tag button sale rent">For Rent</div>
                                                     @endif
-                                                    <img src="{{ $property->image_path }}"
-                                                        alt="{{ $property->name }}" class="img-responsive">
+                                                    <img src="{{ $property->image_path }}" alt="{{ $property->name }}"
+                                                        class="img-responsive">
                                                 </a>
                                             </div>
                                             <div class="button-effect">
@@ -232,7 +232,8 @@
                                 <div class="recent-main py-2">
                                     <div class="recent-img">
                                         <a href="{{ route('front.properties.show', $property->meta_slug) }}"><img
-                                                src="{{ $property->getImagePathAttribute() }}" alt="{{ $property->name }}"></a>
+                                                src="{{ $property->getImagePathAttribute() }}"
+                                                alt="{{ $property->name }}"></a>
                                     </div>
                                     <div class="info-img">
                                         <a href="{{ route('front.properties.show', $property->meta_slug) }}">
@@ -244,27 +245,23 @@
                             @endforeach
                         </div>
                         <div class="recent-post">
-                            <h5 class="font-weight-bold mb-4">Popolar Tags</h5>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Houses</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Real Home</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Baths</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Beds</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Garages</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Family</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Real Estates</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Properties</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Location</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Price</a></span>
-                            </div>
+                            <h5 class="font-weight-bold mb-4">@lang('front.popular_tags')</h5>
+                            @for ($index = 0; $index < count($popular_tags); $index++)
+                                <div class="tags">
+                                    <span>
+                                        <a href="{{ route('front.properties.index') . '?tag=' . $popular_tags[$index]->translate(App::getLocale())->slug }}"
+                                            class="btn btn-outline-primary">{{ $popular_tags[$index]->translate(App::getLocale())->name }}</a>
+                                    </span>
+                                    @php ++$index @endphp
+                                    @if (isset($popular_tags[$index]))
+                                        <span>
+                                            <a href="{{ route('front.properties.index') . '?tag=' . $popular_tags[$index]->translate(App::getLocale())->slug }}"
+                                                class="btn btn-outline-primary">{{ $popular_tags[$index]->translate(App::getLocale())->name }}</a>
+                                        </span>
+                                    @endif
+                                </div>
+
+                            @endfor
                         </div>
                     </div>
                 </aside>

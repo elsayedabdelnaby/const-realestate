@@ -70,8 +70,8 @@
                                     @enderror
                                     <textarea class="form-control input-thick ckeditor" type="text"
                                         name="{{ $locale }}[description]">
-                                                {{ $property->translate($locale)->description }}
-                                            </textarea>
+                                                    {{ $property->translate($locale)->description }}
+                                                </textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -83,8 +83,8 @@
                                     @enderror
                                     <textarea class="form-control input-thick" type="text"
                                         name="{{ $locale }}[address]">
-                                                {{ $property->translate($locale)->address }}
-                                            </textarea>
+                                                    {{ $property->translate($locale)->address }}
+                                                </textarea>
                                 </div>
 
                             </div>
@@ -352,6 +352,19 @@
 
                             </div> {{-- end of Pricing row --}}
 
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-lg-6">
+                                    <label>Tags</label>
+                                    <select class="js-example-basic-multiple form-control" name="tags[]"
+                                        multiple="multiple">
+                                        @foreach ($tags as $tag)
+                                            <option value="{{ $tag->id }}" @if (in_array($tag->id, $property_tags)) selected @endif>
+                                                {{ $tag->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                         </div> {{-- end of form group for Property Information --}}
 
                         <div class="form-group col-sm-12 card card-info card-outline">
@@ -526,6 +539,12 @@
             preloaded: preloaded,
             imagesInputName: 'gallery',
             preloadedInputName: 'gallery'
+        });
+
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2({
+                placeholder: 'Select Tags'
+            });
         });
     </script>
 @stop
