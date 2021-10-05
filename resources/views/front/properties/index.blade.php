@@ -172,11 +172,11 @@
                         </div>
                         <!-- Search Fields -->
                         <div class="main-search-field">
-                            <h5 class="title">Filter</h5>
+                            <h5 class="title">@lang('front.filter')</h5>
                             <form method="GET">
                                 <div class="at-col-default-mar mb-3">
                                     <select name="city_id">
-                                        <option value="" selected>City</option>
+                                        <option value="" selected>@lang('front.city')</option>
                                         @foreach ($cities as $city)
                                             <option value="{{ $city->id }}"
                                                 {{ request()->city_id == $city->id ? 'selected' : '' }}>
@@ -197,7 +197,7 @@
                                 <div class="at-col-default-mar mb-3">
                                     <div class="at-col-default-mar">
                                         <select name="property_type">
-                                            <option value="" data-show=".acitveon" selected>Property Type</option>
+                                            <option value="" data-show=".acitveon" selected>@lang('front.property_type')</option>
                                             @foreach ($property_types as $property_type)
                                                 <option value="{{ $property_type->id }}"
                                                     {{ request()->property_type == $property_type->id ? 'selected' : '' }}>
@@ -221,7 +221,7 @@
 
                                 <div class="col-lg-12 no-pds">
                                     <div class="at-col-default-mar">
-                                        <button class="btn btn-default hvr-bounce-to-right" type="submit">Search</button>
+                                        <button class="btn btn-default hvr-bounce-to-right" type="submit">@lang('front.search')</button>
                                     </div>
                                 </div>
                             </form>

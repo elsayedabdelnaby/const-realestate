@@ -26,9 +26,12 @@ class PropertyController extends Controller
             'is_popular_tag' => 1
         ])->get();
         // properties details with search inquiries
+
         $properties = Property::with('country', 'city')
             ->when($request->city_id, function ($query) use ($request) {
                 return $query->where('city_id', $request->city_id);
+            })->when($request->agency_id, function ($query) use ($request) {
+                return $query->where('agency_id', $request->agency_id);
             })->when($request->property_status, function ($query) use ($request) {
                 return $query->where('property_status_id', $request->property_status);
             })->when($request->property_type, function ($query) use ($request) {

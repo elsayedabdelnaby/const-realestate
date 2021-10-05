@@ -10,9 +10,8 @@ return [
         'Agency' => 'Agency',
     ],
 
-    'For Sale' => 'For Sale',
+    'agency' => 'Agency',
     'For Buy' => 'For Buy',
-    'For Rent' => 'For Rent',
     'property_type' => 'Property Type',
     'property_status' => 'Property Status',
     'bedrooms' => 'Bedrooms',
@@ -70,5 +69,6 @@ return [
     'places' => 'Places',
     'properties' => 'Properties',
     'properties_listing' => 'Properties Listing',
+    'filter' => 'Filter',
 
 ];

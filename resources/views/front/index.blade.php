@@ -41,21 +41,18 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="banner-inner">
-                                <h1 class="title text-center">@lang('front.Find Your Dream Home')</h1>
-                                <h5 class="sub-title text-center">@lang('front.We Have Over Million Properties For
-                                    You')</h5>
+                                <h1 class="title text-center">@lang('front.index.Find Your Dream Home')</h1>
+                                <h5 class="sub-title text-center">@lang('front.index.We Have Over Million Properties For You')</h5>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="banner-search-wrap">
                                 <ul class="nav nav-tabs rld-banner-tab">
                                     <li class="nav-item">
-                                        <a class="nav-link  active" data-toggle="tab" href="#">@lang('front.For
-                                            Sale')</a>
+                                        <a class="nav-link  active" data-toggle="tab" href="#">@lang('front.for_sale')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#">@lang('front.For
-                                            Rent')</a>
+                                        <a class="nav-link" data-toggle="tab" href="#">@lang('front.for_rent')</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
@@ -67,7 +64,7 @@
                                                     <div class="col-xl-3 col-lg-6 col-md-6">
                                                         <div class="rld-single-select left-icon">
                                                             <select name="agency_id" class="select single-select">
-                                                                <option value="">@lang('front.Agency')</option>
+                                                                <option value="">@lang('front.agency')</option>
                                                                 @foreach ($agencies as $agency)
                                                                     <option value="{{ $agency->id }}"
                                                                         {{ request()->agency_id == $agency->id ? 'selected' : '' }}>
@@ -117,7 +114,7 @@
                                                     <div class="col-xl-3 col-lg-6 col-md-6">
                                                         <div class="rld-single-select left-icon">
                                                             <select name="agency_id" class="select single-select">
-                                                                <option value="">@lang('front.Agency')</option>
+                                                                <option value="">@lang('front.agency')</option>
                                                                 @foreach ($agencies as $agency)
                                                                     <option value="{{ $agency->id }}"
                                                                         {{ request()->agency_id == $agency->id ? 'selected' : '' }}>
