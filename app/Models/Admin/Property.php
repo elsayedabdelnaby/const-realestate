@@ -2,12 +2,13 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Tag;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
+use App\User;
 use Carbon\Carbon;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
 class Property extends Model implements TranslatableContract
 {
@@ -89,6 +90,10 @@ class Property extends Model implements TranslatableContract
     /******************************************
     /* Relations
     ******************************************/
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function agency()
     {

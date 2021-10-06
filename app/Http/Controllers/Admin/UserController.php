@@ -58,7 +58,7 @@ class UserController extends Controller
 
             $request_data['image'] = $request->image->hashName();
         }
-
+        $request_data['is_admin'] = 1;
         $user = User::create($request_data); // create user
         $user -> attachRole('admin'); // add role to user
         $user -> syncPermissions($request -> permissions); // add permissions to user

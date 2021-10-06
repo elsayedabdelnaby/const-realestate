@@ -18,8 +18,8 @@
             <div class="top-social hidden-sm-down">
                 <div class="login-wrap">
                     <ul class="d-flex">
-                        <li><a href="#"><i class="fa fa-user"></i> @lang('front.login')</a></li>
-                        <li><a href="#"><i class="fa fa-sign-in"></i> @lang('front.register')</a></li>
+                        <li><a href="{{ route('login') }}"><i class="fa fa-user"></i> @lang('front.login')</a></li>
+                        <li><a href="{{ route('register') }}"><i class="fa fa-sign-in"></i> @lang('front.register')</a></li>
                     </ul>
                 </div>
                 <div class="social-icons-header">

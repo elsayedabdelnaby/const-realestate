@@ -26,8 +26,8 @@ return [
             'social_feeds' => 'c,r,u,d',
             'people_says' => 'c,r,u,d',
         ],
-        'admin' => [
-
+        'site_visitor' => [
+            'properties' => 'r,u',
         ],
     ],
 

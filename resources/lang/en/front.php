@@ -71,4 +71,25 @@ return [
     'properties_listing' => 'Properties Listing',
     'filter' => 'Filter',
 
+    //Login
+    'login' => 'Login',
+    'email' => 'Email',
+    'password' => 'Password',
+    'remember_me' => 'Remember Me',
+    'forgot_your_password?' => 'Forgot your password?',
+    'login_to_find_houses' => 'Login to find houses',
+    'or' => 'Or',
+    'login_with_google' => 'Login with Google',
+    'login_with_facebook' => 'Login with Facebook',
+    'login_with_linkedin' => 'Login with LinkedIn',
+    'new_to_find_houses' => 'New to find houses',
+    'sign_up!' => 'Sign up!',
+    'your_name' => 'Your name',
+    'your_email' => 'Your email',
+    'your_password' => 'Your password',
+    'confirm_password' => 'Confirm password',
+    'register_now' => 'Register now',
+    'confirm_password' => 'Confirm password',
+    'already_have_an_account' => 'Already have an account',
+    'sign_in' => 'Sign in'
 ];

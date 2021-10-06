@@ -14,7 +14,7 @@ class User extends Authenticatable
     use LaratrustUserTrait, Notifiable, Commenter, SoftDeletes;
 
     protected $fillable = [
-        'first_name',  'last_name','email', 'password', 'image'
+        'first_name',  'last_name','email', 'password', 'image', 'is_admin'
     ];
 
     protected $hidden = [

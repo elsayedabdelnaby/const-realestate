@@ -15,6 +15,7 @@ use App\Models\Admin\PropertyStatus;
 use App\Models\Admin\PropertyType;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image as Image;
@@ -93,6 +94,10 @@ class PropertyController extends Controller
                 $request_data['gallery'] = json_encode($gallery_arr);
             }
 
+            if (Auth::user()->hasRole('site_visitor')) {
+                $request_data['user_id'] = Auth::user()->id;
+            }
+            
             $property = Property::create($request_data);
             $tags = $request->input('tags');
             if ($tags) {
@@ -126,7 +131,7 @@ class PropertyController extends Controller
             $currencies = Currency::all();
             $tags = Tag::all();
 
-            $property_tags =$property->tags->pluck('id')->toArray();
+            $property_tags = $property->tags->pluck('id')->toArray();
 
             return view(
                 'admin.properties.edit',

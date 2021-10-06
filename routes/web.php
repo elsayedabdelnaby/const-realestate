@@ -34,8 +34,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [Fro
     Route::post('/contact-us', 'Front\ContactUsController@store')->name('front.store.contact-us');
 
     Route::post('/subscriber', 'Front\HomeController@addSubscriber')->name('front.subscriber.create');
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('/register', 'Auth\RegisterController@register')->name('register');
 });
 
-Auth::routes(['register' => false]);
+Auth::routes(['login' => false, 'logout' => false, 'register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
